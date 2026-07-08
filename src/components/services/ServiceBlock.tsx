@@ -85,8 +85,17 @@ export function ServiceBlock({
             ))}
           </ul>
 
-          <div className="mt-10">
-            <LineCta href="/contact" light>
+          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {service.detailHref ? (
+              <LineCta href={service.detailHref} light>
+                Explore the program
+              </LineCta>
+            ) : null}
+            <LineCta
+              href="/contact"
+              light
+              className={service.detailHref ? "text-white/60 hover:text-accent" : undefined}
+            >
               Start a conversation
             </LineCta>
           </div>

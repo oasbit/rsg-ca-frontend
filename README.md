@@ -113,9 +113,13 @@ Live-site section order: **Our Story** hero → **Who We Are** → **Meet Dr. An
 | `quote` | Textarea |
 | `quote_author` | Text |
 | `quote_role` | Text |
-| `service_blocks` | Repeater: `title`, `tagline`, `body`, `paragraphs`, `bulletsLead`, `bullets`, `quoteBullets` |
+| `service_blocks` | Repeater: `title`, `tagline`, `body`, `paragraphs`, `bulletsLead`, `bullets`, `quoteBullets`, `detailHref` |
 
 Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Strategic Planning (black) → Leadership (gray) → Team Building (black) → Facilitation (gray).
+
+**Service detail pages.** A `service_blocks` entry with a `detailHref` links to a dedicated detail page. When present, the homepage `ServicesTabs` "Learn more" link and the services page `ServiceBlock` "Explore the program" link both point to it. These detail pages are intentionally **not** in the main menu (`menus.ts`); they are reached only from the Team Building sections.
+
+- **`/services/team-building`** — dedicated Team Building program page (hero, "What We Do" / Discover Your Inner Leader, Interactive & Engaging Development, Why Choose Us). Content sourced from the Rising Stars leadership & team-building program.
 
 ### Contact (`contact`)
 
@@ -233,12 +237,19 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Section | Image type |
 |---------|------------|
 | Page heroes | WebP/JPG backgrounds (`heroBackgrounds` in `images.ts`) |
+| Home hero | Self-hosted `public/images/home-hero.jpg` (Pexels license, free, no attribution required) |
 | Home editorial strip | `coworking-space-hero-scaled-1.webp` background only (live site Elementor `a24e4f4`) |
 | Home about teaser | Text and pillar highlight cards only (no image) |
 | About page hero | `rs-group-group-pic.jpg` |
 | About page founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
 | Services hero background | `Generated-Image-March-18-2026-10_21AM.jpg` |
 | Service blocks (services page) | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: transparent PNG; Team Building: `pexels-yankrukov-7693708-scaled.jpg`; Facilitation: transparent PNG |
+| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
+| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
+| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
+| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
+| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
+| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
 | Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
 | Service blocks (services page) | Transparent PNGs from services page or fallbacks |
 | Contact hero | `financial-services-features-hero-scaled-1.webp` (pinned) |

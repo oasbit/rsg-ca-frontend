@@ -182,7 +182,13 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                 </ul>
 
                 <div className="mt-10 flex flex-wrap items-center gap-8">
-                  <LineCta href={`/services#${serviceSlug(activeService)}`} light>
+                  <LineCta
+                    href={
+                      activeService.detailHref ??
+                      `/services#${serviceSlug(activeService)}`
+                    }
+                    light
+                  >
                     Learn more
                   </LineCta>
                   <Link

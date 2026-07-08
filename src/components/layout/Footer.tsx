@@ -48,53 +48,51 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-black">
-      <RevealStagger className="mx-auto flex max-w-7xl flex-col items-center gap-14 px-6 py-16 lg:px-10">
-        <RevealStaggerItem className="flex w-full items-center justify-center">
+      <RevealStagger className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-3 lg:items-center lg:px-10">
+        <RevealStaggerItem className="flex items-center justify-center">
           <SiteLogo variant="inverse" size="footer" align="center" />
         </RevealStaggerItem>
 
-        <div className="grid w-full gap-12 text-center sm:grid-cols-2 sm:text-left">
-          <RevealStaggerItem>
-            <p className="text-xs tracking-[0.28em] text-muted uppercase">Company</p>
-            <ul className="mt-4 space-y-3">
-              {NAV_ITEMS.filter((item) => item.href !== "/").map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-white/85 transition-colors duration-300 ease-out hover:text-accent"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </RevealStaggerItem>
+        <RevealStaggerItem>
+          <p className="text-xs tracking-[0.28em] text-muted uppercase">Company</p>
+          <ul className="mt-4 space-y-3">
+            {NAV_ITEMS.filter((item) => item.href !== "/").map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sm text-white/85 transition-colors duration-300 ease-out hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </RevealStaggerItem>
 
-          <RevealStaggerItem>
-            <p className="text-xs tracking-[0.28em] text-muted uppercase">Contact</p>
-            <ul className="mt-4 space-y-3 text-sm text-white/85">
-              <li>
-                <a
-                  href="tel:+19055187522"
-                  className="transition-colors duration-300 ease-out hover:text-accent"
-                >
-                  +1 905 518 7522
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@rsg-ac.ca"
-                  className="transition-colors duration-300 ease-out hover:text-accent"
-                >
-                  info@rsg-ac.ca
-                </a>
-              </li>
-              <li className="text-muted">
-                Dominate the Plate, 92 Grand St., Brantford, ON
-              </li>
-            </ul>
-          </RevealStaggerItem>
-        </div>
+        <RevealStaggerItem>
+          <p className="text-xs tracking-[0.28em] text-muted uppercase">Contact</p>
+          <ul className="mt-4 space-y-3 text-sm text-white/85">
+            <li>
+              <a
+                href="tel:+19055187522"
+                className="transition-colors duration-300 ease-out hover:text-accent"
+              >
+                +1 905 518 7522
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:info@rsg-ac.ca"
+                className="transition-colors duration-300 ease-out hover:text-accent"
+              >
+                info@rsg-ac.ca
+              </a>
+            </li>
+            <li className="text-muted">
+              Dominate the Plate, 92 Grand St., Brantford, ON
+            </li>
+          </ul>
+        </RevealStaggerItem>
       </RevealStagger>
 
       <Reveal variant="fade">

@@ -19,7 +19,8 @@ export const BRAND = {
   },
   /** Full-bleed hero backgrounds (photographic — not subject cutouts). */
   heroBackgrounds: {
-    home: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
+    /** Self-hosted free stock photo (Pexels license — no attribution required). */
+    home: "/images/home-hero.jpg",
     contact: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
     privacy: `${WP_UPLOADS}/2026/03/financial-services-contact-hero-scaled-1.webp`,
     about: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
@@ -59,6 +60,11 @@ export const BRAND = {
     leadershipDevelopment: `${WP_UPLOADS}/2026/04/leadership.jpg`,
     teamBuilding: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
     facilitation: `${WP_UPLOADS}/2026/04/8-glp-1-roi.webp`,
+  },
+  /** Team Building service detail page assets. */
+  teamBuilding: {
+    hero: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
+    action: `${WP_UPLOADS}/2026/03/pexels-yankrukov-7693708-scaled.jpg`,
   },
   about: {
     overlay: `${WP_UPLOADS}/2026/03/119dc_Overlays-About-Us-BG-3.webp`,
@@ -151,14 +157,8 @@ function assignUniqueImages(
 }
 
 export function resolveHomeHeroImage(page: WPPage | null): SiteImage {
-  const fromContent = extractContentImages(page?.content?.rendered ?? "").find(
-    (url) => url.includes("hero") || url.includes("financial-services-features"),
-  );
-
-  return siteImage(
-    fromContent ?? BRAND.heroBackgrounds.home,
-    "RS Group Advance Consulting",
-  );
+  void page;
+  return siteImage(BRAND.heroBackgrounds.home, "RS Group Advance Consulting");
 }
 
 export function resolveContactHeroImage(): SiteImage {

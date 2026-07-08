@@ -258,6 +258,7 @@ export function resolveServicesContent(page: WPPage | null): Required<
       {
         title: "Team Building",
         tagline: "Develop Cohesive Teams",
+        detailHref: "/services/team-building",
         body: "Team-building is essential for an organization's long-term development and success, yet many stakeholders feel dissatisfied with past experiences. We believe the right facilitator can make all the difference.",
         paragraphs: [
           "Our team-building activities promote positive and active organizations while strengthening leadership and soft skills. Participants are encouraged to build strong connections and collaborate effectively. Through this program, individuals support their personal and professional growth and can immediately apply what they learn within the organization and beyond.",

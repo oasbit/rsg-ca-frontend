@@ -33,6 +33,8 @@ export interface WPServiceBlock {
   bullets: string[];
   quoteBullets?: boolean;
   image_id?: number;
+  /** Optional dedicated detail page for this service (not in the main menu). */
+  detailHref?: string;
 }
 
 export interface WPApproachBlock {

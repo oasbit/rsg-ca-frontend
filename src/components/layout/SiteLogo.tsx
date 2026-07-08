@@ -33,7 +33,7 @@ export function SiteLogo({
     <Link
       href="/"
       className={cn(
-        "relative block max-w-full shrink-0 transition-opacity duration-300 ease-out hover:opacity-90",
+        "relative block shrink-0 transition-opacity duration-300 ease-out hover:opacity-90",
         sizeClasses[size],
         className,
       )}
