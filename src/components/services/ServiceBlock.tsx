@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
-import { TransparentImage } from "@/components/ui/TransparentImage";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { isTransparentAsset } from "@/lib/wordpress/images";
@@ -33,10 +32,10 @@ export function ServiceBlock({
       id={service.title.toLowerCase().replace(/\s+/g, "-")}
       className={cn("py-20 text-white lg:py-28", solid)}
     >
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-10">
         <Reveal
           variant={reversed ? "slideLeft" : "slideRight"}
-          className={reversed ? "lg:order-2" : ""}
+          className={cn("lg:self-center", reversed ? "lg:order-2" : "")}
         >
           <p className="text-xs tracking-[0.28em] text-accent uppercase">
             {service.tagline}
@@ -105,27 +104,28 @@ export function ServiceBlock({
           <Reveal
             variant={reversed ? "slideRight" : "slideLeft"}
             delay={0.1}
-            className={reversed ? "lg:order-1" : ""}
+            className={cn("lg:h-full", reversed ? "lg:order-1" : "")}
           >
-            {isTransparent ? (
-              <TransparentImage
+            <div
+              className={cn(
+                "relative h-[22rem] w-full overflow-hidden sm:h-[26rem] lg:h-full lg:min-h-[28rem]",
+                isTransparent
+                  ? ""
+                  : "rounded-2xl border border-white/10",
+              )}
+            >
+              <Image
                 src={imageUrl}
                 alt={imageAlt}
-                className="mx-auto max-w-sm lg:mx-0"
-                imageClassName="max-h-[22rem] drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+                fill
+                className={cn(
+                  isTransparent
+                    ? "object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+                    : "object-cover",
+                )}
                 sizes="(max-width: 1024px) 90vw, 40vw"
               />
-            ) : (
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
-                <Image
-                  src={imageUrl}
-                  alt={imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 90vw, 40vw"
-                />
-              </div>
-            )}
+            </div>
           </Reveal>
         ) : null}
       </div>

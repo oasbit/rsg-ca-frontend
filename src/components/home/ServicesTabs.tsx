@@ -6,7 +6,6 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { LineCta } from "@/components/ui/LineCta";
-import { TransparentImage } from "@/components/ui/TransparentImage";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { isTransparentAsset } from "@/lib/wordpress/images";
@@ -129,10 +128,13 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-10 p-8 lg:grid-cols-12 lg:items-center lg:gap-12 lg:p-12 xl:p-14"
+              className="grid gap-10 p-8 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:p-12 xl:p-14"
             >
               <div
-                className={cn(showImage ? "lg:col-span-7" : "lg:col-span-12")}
+                className={cn(
+                  "lg:self-center",
+                  showImage ? "lg:col-span-7" : "lg:col-span-12",
+                )}
               >
                 <p className="text-xs tracking-[0.28em] text-accent uppercase">
                   {activeService.tagline}
@@ -201,26 +203,25 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
               </div>
 
               {showImage ? (
-                <div className="flex justify-center lg:col-span-5 lg:justify-end">
-                  {isTransparent ? (
-                    <TransparentImage
+                <div className="lg:col-span-5">
+                  <div
+                    className={cn(
+                      "relative h-[20rem] w-full overflow-hidden sm:h-[24rem] lg:h-full lg:min-h-[26rem]",
+                      isTransparent ? "" : "border border-white/10",
+                    )}
+                  >
+                    <Image
                       src={activeImage}
                       alt={activeService.title}
-                      className="w-full max-w-xs lg:max-w-sm"
-                      imageClassName="max-h-[20rem] lg:max-h-[24rem]"
-                      sizes="(max-width: 1024px) 80vw, 384px"
+                      fill
+                      className={cn(
+                        isTransparent
+                          ? "object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
+                          : "object-cover",
+                      )}
+                      sizes="(max-width: 1024px) 90vw, 40vw"
                     />
-                  ) : (
-                    <div className="relative aspect-[4/3] w-full max-w-md overflow-hidden border border-white/10">
-                      <Image
-                        src={activeImage}
-                        alt={activeService.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 80vw, 448px"
-                      />
-                    </div>
-                  )}
+                  </div>
                 </div>
               ) : null}
             </motion.div>
