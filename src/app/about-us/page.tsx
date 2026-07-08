@@ -1,10 +1,10 @@
-import { ApproachGrid } from "@/components/about/ApproachGrid";
+import { AboutDetailSection } from "@/components/about/AboutDetailSection";
 import { FounderProfile } from "@/components/about/FounderProfile";
+import { WhoWeAreSection } from "@/components/about/WhoWeAreSection";
 import { PageHero } from "@/components/ui/PageHero";
-import { SectionTransition } from "@/components/ui/SectionTransition";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveAboutContent } from "@/lib/wordpress/content";
-import { resolveAboutHeroImage, resolveFounderImage } from "@/lib/wordpress/images";
+import { BRAND, resolveAboutHeroImage, resolveFounderImage } from "@/lib/wordpress/images";
 import { getPageBySlug } from "@/lib/wordpress/pages";
 
 export async function generateMetadata() {
@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   return buildPageMetadata({
     title: "About Us",
-    description: content.story_body,
+    description: content.story.body,
     path: "/about-us",
   });
 }
@@ -28,24 +28,48 @@ export default async function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow={content.story_eyebrow}
-        headlineEmphasis={content.story_headline}
-        body={content.story_body}
+        eyebrow={content.story.eyebrow}
+        headlineEmphasis={content.story.headline}
+        bodyParagraphs={content.story.paragraphs}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
-      <SectionTransition />
+      <WhoWeAreSection
+        eyebrow={content.whoWeAre.eyebrow}
+        headline={content.whoWeAre.headline}
+        paragraphs={content.whoWeAre.paragraphs}
+      />
       <FounderProfile
-        name={content.founder_name}
-        title={content.founder_title}
-        bio={content.founder_bio}
+        name={content.founder.name}
+        title={content.founder.title}
+        paragraphs={content.founder.paragraphs}
         imageUrl={founderImage.src}
         imageAlt={founderImage.alt}
       />
-      <ApproachGrid
-        blocks={content.approach_blocks}
-        vision={content.vision}
-        team={content.team}
+      <AboutDetailSection
+        title={content.approach.title}
+        intro={content.approach.intro}
+        executionLead={content.approach.executionLead}
+        bullets={content.approach.bullets}
+        closing={content.approach.closing}
+        backgroundImage={BRAND.about.approachBg}
+      />
+      <AboutDetailSection
+        title={content.focusAreas.title}
+        intro={content.focusAreas.intro}
+        bullets={content.focusAreas.bullets}
+        closing={content.focusAreas.closing}
+        backgroundImage={BRAND.about.focusBg}
+      />
+      <AboutDetailSection
+        title={content.vision.title}
+        intro={content.vision.body}
+        backgroundImage={BRAND.about.communityPanel}
+      />
+      <AboutDetailSection
+        title={content.team.title}
+        paragraphs={content.team.paragraphs}
+        backgroundImage={BRAND.about.teamBg}
       />
     </>
   );

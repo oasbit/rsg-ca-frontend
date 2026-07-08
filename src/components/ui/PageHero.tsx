@@ -12,6 +12,7 @@ interface PageHeroProps {
   headline?: string;
   headlineEmphasis: string;
   body?: string;
+  bodyParagraphs?: string[];
   imageUrl: string | null;
   imageAlt: string;
   fullHeight?: boolean;
@@ -39,6 +40,7 @@ export function PageHero({
   headline,
   headlineEmphasis,
   body,
+  bodyParagraphs,
   imageUrl,
   imageAlt,
   fullHeight = false,
@@ -117,7 +119,20 @@ export function PageHero({
           </p>
         </motion.div>
 
-        {body ? (
+        {bodyParagraphs?.length ? (
+          <motion.div
+            className={
+              fullHeight
+                ? "mt-10 max-w-xl space-y-5 text-sm leading-7 text-white/75 md:text-base"
+                : "mt-6 max-w-2xl space-y-4 text-sm leading-7 text-white/75 md:text-base"
+            }
+            variants={prefersReducedMotion ? undefined : itemVariants}
+          >
+            {bodyParagraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+            ))}
+          </motion.div>
+        ) : body ? (
           <motion.p
             className={
               fullHeight

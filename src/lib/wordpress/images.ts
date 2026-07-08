@@ -22,7 +22,7 @@ export const BRAND = {
     home: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
     contact: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
     privacy: `${WP_UPLOADS}/2026/03/financial-services-contact-hero-scaled-1.webp`,
-    about: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
+    about: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
     services: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
     /** Live site Elementor container a24e4f4 — "Connected and Collaborative" band. */
     editorial: `${WP_UPLOADS}/2026/03/coworking-space-hero-scaled-1.webp`,
@@ -52,6 +52,23 @@ export const BRAND = {
     leadershipDevelopment: `${WP_UPLOADS}/2026/04/leadership.jpg`,
     teamBuilding: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
     facilitation: `${WP_UPLOADS}/2026/04/8-glp-1-roi.webp`,
+  },
+  about: {
+    overlay: `${WP_UPLOADS}/2026/03/119dc_Overlays-About-Us-BG-3.webp`,
+    communityPanel: `${WP_UPLOADS}/2026/03/286dc_Brew-Bloom-Gallery-Image-2.webp`,
+    approachBg: `${WP_UPLOADS}/2026/04/leadership.jpg`,
+    focusBg: `${WP_UPLOADS}/2026/04/istockphoto-2181859726-612x612-1.jpg`,
+    teamBg: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
+    iconA: `${WP_UPLOADS}/2026/03/coworking-space-icon-6.webp`,
+    iconB: `${WP_UPLOADS}/2026/03/coworking-space-icon-5.webp`,
+    ascendGallery: [
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-1.webp`,
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-2.webp`,
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-3.webp`,
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-4.webp`,
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-5.webp`,
+      `${WP_UPLOADS}/2026/04/Ascend-Journey-Image-6.webp`,
+    ],
   },
 } as const;
 

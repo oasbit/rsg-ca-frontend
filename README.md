@@ -88,13 +88,22 @@ Install [Advanced Custom Fields](https://www.wordpress.org/plugins/advanced-cust
 |-------|------|
 | `story_eyebrow` | Text |
 | `story_headline` | Text |
-| `story_body` | Textarea |
+| `story_paragraphs` | Repeater / textarea (array) |
+| `who_we_are_eyebrow` | Text |
+| `who_we_are_headline` | Text |
+| `who_we_are_paragraphs` | Repeater / textarea (array) |
 | `founder_name` | Text |
 | `founder_title` | Text |
-| `founder_bio` | Textarea |
-| `approach_blocks` | Repeater: `title`, `body` |
+| `founder_bio_paragraphs` | Repeater / textarea (array) |
+| `community_headline_lead` | Text |
+| `community_headline_emphasis` | Text |
+| `approach_blocks` | Repeater: `title`, `body`, `closing` |
+| `approach_bullets` | Repeater / text (array) |
+| `focus_bullets` | Repeater / text (array) |
 | `vision` | Textarea |
-| `team` | Textarea |
+| `team_paragraphs` | Repeater / textarea (array) |
+
+Live-site section order: **Our Story** hero → **Who We Are** → **Meet Dr. Andrew Peters** → **Our Approach** → **Our Focus Areas** → **Our Vision** → **Our Team** → Connect CTA (layout).
 
 ### Services (`services`)
 
@@ -224,7 +233,9 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Page heroes | WebP/JPG backgrounds (`heroBackgrounds` in `images.ts`) |
 | Home editorial strip | `coworking-space-hero-scaled-1.webp` background only (live site Elementor `a24e4f4`) |
 | Home about teaser | Text and pillar highlight cards only (no image) |
+| About page hero | `rs-group-group-pic.jpg` |
 | About page founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
+| About detail sections (Approach, Focus, Vision, Team) | Each as its own full-width section with background photo at ~55% visibility and directional gradients for readable text |
 | Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
 | Service blocks (services page) | Transparent PNGs from services page or fallbacks |
 | Contact hero | `financial-services-features-hero-scaled-1.webp` (pinned) |

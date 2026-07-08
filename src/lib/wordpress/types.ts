@@ -35,6 +35,8 @@ export interface WPServiceBlock {
 export interface WPApproachBlock {
   title: string;
   body: string;
+  bullets?: string[];
+  closing?: string;
 }
 
 export interface WPSocialLink {
@@ -63,12 +65,24 @@ export interface AboutACF {
   story_eyebrow?: string;
   story_headline?: string;
   story_body?: string;
+  story_paragraphs?: string[];
+  who_we_are_eyebrow?: string;
+  who_we_are_headline?: string;
+  who_we_are_paragraphs?: string[];
   founder_name?: string;
   founder_title?: string;
   founder_bio?: string;
+  founder_bio_paragraphs?: string[];
+  community_headline_lead?: string;
+  community_headline_emphasis?: string;
   approach_blocks?: WPApproachBlock[];
+  approach_bullets?: string[];
+  approach_closing?: string;
+  focus_bullets?: string[];
+  focus_closing?: string;
   vision?: string;
   team?: string;
+  team_paragraphs?: string[];
 }
 
 export interface ServicesACF {

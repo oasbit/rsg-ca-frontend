@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 interface FounderProfileProps {
   name: string;
   title: string;
-  bio: string;
+  paragraphs: string[];
   imageUrl: string | null;
   imageAlt: string;
 }
@@ -13,7 +13,7 @@ interface FounderProfileProps {
 export function FounderProfile({
   name,
   title,
-  bio,
+  paragraphs,
   imageUrl,
   imageAlt,
 }: FounderProfileProps) {
@@ -35,7 +35,16 @@ export function FounderProfile({
           <SectionLabel light>Meet</SectionLabel>
           <h2 className="mt-4 font-display text-4xl italic md:text-5xl">{name}</h2>
           <p className="mt-2 text-sm tracking-[0.2em] text-accent uppercase">{title}</p>
-          <p className="mt-8 max-w-2xl text-sm leading-8 text-muted md:text-base">{bio}</p>
+          <div className="mt-8 max-w-2xl space-y-6">
+            {paragraphs.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 48)}
+                className="text-sm leading-8 text-muted md:text-base"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>

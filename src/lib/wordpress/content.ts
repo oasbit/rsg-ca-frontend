@@ -1,6 +1,5 @@
 import { stripHtml } from "@/lib/utils";
 import type {
-  AboutACF,
   ContactACF,
   HomeACF,
   ServicesACF,
@@ -106,52 +105,106 @@ export function resolveHomeContent(page: WPPage | null): Required<
   };
 }
 
-export function resolveAboutContent(page: WPPage | null): Required<
-  Pick<
-    AboutACF,
-    | "story_eyebrow"
-    | "story_headline"
-    | "story_body"
-    | "founder_name"
-    | "founder_title"
-    | "founder_bio"
-    | "vision"
-    | "team"
-  >
-> & {
-  approach_blocks: NonNullable<AboutACF["approach_blocks"]>;
-} {
+export function resolveAboutContent(page: WPPage | null) {
   const acf = page?.acf ?? {};
 
+  const storyParagraphs = acf.story_paragraphs ?? [
+    "RS Advanced Group Consulting was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations.",
+    "With over 25 years of proven impact through leadership development and community programming, we bring tested, real-world frameworks into the corporate environment—helping organizations strengthen culture, align teams, and drive sustainable performance.",
+  ];
+
+  const whoWeAreParagraphs = acf.who_we_are_paragraphs ?? [
+    "RS Advanced Group Consulting partners with organizations, institutions, and leadership teams to unlock growth through people.",
+    "Our approach is rooted in decades of experience in community engagement, leadership development, and high-performance coaching. What sets us apart is our ability to translate these proven methods into practical, scalable strategies for businesses.",
+    "Originating from the success of Rising Stars Athletics & Education, our foundation is built on delivering measurable impact—developing leaders, strengthening teams, and creating environments where individuals and organizations thrive.",
+    "We don't just advise—we implement, guide, and elevate.",
+  ];
+
+  const founderBioParagraphs = acf.founder_bio_paragraphs ?? [
+    "Dr. Andrew Peters is an executive advisor, educator, and founder with over two decades of experience in leadership, performance, and team development.",
+    "As the driving force behind Rising Stars and RS Advanced Group Consulting, Dr. Peters has built a reputation for transforming teams and organizations by strengthening culture, improving accountability, and elevating performance.",
+    "Holding a Ph.D. in Education and a background in high-level athletics, he brings a unique blend of academic insight and real-world execution. His methodology is rooted in high-performance principles—focusing on leadership alignment, team cohesion, and sustainable growth.",
+    "Today, Dr. Peters works with organizations across industries, helping them implement proven systems that increase engagement, boost morale, and drive measurable results.",
+  ];
+
+  const approachBullets = acf.approach_bullets ?? [
+    "Deeply understanding your organization's structure, culture, and challenges",
+    "Designing tailored strategies aligned with your business goals",
+    "Delivering high-impact workshops, leadership training, and team development sessions",
+    "Embedding systems that drive accountability, engagement, and measurable performance",
+  ];
+
+  const focusBullets = acf.focus_bullets ?? [
+    "Leadership Development & Executive Coaching",
+    "Team Alignment & Culture Building",
+    "Employee Engagement & Retention",
+    "Diversity, Equity & Inclusion (DEI)",
+    "Workplace Communication & Collaboration",
+  ];
+
+  const teamParagraphs = acf.team_paragraphs ?? [
+    "Our team is made up of experienced leaders, educators, and facilitators with backgrounds in high-performance coaching, organizational development, and community leadership.",
+    "What unites us is a shared commitment to one outcome: helping organizations unlock the full potential of their people.",
+  ];
+
   return {
-    story_eyebrow: acf.story_eyebrow ?? "Our Story",
-    story_headline:
-      acf.story_headline ?? "Building Strong Organizations and Communities",
-    story_body:
-      acf.story_body ??
-      (stripHtml(page?.excerpt?.rendered ?? "") ||
-        "RS Advanced Group Consulting was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations."),
-    founder_name: acf.founder_name ?? "Dr. Andrew Peters, BA, MA, PhD",
-    founder_title: acf.founder_title ?? "Managing Director",
-    founder_bio:
-      acf.founder_bio ??
-      "Dr. Andrew Peters is an executive advisor, educator, and founder with over two decades of experience in leadership, performance, and team development.",
-    vision:
-      acf.vision ??
-      "To be a trusted partner for organizations seeking to elevate performance through stronger leadership, aligned teams, and a high-impact culture.",
-    team:
-      acf.team ??
-      "Our team is made up of experienced leaders, educators, and facilitators with backgrounds in high-performance coaching, organizational development, and community leadership.",
-    approach_blocks: acf.approach_blocks ?? [
-      {
-        title: "Our Approach",
-        body: "We bring proven leadership and development strategies from community-based success into the corporate environment—where performance, alignment, and culture matter most.",
-      },
-      {
-        title: "Our Focus Areas",
-        body: "Leadership development, team alignment, employee engagement, DEI, and workplace communication—designed to improve how teams operate and organizations grow.",
-      },
-    ],
+    story: {
+      eyebrow: acf.story_eyebrow ?? "Our Story",
+      headline: acf.story_headline ?? "Building Strong Organizations and Communities",
+      paragraphs: storyParagraphs,
+      body:
+        acf.story_body ??
+        storyParagraphs.join(" "),
+    },
+    whoWeAre: {
+      eyebrow: acf.who_we_are_eyebrow ?? "Introduction",
+      headline: acf.who_we_are_headline ?? "Who We Are",
+      paragraphs: whoWeAreParagraphs,
+    },
+    founder: {
+      name: acf.founder_name ?? "Dr. Andrew Peters, BA, MA, PhD",
+      title: acf.founder_title ?? "Managing Director",
+      paragraphs: founderBioParagraphs,
+      bio: acf.founder_bio ?? founderBioParagraphs.join(" "),
+    },
+    communityJourney: {
+      headlineLead: acf.community_headline_lead ?? "From Community Experience",
+      headlineEmphasis: acf.community_headline_emphasis ?? "to Strategic Impact",
+    },
+    approach: {
+      title: acf.approach_blocks?.[0]?.title ?? "Our Approach",
+      intro:
+        acf.approach_blocks?.[0]?.body ??
+        "We bring proven leadership and development strategies from community-based success into the corporate environment—where performance, alignment, and culture matter most.",
+      executionLead: "Our approach is built on execution, not theory:",
+      bullets: approachBullets,
+      closing:
+        acf.approach_closing ??
+        acf.approach_blocks?.[0]?.closing ??
+        "We work alongside your team—not just as consultants, but as partners—ensuring every initiative is practical, scalable, and results-driven.",
+    },
+    focusAreas: {
+      title: acf.approach_blocks?.[1]?.title ?? "Our Focus Areas",
+      intro:
+        acf.approach_blocks?.[1]?.body ??
+        "We help organizations strengthen the core drivers of performance:",
+      bullets: focusBullets,
+      closing:
+        acf.focus_closing ??
+        acf.approach_blocks?.[1]?.closing ??
+        "Our strategies are designed to improve how teams operate, how leaders lead, and how organizations grow.",
+    },
+    vision: {
+      title: "Our Vision",
+      body:
+        acf.vision ??
+        "To be a trusted partner for organizations seeking to elevate performance through stronger leadership, aligned teams, and a high-impact culture.",
+    },
+    team: {
+      title: "Our Team",
+      paragraphs: teamParagraphs,
+      body: acf.team ?? teamParagraphs.join(" "),
+    },
   };
 }
 
