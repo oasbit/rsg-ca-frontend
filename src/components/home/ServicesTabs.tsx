@@ -144,10 +144,38 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                   {activeService.body}
                 </p>
 
-                <ul className="mt-8 space-y-4">
+                {(activeService.paragraphs ?? []).map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 48)}
+                    className="mt-6 max-w-2xl text-sm leading-8 text-muted md:text-base"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+
+                {activeService.bulletsLead ? (
+                  <p className="mt-8 text-sm font-medium text-white/90 md:text-base">
+                    {activeService.bulletsLead}
+                  </p>
+                ) : null}
+
+                <ul className={cn("space-y-4", activeService.bulletsLead ? "mt-4" : "mt-8")}>
                   {activeService.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3 text-sm text-white/85">
-                      <span className="mt-2 h-px w-4 shrink-0 bg-accent" />
+                    <li
+                      key={bullet}
+                      className={cn(
+                        "flex gap-3 text-sm",
+                        activeService.quoteBullets
+                          ? "font-display italic text-white/75"
+                          : "text-white/85",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "mt-2 shrink-0 bg-accent",
+                          activeService.quoteBullets ? "h-px w-6" : "h-px w-4",
+                        )}
+                      />
                       <span>{bullet}</span>
                     </li>
                   ))}

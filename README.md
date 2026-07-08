@@ -113,7 +113,9 @@ Live-site section order: **Our Story** hero → **Who We Are** → **Meet Dr. An
 | `quote` | Textarea |
 | `quote_author` | Text |
 | `quote_role` | Text |
-| `service_blocks` | Repeater: `title`, `tagline`, `body`, `bullets` (repeater/text) |
+| `service_blocks` | Repeater: `title`, `tagline`, `body`, `paragraphs`, `bulletsLead`, `bullets`, `quoteBullets` |
+
+Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Strategic Planning (black) → Leadership (gray) → Team Building (black) → Facilitation (gray).
 
 ### Contact (`contact`)
 
@@ -235,7 +237,8 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Home about teaser | Text and pillar highlight cards only (no image) |
 | About page hero | `rs-group-group-pic.jpg` |
 | About page founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
-| About detail sections (Approach, Focus, Vision, Team) | Each as its own full-width section with background photo at ~55% visibility and directional gradients for readable text |
+| Services hero background | `Generated-Image-March-18-2026-10_21AM.jpg` |
+| Service blocks (services page) | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: transparent PNG; Team Building: `pexels-yankrukov-7693708-scaled.jpg`; Facilitation: transparent PNG |
 | Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
 | Service blocks (services page) | Transparent PNGs from services page or fallbacks |
 | Contact hero | `financial-services-features-hero-scaled-1.webp` (pinned) |

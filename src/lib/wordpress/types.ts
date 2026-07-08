@@ -28,7 +28,10 @@ export interface WPServiceBlock {
   title: string;
   tagline: string;
   body: string;
+  paragraphs?: string[];
+  bulletsLead?: string;
   bullets: string[];
+  quoteBullets?: boolean;
   image_id?: number;
 }
 

@@ -1,5 +1,6 @@
 import { QuoteBanner } from "@/components/ui/QuoteBanner";
 import { ServiceBlock } from "@/components/services/ServiceBlock";
+import { ServicesOverview } from "@/components/services/ServicesOverview";
 import { PageHero } from "@/components/ui/PageHero";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveServicesContent } from "@/lib/wordpress/content";
@@ -30,11 +31,11 @@ export default async function ServicesPage() {
     <>
       <PageHero
         eyebrow="Our Services"
-        headlineEmphasis="Strategic impact, delivered with precision"
-        body={content.intro}
+        headlineEmphasis="Chart Your Course"
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
+      <ServicesOverview services={content.service_blocks} />
       <QuoteBanner
         quote={content.quote}
         author={content.quote_author}

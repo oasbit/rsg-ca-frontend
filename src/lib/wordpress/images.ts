@@ -23,7 +23,7 @@ export const BRAND = {
     contact: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
     privacy: `${WP_UPLOADS}/2026/03/financial-services-contact-hero-scaled-1.webp`,
     about: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
-    services: `${WP_UPLOADS}/2026/03/financial-services-features-hero-scaled-1.webp`,
+    services: `${WP_UPLOADS}/2026/03/Generated-Image-March-18-2026-10_21AM.jpg`,
     /** Live site Elementor container a24e4f4 — "Connected and Collaborative" band. */
     editorial: `${WP_UPLOADS}/2026/03/coworking-space-hero-scaled-1.webp`,
   },
@@ -45,6 +45,13 @@ export const BRAND = {
       `${WP_UPLOADS}/2026/04/Dr-Andrew-Peters-RS-Consulting.png`,
       `${WP_UPLOADS}/2026/03/Andrew-Peters-RS-Consulting-Photo.png`,
     ],
+  },
+  /** Services page — photographic and illustration assets per block (live site order). */
+  servicePageBlocks: {
+    strategicPlanning: `${WP_UPLOADS}/2026/04/Andrew-Peters-1.jpeg`,
+    leadershipDevelopment: `${WP_UPLOADS}/2026/03/48ff7237-3361-4d44-8bec-a4e6079f2c9e-e1773926200763.png`,
+    teamBuilding: `${WP_UPLOADS}/2026/03/pexels-yankrukov-7693708-scaled.jpg`,
+    facilitation: `${WP_UPLOADS}/2026/03/88aacc57-6bde-4853-9b80-1a39b81a89c7.png`,
   },
   /** Home services tabs — photographic assets where specified. */
   serviceTabs: {
@@ -208,10 +215,13 @@ export function resolveServicesHeroImage(page: WPPage | null): SiteImage {
 }
 
 export function resolveServiceBlockImages(page: WPPage | null): string[] {
-  const fromContent = extractContentImages(page?.content?.rendered ?? "", {
-    transparentOnly: true,
-  });
-  return assignUniqueImages(fromContent, BRAND.transparent.serviceBlocks, 4);
+  void page;
+  return [
+    BRAND.servicePageBlocks.strategicPlanning,
+    BRAND.servicePageBlocks.leadershipDevelopment,
+    BRAND.servicePageBlocks.teamBuilding,
+    BRAND.servicePageBlocks.facilitation,
+  ];
 }
 
 /** Images for homepage service tabs (pinned photos from live site). */

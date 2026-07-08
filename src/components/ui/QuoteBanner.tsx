@@ -8,7 +8,7 @@ interface QuoteBannerProps {
 
 export function QuoteBanner({ quote, author, role }: QuoteBannerProps) {
   return (
-    <section className="bg-black py-24 text-white">
+    <section className="bg-surface py-24 text-white">
       <Reveal className="mx-auto max-w-4xl px-6 text-center lg:px-10" variant="fadeIn">
         <p className="font-display text-3xl leading-snug italic md:text-4xl">
           &ldquo;{quote}&rdquo;
