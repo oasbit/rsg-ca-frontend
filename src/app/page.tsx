@@ -45,8 +45,8 @@ export default async function HomePage() {
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
         cta={{ href: "/services", label: "Discover more" }}
+        footer={<PillarsGrid pillars={content.pillars} embedded />}
       />
-      <PillarsGrid pillars={content.pillars} />
       <EditorialBand
         headline={content.editorial_headline}
         body={content.editorial_body}

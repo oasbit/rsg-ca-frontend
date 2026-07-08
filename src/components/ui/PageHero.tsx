@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
@@ -17,6 +18,8 @@ interface PageHeroProps {
   imageAlt: string;
   fullHeight?: boolean;
   cta?: { href: string; label: string };
+  /** Optional content rendered below the CTA, still inside the hero background. */
+  footer?: ReactNode;
 }
 
 const containerVariants = {
@@ -45,6 +48,7 @@ export function PageHero({
   imageAlt,
   fullHeight = false,
   cta,
+  footer,
 }: PageHeroProps) {
   const prefersReducedMotion = useReducedMotion();
 
@@ -52,8 +56,8 @@ export function PageHero({
     <section
       className={
         fullHeight
-          ? "relative min-h-screen overflow-hidden bg-black text-white"
-          : "relative min-h-[44vh] overflow-hidden bg-black text-white md:min-h-[50vh]"
+          ? "relative flex min-h-screen flex-col overflow-hidden bg-black text-white"
+          : "relative overflow-hidden bg-black text-white"
       }
     >
       <motion.div
@@ -86,7 +90,7 @@ export function PageHero({
       <motion.div
         className={
           fullHeight
-            ? "relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-6 pb-20 pt-[calc(var(--header-height)+4rem)] lg:px-10 lg:pb-28"
+            ? "relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-6 pb-10 pt-[calc(var(--header-height)+4rem)] lg:px-10 lg:pb-14"
             : "relative mx-auto flex min-h-[44vh] max-w-7xl flex-col justify-end px-6 pb-14 pt-[calc(var(--header-height)+3rem)] md:min-h-[50vh] lg:px-10 lg:pb-16"
         }
         variants={prefersReducedMotion ? undefined : containerVariants}
@@ -147,7 +151,7 @@ export function PageHero({
 
         {cta ? (
           <motion.div
-            className={fullHeight ? "mt-12" : "mt-8"}
+            className={fullHeight ? "mt-10" : "mt-8"}
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
             <LineCta href={cta.href} light>
@@ -156,6 +160,10 @@ export function PageHero({
           </motion.div>
         ) : null}
       </motion.div>
+
+      {footer ? (
+        <div className="relative w-full">{footer}</div>
+      ) : null}
     </section>
   );
 }
