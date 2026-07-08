@@ -11,16 +11,19 @@ export async function POST(request: NextRequest) {
   const body = (await request.json()) as { slug?: string };
   const slug = body.slug ?? "";
 
-  const pathMap: Record<string, string> = {
-    "coworking-space": "/",
-    "about-us": "/about-us",
-    services: "/services",
-    contact: "/contact",
-    "privacy-policy-2": "/privacy-policy",
+  const pathMap: Record<string, string[]> = {
+    "coworking-space": ["/"],
+    "about-us": ["/about-us"],
+    services: ["/services", "/services/team-building"],
+    contact: ["/contact"],
+    "privacy-policy-2": ["/privacy-policy"],
   };
 
-  const path = pathMap[slug] ?? "/";
-  revalidatePath(path);
+  const paths = pathMap[slug] ?? ["/"];
 
-  return NextResponse.json({ revalidated: true, path });
+  for (const path of paths) {
+    revalidatePath(path);
+  }
+
+  return NextResponse.json({ revalidated: true, paths });
 }

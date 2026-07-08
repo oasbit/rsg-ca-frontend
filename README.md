@@ -139,9 +139,11 @@ Services page order: **PageHero** → **ServicesOverview** (four linked cards) �
 
 Until ACF is populated, the frontend uses built-in fallbacks from page titles, excerpts, and featured images.
 
-## CORS (WordPress)
+## CORS and on-demand revalidation (WordPress)
 
-Add to a must-use plugin or theme `functions.php` on WordPress:
+Use the must-use plugin at `wordpress/rsg-headless-bridge.php` (see **Deployment** above). It replaces manual `functions.php` snippets for CORS and the publish webhook.
+
+For reference, the CORS filter alone looks like this:
 
 ```php
 add_action('rest_api_init', function () {
@@ -160,7 +162,7 @@ add_action('rest_api_init', function () {
 
 ## On-demand revalidation
 
-When a page is published in WordPress, POST to:
+Handled by `wordpress/rsg-headless-bridge.php` on publish. For manual testing:
 
 ```http
 POST /api/revalidate?secret=YOUR_SECRET
@@ -187,21 +189,117 @@ add_action('save_post_page', function ($post_id) {
 
 The native React form posts to `/api/contact`. Without `RESEND_API_KEY`, submissions are accepted and logged server-side. Configure Resend for production email delivery to `info@rsg-ac.ca`.
 
-## Deployment
+## Deployment (WordPress CMS + Vercel frontend)
 
-### Vercel (recommended)
+This project uses a **headless** setup:
 
-1. Import the `rsg-frontend` repository.
-2. Set environment variables.
-3. Connect `rsg-ac.ca` DNS to Vercel.
-4. Keep WordPress on SiteGround; later move admin to `cms.rsg-ac.ca`.
+```text
+WordPress on SiteGround (CMS)  →  REST API  →  Vercel (Next.js frontend)  →  rsg-ac.ca
+```
 
-### Build
+- **WordPress** stores pages, media, and ACF fields. Editors continue using wp-admin.
+- **Vercel** serves the public website (`rsg-ac.ca`). Visitors never load Elementor/theme HTML.
+- Content is cached on Vercel (ISR, 1 hour) and refreshed when WordPress publishes a page.
+
+### Recommended DNS layout
+
+| Host | Points to | Purpose |
+|------|-----------|---------|
+| `rsg-ac.ca` | Vercel | Public Next.js frontend |
+| `www.rsg-ac.ca` | Vercel | Redirect / alias |
+| `cms.rsg-ac.ca` | SiteGround | WordPress admin + REST API |
+
+During migration you can keep WordPress on `rsg-ac.ca` until the Vercel preview is verified, then move WordPress to `cms.rsg-ac.ca` and point the apex domain to Vercel.
+
+### Step 1 — Deploy the frontend to Vercel
+
+1. Push the `rsg-frontend` repository to GitHub (or GitLab/Bitbucket).
+2. In [Vercel](https://vercel.com): **Add New → Project** → import the repo.
+3. Framework preset: **Next.js** (auto-detected). Root directory: repo root if the repo *is* `rsg-frontend`.
+4. Add **Environment Variables** (Production, and optionally Preview):
+
+| Variable | Production value |
+|----------|------------------|
+| `WORDPRESS_API_URL` | `https://cms.rsg-ac.ca` (or `https://rsg-ac.ca` until CMS subdomain is live) |
+| `NEXT_PUBLIC_SITE_URL` | `https://rsg-ac.ca` |
+| `REVALIDATE_SECRET` | Long random string (generate with `openssl rand -hex 32`) |
+| `RESEND_API_KEY` | Resend API key (contact form) |
+| `CONTACT_EMAIL` | `info@rsg-ac.ca` |
+| `CONTACT_FROM_EMAIL` | Verified sender, e.g. `noreply@rsg-ac.ca` |
+
+5. Deploy. Vercel assigns a preview URL (`*.vercel.app`) — test all routes there first.
+6. **Settings → Domains**: add `rsg-ac.ca` and `www.rsg-ac.ca`. Follow Vercel’s DNS instructions at your registrar/SiteGround.
+
+### Step 2 — Keep WordPress on SiteGround
+
+1. **Move WordPress to a subdomain** (recommended): create `cms.rsg-ac.ca` in SiteGround and install or migrate WordPress there.
+2. In **Settings → General**, set WordPress Address and Site URL to `https://cms.rsg-ac.ca`.
+3. Install [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) and enable **Show in REST API** on each field group.
+4. Verify the API responds: `https://cms.rsg-ac.ca/wp-json/wp/v2/pages?per_page=5`
+
+### Step 3 — Connect WordPress to Vercel
+
+Copy the must-use plugin to SiteGround:
+
+```text
+rsg-frontend/wordpress/rsg-headless-bridge.php
+  →  wp-content/mu-plugins/rsg-headless-bridge.php
+```
+
+Edit the two constants at the top of that file:
+
+```php
+define('RSG_FRONTEND_URL', 'https://rsg-ac.ca');
+define('RSG_REVALIDATE_SECRET', 'your-vercel-revalidate-secret');
+```
+
+`RSG_REVALIDATE_SECRET` must match `REVALIDATE_SECRET` on Vercel.
+
+The plugin:
+
+- Sends CORS headers so the frontend can reach the REST API when needed
+- POSTs to `/api/revalidate` when a page is published, so Vercel refreshes cached content
+
+Manual revalidation (for testing):
+
+```http
+POST https://rsg-ac.ca/api/revalidate?secret=YOUR_SECRET
+Content-Type: application/json
+
+{ "slug": "about-us" }
+```
+
+Slug → path mapping lives in `src/app/api/revalidate/route.ts`.
+
+### Step 4 — Contact form (production email)
+
+1. Create a [Resend](https://resend.com) account and verify `rsg-ac.ca`.
+2. Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_EMAIL` on Vercel.
+3. Test `/contact` after deploy.
+
+Without `RESEND_API_KEY`, submissions are accepted but only logged server-side.
+
+### Step 5 — Go live checklist
+
+- [ ] `npm run build` passes locally
+- [ ] Vercel preview URL loads: `/`, `/about-us`, `/services`, `/services/team-building`, `/contact`, `/privacy-policy`
+- [ ] Images load (WordPress media + `public/images/`)
+- [ ] `WORDPRESS_API_URL` points at the live CMS host
+- [ ] `NEXT_PUBLIC_SITE_URL` is `https://rsg-ac.ca`
+- [ ] DNS: apex + `www` → Vercel; `cms` → SiteGround
+- [ ] `rsg-headless-bridge.php` installed with matching secrets
+- [ ] Publish a test page in WordPress → frontend updates within seconds
+- [ ] Contact form delivers email via Resend
+- [ ] Redirects work: `/our-story` → `/about-us`, `/coworking-space` → `/`
+
+### Local production build
 
 ```bash
 npm run build
 npm run start
 ```
+
+Opens on port 3000. Use the same environment variables as Vercel (via `.env.local`).
 
 ## Design system
 
@@ -266,6 +364,8 @@ src/
   components/          # React UI (all design lives here)
   lib/wordpress/       # API client, types, content fallbacks
   styles/globals.css   # Design tokens
+wordpress/
+  rsg-headless-bridge.php   # MU-plugin: CORS + revalidate webhook (install on SiteGround)
 ```
 
 ## Notes
