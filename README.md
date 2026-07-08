@@ -1,36 +1,250 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RS Group Advance Consulting — Frontend
 
-## Getting Started
+Dark luxury Next.js frontend for [rsg-ac.ca](https://rsg-ac.ca). WordPress provides content via the REST API; all layout, styling, and interactions are implemented in React.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion-ready styling patterns
+- WordPress REST API + ACF (structured content)
+- Resend (optional contact email delivery)
+
+## Getting started
 
 ```bash
+cd rsg-frontend
+cp .env.local.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `WORDPRESS_API_URL` | WordPress base URL (default: `https://rsg-ac.ca`) |
+| `NEXT_PUBLIC_SITE_URL` | Public frontend URL for SEO/sitemap |
+| `REVALIDATE_SECRET` | Secret for `/api/revalidate` webhook |
+| `RESEND_API_KEY` | Optional Resend API key for contact form email |
+| `CONTACT_EMAIL` | Recipient for contact submissions |
+| `CONTACT_FROM_EMAIL` | Verified sender in Resend |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+```text
+WordPress (CMS)  -->  REST API  -->  Next.js data layer  -->  React components
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **WordPress:** pages, media, ACF fields, SEO copy
+- **Next.js:** routing, design system, forms, caching, deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pages are statically regenerated every hour (`revalidate: 3600`) and can be refreshed on publish via webhook.
 
-## Deploy on Vercel
+## Routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Route | WordPress slug |
+|-------|----------------|
+| `/` | `coworking-space` |
+| `/about-us` | `about-us` |
+| `/services` | `services` |
+| `/contact` | `contact` |
+| `/privacy-policy` | `privacy-policy-2` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Redirects:
+- `/privacy-policy-2` → `/privacy-policy`
+- `/our-story` → `/about-us`
+- `/coworking-space` → `/`
+
+## WordPress setup (ACF)
+
+Install [Advanced Custom Fields](https://www.wordpress.org/plugins/advanced-custom-fields/) and enable **Show in REST API** on each field group.
+
+### Home (`coworking-space`)
+
+| Field | Type |
+|-------|------|
+| `hero_eyebrow` | Text |
+| `hero_headline` | Text |
+| `hero_headline_emphasis` | Text |
+| `hero_body` | Textarea |
+| `editorial_headline` | Text |
+| `editorial_body` | Textarea |
+| `about_teaser_title` | Text |
+| `about_teaser_body` | Textarea |
+| `pillars` | Repeater: `title`, `description` |
+| `services_preview` | Repeater: `title`, `tagline`, `slug` |
+| `process_steps` | Repeater: `title`, `description` |
+| `cta_title` | Text |
+| `cta_body` | Textarea |
+| `gallery_image_ids` | Gallery / relationship to media |
+
+### About (`about-us`)
+
+| Field | Type |
+|-------|------|
+| `story_eyebrow` | Text |
+| `story_headline` | Text |
+| `story_body` | Textarea |
+| `founder_name` | Text |
+| `founder_title` | Text |
+| `founder_bio` | Textarea |
+| `approach_blocks` | Repeater: `title`, `body` |
+| `vision` | Textarea |
+| `team` | Textarea |
+
+### Services (`services`)
+
+| Field | Type |
+|-------|------|
+| `intro` | Textarea |
+| `quote` | Textarea |
+| `quote_author` | Text |
+| `quote_role` | Text |
+| `service_blocks` | Repeater: `title`, `tagline`, `body`, `bullets` (repeater/text) |
+
+### Contact (`contact`)
+
+| Field | Type |
+|-------|------|
+| `headline` | Text |
+| `phone` | Text |
+| `email` | Text |
+| `address` | Textarea |
+| `social_links` | Repeater: `platform`, `url` |
+
+### Privacy (`privacy-policy-2`)
+
+| Field | Type |
+|-------|------|
+| `body` | WYSIWYG |
+
+Until ACF is populated, the frontend uses built-in fallbacks from page titles, excerpts, and featured images.
+
+## CORS (WordPress)
+
+Add to a must-use plugin or theme `functions.php` on WordPress:
+
+```php
+add_action('rest_api_init', function () {
+  remove_filter('rest_pre_serve_request', 'rest_send_cors_headers');
+  add_filter('rest_pre_serve_request', function ($value) {
+    $allowed = ['https://rsg-ac.ca', 'http://localhost:3000'];
+    if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed, true)) {
+      header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+      header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+      header('Access-Control-Allow-Credentials: true');
+    }
+    return $value;
+  });
+}, 15);
+```
+
+## On-demand revalidation
+
+When a page is published in WordPress, POST to:
+
+```http
+POST /api/revalidate?secret=YOUR_SECRET
+Content-Type: application/json
+
+{ "slug": "about-us" }
+```
+
+WordPress hook example:
+
+```php
+add_action('save_post_page', function ($post_id) {
+  if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) return;
+
+  $slug = get_post_field('post_name', $post_id);
+  wp_remote_post('https://rsg-ac.ca/api/revalidate?secret=YOUR_SECRET', [
+    'body' => wp_json_encode(['slug' => $slug]),
+    'headers' => ['Content-Type' => 'application/json'],
+  ]);
+});
+```
+
+## Contact form
+
+The native React form posts to `/api/contact`. Without `RESEND_API_KEY`, submissions are accepted and logged server-side. Configure Resend for production email delivery to `info@rsg-ac.ca`.
+
+## Deployment
+
+### Vercel (recommended)
+
+1. Import the `rsg-frontend` repository.
+2. Set environment variables.
+3. Connect `rsg-ac.ca` DNS to Vercel.
+4. Keep WordPress on SiteGround; later move admin to `cms.rsg-ac.ca`.
+
+### Build
+
+```bash
+npm run build
+npm run start
+```
+
+## Design system
+
+Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Primary | `#000000` | Backgrounds, buttons |
+| Secondary | `#232323` | Surfaces, hover states |
+| Accent | `#F1ECDC` | Headlines, CTAs, links |
+| Light | `#DFDECD` | Secondary text on dark |
+| Body | `#49685E` | Body copy on light sections |
+| Cream | `#FEFDF0` | Light section backgrounds |
+| Muted | `#8C8C8C` | Supporting text |
+
+- **Font:** Clash Display (loaded from WordPress media library, same as live site)
+- **Page hero:** shared `PageHero` component on every route — full viewport height on `/`, compact (~44–50vh) on inner pages
+- **Patterns:** transparent-to-white header, line CTAs, grain overlays, editorial typography
+- **Motion:** page fade-in on route change, scroll-reveal sections, staggered grids, mobile menu animation (respects `prefers-reduced-motion`)
+
+### Homepage section order
+
+1. PageHero → 2. PillarsGrid → 3. EditorialBand → 4. **AboutTeaser** → 5. **ServicesTabs** → 6. HowItWorks → (layout) ConnectCta
+
+**ServicesTabs** replaces the old services list — four tabbed panels (Strategic Planning, Leadership Development, Team Building, Facilitation) matching the live site, with content from the services page `service_blocks`.
+
+**AboutTeaser** uses a black editorial layout: split headline/body, numbered highlight cards from pillars, no image.
+
+### Image mapping
+
+**Hero backgrounds** use full-bleed photographic assets. **Content images** use transparent PNG cutouts only (`object-contain`, no backing panels).
+
+| Section | Image type |
+|---------|------------|
+| Page heroes | WebP/JPG backgrounds (`heroBackgrounds` in `images.ts`) |
+| Home editorial strip | `coworking-space-hero-scaled-1.webp` background only (live site Elementor `a24e4f4`) |
+| Home about teaser | Text and pillar highlight cards only (no image) |
+| About page founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
+| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
+| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
+| Contact hero | `financial-services-features-hero-scaled-1.webp` (pinned) |
+| Connect CTA | `Andrew-Peters-RS-Consulting-Photo.png` |
+| Logo | `RS-Group_black_high-res.png` (header scrolled) / white inverse over hero |
+
+When ACF gallery fields are populated, only transparent PNG entries are used for editorial content.
+
+## Project structure
+
+```text
+src/
+  app/                 # Routes and API handlers
+  components/          # React UI (all design lives here)
+  lib/wordpress/       # API client, types, content fallbacks
+  styles/globals.css   # Design tokens
+```
+
+## Notes
+
+- Elementor HTML is intentionally not rendered on marketing pages.
+- Privacy policy is the only page that renders WordPress HTML content.
+- Images are loaded from the WordPress media library via `next/image`.
