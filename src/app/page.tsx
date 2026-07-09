@@ -1,5 +1,5 @@
 import { getPageBySlug } from "@/lib/wordpress/pages";
-import { resolveHomeContent, resolveServicesContent } from "@/lib/wordpress/content";
+import { resolveHomeContent } from "@/lib/wordpress/content";
 import {
   resolveHomeHeroImage,
   resolveHomeServiceTabImages,
@@ -30,7 +30,6 @@ export default async function HomePage() {
   ]);
 
   const content = resolveHomeContent(homePage);
-  const servicesContent = resolveServicesContent(servicesPage);
   const heroImage = resolveHomeHeroImage(homePage);
   const serviceImages = resolveHomeServiceTabImages(servicesPage);
 
@@ -57,10 +56,13 @@ export default async function HomePage() {
         highlights={content.pillars.map((pillar) => pillar.title)}
       />
       <ServicesTabs
-        services={servicesContent.service_blocks}
+        services={content.home_service_blocks}
         images={serviceImages}
       />
-      <HowItWorks steps={content.process_steps} />
+      <HowItWorks
+        steps={content.process_steps}
+        intro={content.process_intro}
+      />
     </>
   );
 }

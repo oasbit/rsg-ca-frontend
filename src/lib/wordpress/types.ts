@@ -60,6 +60,8 @@ export interface HomeACF {
   about_teaser_body?: string;
   pillars?: WPPillar[];
   services_preview?: WPServicePreview[];
+  home_service_blocks?: WPServiceBlock[];
+  process_intro?: string;
   process_steps?: WPProcessStep[];
   cta_title?: string;
   cta_body?: string;

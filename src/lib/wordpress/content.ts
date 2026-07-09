@@ -3,6 +3,7 @@ import type {
   HomeACF,
   ServicesACF,
   WPPage,
+  WPServiceBlock,
 } from "@/lib/wordpress/types";
 
 export function resolveHomeContent(page: WPPage | null): Required<
@@ -18,10 +19,12 @@ export function resolveHomeContent(page: WPPage | null): Required<
     | "about_teaser_body"
     | "cta_title"
     | "cta_body"
+    | "process_intro"
   >
 > & {
   pillars: NonNullable<HomeACF["pillars"]>;
   services_preview: NonNullable<HomeACF["services_preview"]>;
+  home_service_blocks: WPServiceBlock[];
   process_steps: NonNullable<HomeACF["process_steps"]>;
   gallery_image_ids: number[];
 } {
@@ -51,7 +54,7 @@ export function resolveHomeContent(page: WPPage | null): Required<
       "Start a conversation about strengthening your team, leadership, and organizational performance.",
     pillars: acf.pillars ?? [
       { title: "Leadership", description: "Leadership development" },
-      { title: "Empowerment", description: "Encourage and empower" },
+      { title: "Empowerment", description: "Encourage & empower" },
       { title: "Awareness", description: "Develop social awareness" },
       { title: "Development", description: "Develop capacity and growth" },
     ],
@@ -77,6 +80,58 @@ export function resolveHomeContent(page: WPPage | null): Required<
         slug: "facilitation",
       },
     ],
+    home_service_blocks: acf.home_service_blocks ?? [
+      {
+        title: "Strategic Planning",
+        tagline: "Chart Your Course",
+        body: "We help organizations create clear, effective strategies for sustainable growth. Through analysis, collaboration, and guided planning, we support teams in defining goals, improving processes, and building strong action plans for long-term success.",
+        bullets: [
+          "Define clear goals and achievable objectives",
+          "Develop customized strategic plans tailored to your needs",
+          "Facilitate workshops, interviews, and community forums",
+          "Establish a strong vision, mission, and organizational direction",
+          "Create short-, medium-, and long-term action plans",
+          "Encourage collaboration while integrating community input",
+        ],
+      },
+      {
+        title: "Leadership Development",
+        tagline: "Empower Positive Change",
+        body: "We help organizations strengthen leadership skills through structured training and development programs designed to build confident and effective leaders.",
+        bullets: [
+          "Develop customized leadership development plans",
+          "Engage staff, members, and community stakeholders",
+          "Organize workshops, meetings, and leadership events",
+          "Strengthen teamwork, communication, and decision-making",
+          "Prepare participants to lead effectively within organizations and communities",
+        ],
+      },
+      {
+        title: "Team Building",
+        tagline: "Develop Cohesive Teams",
+        detailHref: "/services/team-building",
+        body: "Team-building can often be considered one of the most important challenges in an organization's long term development and success, yet so many stakeholders express dissatisfaction, and even frustration with their past experiences in this regard. We believe the right facilitator can make all the difference in the world!",
+        bullets: [
+          "Foster the development of essential team and leadership skills, while maximizing participation",
+          "Engage participants in the learning and development process, and equip them with essential knowledge and confidence in team environments",
+          "Promote positive, healthy, active organizations, and creatively facilitate positive connections and relations",
+        ],
+      },
+      {
+        title: "Facilitation",
+        tagline: "Efficiency, Accountability, Synergy",
+        body: "We understand the critical role of facilitation in today\u2019s organizations. Our tailored workshops and processes help make strategic planning and restructuring sessions more effective and productive. Whether working with collaborative teams or challenging dynamics, we adapt to any situation, build consensus, and deliver successful outcomes.",
+        bulletsLead: "There are a variety of definitions for a Facilitator:",
+        quoteBullets: true,
+        bullets: [
+          "\u201cAn individual who enables departments to work more effectively; to collaborate and achieve efficiency, accountability, synergy\u201d - Doyle",
+          "\u201cOne who contributes structure and process to interactions so groups are able to function effectively and deliver high-quality programs/services.\u201d - Bens",
+        ],
+      },
+    ],
+    process_intro:
+      acf.process_intro ??
+      "We work closely with organizations and communities to understand their needs, develop effective strategies, and implement practical solutions that strengthen leadership and teamwork.",
     process_steps: acf.process_steps ?? [
       {
         title: "Assess",
@@ -296,7 +351,7 @@ export function resolveContactContent(page: WPPage | null): Required<
   const acf = page?.acf ?? {};
 
   return {
-    headline: acf.headline ?? "We'd Love to Hear From You",
+    headline: acf.headline ?? "We'd Love to Hear From You!",
     phone: acf.phone ?? "+1 905 518 7522",
     email: acf.email ?? "info@rsg-ac.ca",
     address:

@@ -9,9 +9,10 @@ import type { WPProcessStep } from "@/lib/wordpress/types";
 
 interface HowItWorksProps {
   steps: WPProcessStep[];
+  intro?: string;
 }
 
-export function HowItWorks({ steps }: HowItWorksProps) {
+export function HowItWorks({ steps, intro }: HowItWorksProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -20,22 +21,17 @@ export function HowItWorks({ steps }: HowItWorksProps) {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel className="text-body">How it works</SectionLabel>
-            <h2 className="mt-4 max-w-md">
-              <span className="block text-sm font-light tracking-[0.24em] text-black/80 uppercase md:text-base">
-                A disciplined path
-              </span>
-              <span className="mt-2 block font-display text-4xl leading-tight text-body italic md:text-5xl">
-                from insight to impact
-              </span>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-body italic md:text-5xl">
+              How It Works
             </h2>
           </Reveal>
 
           <Reveal variant="fadeUp" delay={0.08} className="lg:col-span-7">
-            <p className="max-w-lg text-sm leading-8 text-body md:text-base">
-              We follow a clear, collaborative process — from understanding your
-              needs through to sustained support — so every engagement delivers
-              meaningful results.
-            </p>
+            {intro ? (
+              <p className="max-w-lg text-sm leading-8 text-body md:text-base">
+                {intro}
+              </p>
+            ) : null}
           </Reveal>
         </div>
 

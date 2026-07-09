@@ -27,7 +27,6 @@ export default async function ContactPage() {
       <PageHero
         eyebrow="Contact"
         headlineEmphasis={content.headline}
-        body="Reach our team to discuss strategic planning, leadership development, and organizational growth."
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
