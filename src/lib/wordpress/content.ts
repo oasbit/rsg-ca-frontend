@@ -1,4 +1,3 @@
-import { stripHtml } from "@/lib/utils";
 import type {
   ContactACF,
   HomeACF,
@@ -32,11 +31,10 @@ export function resolveHomeContent(page: WPPage | null): Required<
     hero_eyebrow: acf.hero_eyebrow ?? "What We Do",
     hero_headline:
       acf.hero_headline ?? "IDENTIFYING NEEDS, DEVELOPING SOLUTIONS,",
-    hero_headline_emphasis: acf.hero_headline_emphasis ?? "FACILITATING CHANGE",
+    hero_headline_emphasis: acf.hero_headline_emphasis ?? "FACILITATING CHANGE.",
     hero_body:
       acf.hero_body ??
-      (stripHtml(page?.excerpt?.rendered ?? "") ||
-        "We support individuals, organizations, corporations, and Indigenous communities in the areas of education, leadership, strategic planning, advancement, and development."),
+      "We support individuals, organizations, corporations, and Indigenous communities in the areas of: Education, Leadership, Strategic Planning, Advancement, and Development.",
     editorial_headline:
       acf.editorial_headline ??
       "Connected and Collaborative Organizations and Communities",

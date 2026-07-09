@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 
 interface ContactPayload {
   name: string;
   email: string;
   phone?: string;
   message: string;
+  /** Honeypot — bots fill this; real users never see it. */
   company?: string;
 }
 
@@ -17,12 +17,16 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as ContactPayload;
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
 
+    // Honeypot — silently succeed so bots think they worked
     if (body.company) {
       return NextResponse.json({ ok: true });
     }
 
     if (!isValidPayload(body)) {
-      return NextResponse.json({ error: "Please complete all required fields." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please complete all required fields." },
+        { status: 400 },
+      );
     }
 
     if (isRateLimited(ip)) {
@@ -32,38 +36,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const recipient = process.env.CONTACT_EMAIL ?? "info@rsg-ac.ca";
-    const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
-    const resendKey = process.env.RESEND_API_KEY;
+    const wpBase = (process.env.WORDPRESS_API_URL ?? "https://rsg-ac.ca").replace(/\/$/, "");
+    const secret = process.env.REVALIDATE_SECRET ?? "";
 
-    if (!resendKey) {
-      console.info("Contact form submission", {
+    const wpResponse = await fetch(`${wpBase}/wp-json/rsg/v1/contact`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-RSG-Secret": secret,
+      },
+      body: JSON.stringify({
         name: body.name,
         email: body.email,
         phone: body.phone,
         message: body.message,
-      });
-
-      return NextResponse.json({
-        ok: true,
-        message: "Message received. Email delivery is not configured yet.",
-      });
-    }
-
-    const resend = new Resend(resendKey);
-    await resend.emails.send({
-      from,
-      to: recipient,
-      replyTo: body.email,
-      subject: `RS Group inquiry from ${body.name}`,
-      text: [
-        `Name: ${body.name}`,
-        `Email: ${body.email}`,
-        `Phone: ${body.phone || "Not provided"}`,
-        "",
-        body.message,
-      ].join("\n"),
+      }),
     });
+
+    const data = (await wpResponse.json()) as { ok?: boolean; error?: string };
+
+    if (!wpResponse.ok) {
+      return NextResponse.json(
+        { error: data.error ?? "Unable to send message." },
+        { status: wpResponse.status },
+      );
+    }
 
     rateLimit.set(ip, Date.now());
     return NextResponse.json({ ok: true });
