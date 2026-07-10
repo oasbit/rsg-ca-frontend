@@ -30,7 +30,7 @@ export default async function ContactPage() {
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
-      <section className="bg-black pb-24 text-white">
+      <section className="bg-black py-24 text-white">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
           <ContactInfo
             phone={content.phone}
