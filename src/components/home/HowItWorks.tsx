@@ -5,14 +5,15 @@ import { LineCta } from "@/components/ui/LineCta";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
-import type { WPProcessStep } from "@/lib/wordpress/types";
+import type { WPPillar, WPProcessStep } from "@/lib/wordpress/types";
 
 interface HowItWorksProps {
   steps: WPProcessStep[];
   intro?: string;
+  pillars?: WPPillar[];
 }
 
-export function HowItWorks({ steps, intro }: HowItWorksProps) {
+export function HowItWorks({ steps, intro, pillars }: HowItWorksProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -87,6 +88,27 @@ export function HowItWorks({ steps, intro }: HowItWorksProps) {
             ))}
           </RevealStagger>
         </div>
+
+        {pillars && pillars.length > 0 ? (
+          <RevealStagger
+            className="mt-16 grid gap-px bg-black/10 sm:grid-cols-2 xl:grid-cols-4 lg:mt-20"
+            stagger={0.08}
+          >
+            {pillars.map((pillar) => (
+              <RevealStaggerItem key={pillar.title}>
+                <article className="group h-full bg-cream px-8 py-10 transition-colors duration-500 ease-out hover:bg-black/[0.03]">
+                  <div className="mb-6 h-px w-8 bg-body/30 transition-all duration-500 group-hover:w-12 group-hover:bg-body" />
+                  <h3 className="text-sm tracking-[0.24em] uppercase text-black">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-body/70">
+                    {pillar.description}
+                  </p>
+                </article>
+              </RevealStaggerItem>
+            ))}
+          </RevealStagger>
+        ) : null}
 
         <Reveal variant="fadeUp" delay={0.15} className="mt-16 border-t border-black/10 pt-10">
           <LineCta href="/contact">Start a conversation</LineCta>

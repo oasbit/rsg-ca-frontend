@@ -5,7 +5,6 @@ import {
   resolveHomeServiceTabImages,
 } from "@/lib/wordpress/images";
 import { buildPageMetadata } from "@/lib/seo";
-import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { EditorialBand } from "@/components/home/EditorialBand";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { PillarsGrid } from "@/components/home/PillarsGrid";
@@ -50,11 +49,6 @@ export default async function HomePage() {
         headline={content.editorial_headline}
         body={content.editorial_body}
       />
-      <AboutTeaser
-        title={content.about_teaser_title}
-        body={content.about_teaser_body}
-        highlights={content.pillars.map((pillar) => pillar.title)}
-      />
       <ServicesTabs
         services={content.home_service_blocks}
         images={serviceImages}
@@ -62,6 +56,7 @@ export default async function HomePage() {
       <HowItWorks
         steps={content.process_steps}
         intro={content.process_intro}
+        pillars={content.pillars}
       />
     </>
   );
