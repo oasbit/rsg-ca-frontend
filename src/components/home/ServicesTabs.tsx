@@ -14,6 +14,7 @@ import type { WPServiceBlock } from "@/lib/wordpress/types";
 interface ServicesTabsProps {
   services: WPServiceBlock[];
   images?: string[];
+  theme?: "dark" | "light";
 }
 
 function serviceSlug(service: WPServiceBlock): string {
@@ -33,7 +34,8 @@ function ListIcon({ className }: { className?: string }) {
   );
 }
 
-export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
+export function ServicesTabs({ services, images = [], theme = "dark" }: ServicesTabsProps) {
+  const isLight = theme === "light";
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = services[activeIndex] ?? services[0];
@@ -71,10 +73,15 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
   const isTransparent = activeImage ? isTransparentAsset(activeImage) : false;
 
   return (
-    <section className="relative overflow-hidden bg-black pb-24 text-white lg:pb-32">
-      <GrainOverlay />
+    <div
+      className={cn(
+        "relative overflow-hidden",
+        isLight ? "bg-cream" : "bg-black pb-24 text-white lg:pb-32",
+      )}
+    >
+      {!isLight ? <GrainOverlay /> : null}
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className={cn("relative", isLight ? "" : "mx-auto max-w-7xl px-6 lg:px-10")}>
         <Reveal variant="fadeUp">
           <div
             role="tablist"
@@ -97,16 +104,26 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
                     "border-t px-4 py-5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-6",
-                    isActive
-                      ? "border-accent/40 bg-black text-accent"
-                      : "border-white/10 bg-black text-muted hover:text-white",
+                    isLight
+                      ? isActive
+                        ? "border-body bg-cream text-black"
+                        : "border-black/10 bg-cream text-body/60 hover:text-black"
+                      : isActive
+                        ? "border-accent/40 bg-black text-accent"
+                        : "border-white/10 bg-black text-muted hover:text-white",
                   )}
                 >
                   <span className="inline-flex items-center justify-center gap-2 text-[0.62rem] tracking-[0.22em] uppercase sm:text-[0.65rem]">
                     <ListIcon
                       className={cn(
                         "h-3.5 w-3.5 shrink-0",
-                        isActive ? "text-accent" : "text-accent/70",
+                        isLight
+                          ? isActive
+                            ? "text-black"
+                            : "text-body/50"
+                          : isActive
+                            ? "text-accent"
+                            : "text-accent/70",
                       )}
                     />
                     {service.title}
@@ -117,7 +134,12 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
           </div>
         </Reveal>
 
-        <div className="relative mt-0 border border-t-0 border-white/10 bg-black text-white">
+        <div
+          className={cn(
+            "relative mt-0 border border-t-0",
+            isLight ? "border-black/10 bg-cream text-black" : "border-white/10 bg-black text-white",
+          )}
+        >
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={activeService.title}
@@ -139,24 +161,42 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                 <p className="text-xs tracking-[0.28em] text-accent uppercase">
                   {activeService.tagline}
                 </p>
-                <h3 className="mt-3 font-display text-3xl leading-tight text-white italic md:text-4xl lg:text-5xl">
+                <h3
+                  className={cn(
+                    "mt-3 font-display text-3xl leading-tight italic md:text-4xl lg:text-5xl",
+                    isLight ? "text-black" : "text-white",
+                  )}
+                >
                   {activeService.title}
                 </h3>
-                <p className="mt-6 max-w-2xl text-sm leading-8 text-muted md:text-base">
+                <p
+                  className={cn(
+                    "mt-6 max-w-2xl text-sm leading-8 md:text-base",
+                    isLight ? "text-body" : "text-muted",
+                  )}
+                >
                   {activeService.body}
                 </p>
 
                 {(activeService.paragraphs ?? []).map((paragraph) => (
                   <p
                     key={paragraph.slice(0, 48)}
-                    className="mt-6 max-w-2xl text-sm leading-8 text-muted md:text-base"
+                    className={cn(
+                      "mt-6 max-w-2xl text-sm leading-8 md:text-base",
+                      isLight ? "text-body" : "text-muted",
+                    )}
                   >
                     {paragraph}
                   </p>
                 ))}
 
                 {activeService.bulletsLead ? (
-                  <p className="mt-8 text-sm font-medium text-white/90 md:text-base">
+                  <p
+                    className={cn(
+                      "mt-8 text-sm font-medium md:text-base",
+                      isLight ? "text-black/90" : "text-white/90",
+                    )}
+                  >
                     {activeService.bulletsLead}
                   </p>
                 ) : null}
@@ -168,8 +208,10 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                       className={cn(
                         "flex gap-3 text-sm",
                         activeService.quoteBullets
-                          ? "font-display italic text-white/75"
-                          : "text-white/85",
+                          ? cn("font-display italic", isLight ? "text-black/75" : "text-white/75")
+                          : isLight
+                            ? "text-black/85"
+                            : "text-white/85",
                       )}
                     >
                       <span
@@ -189,13 +231,16 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                       activeService.detailHref ??
                       `/services#${serviceSlug(activeService)}`
                     }
-                    light
+                    light={!isLight}
                   >
                     Learn more
                   </LineCta>
                   <Link
                     href="/contact"
-                    className="text-xs tracking-[0.22em] text-white/60 uppercase transition-colors duration-300 hover:text-accent"
+                    className={cn(
+                      "text-xs tracking-[0.22em] uppercase transition-colors duration-300 hover:text-accent",
+                      isLight ? "text-black/50" : "text-white/60",
+                    )}
                   >
                     Get in touch
                   </Link>
@@ -207,7 +252,9 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
                   <div
                     className={cn(
                       "relative h-[20rem] w-full overflow-hidden sm:h-[24rem] lg:h-full lg:min-h-[26rem]",
-                      isTransparent ? "" : "border border-white/10",
+                      isTransparent
+                        ? ""
+                        : cn("border", isLight ? "border-black/10" : "border-white/10"),
                     )}
                   >
                     <Image
@@ -228,6 +275,6 @@ export function ServicesTabs({ services, images = [] }: ServicesTabsProps) {
           </AnimatePresence>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

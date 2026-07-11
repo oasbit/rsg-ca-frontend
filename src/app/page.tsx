@@ -8,7 +8,6 @@ import { buildPageMetadata } from "@/lib/seo";
 import { EditorialBand } from "@/components/home/EditorialBand";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { PillarsGrid } from "@/components/home/PillarsGrid";
-import { ServicesTabs } from "@/components/home/ServicesTabs";
 import { PageHero } from "@/components/ui/PageHero";
 
 export async function generateMetadata() {
@@ -49,14 +48,11 @@ export default async function HomePage() {
         headline={content.editorial_headline}
         body={content.editorial_body}
       />
-      <ServicesTabs
-        services={content.home_service_blocks}
-        images={serviceImages}
-      />
       <HowItWorks
         steps={content.process_steps}
         intro={content.process_intro}
-        pillars={content.pillars}
+        services={content.home_service_blocks}
+        serviceImages={serviceImages}
       />
     </>
   );
