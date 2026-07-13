@@ -1,6 +1,6 @@
 import type { WPPage } from "./types";
 
-const WP_UPLOADS = "https://rsg-ac.ca/wp-content/uploads";
+const WP_UPLOADS = "/assets";
 
 /** Transparent PNG assets from the live WordPress media library. */
 export const BRAND = {
@@ -89,6 +89,12 @@ export type SiteImage = { src: string; alt: string };
 
 const THUMBNAIL_PATTERN = /[-_]\d+x\d+\.(webp|jpg|jpeg|png)$/i;
 const LOGO_PATTERN = /RS-Group|Advance-Consulting|logo-\d+/i;
+const WP_ORIGIN_RE = /https?:\/\/rsg-ac\.ca\/wp-content\/uploads\//g;
+
+/** Rewrite any absolute WordPress upload URLs to self-hosted /assets/ paths. */
+export function rewriteToLocal(url: string): string {
+  return url.replace(WP_ORIGIN_RE, "/assets/");
+}
 
 /** True for transparent PNG cutouts (excludes logos and photographic backgrounds). */
 export function isTransparentAsset(url: string): boolean {
@@ -102,12 +108,12 @@ export function extractContentImages(
   options?: { transparentOnly?: boolean },
 ): string[] {
   const matches =
-    html.match(/https:\/\/rsg-ac\.ca\/wp-content\/uploads\/[^"'\s)]+/g) ?? [];
+    html.match(/(?:https?:\/\/rsg-ac\.ca\/wp-content\/uploads|\/assets)\/[^"'\s)]+/g) ?? [];
   const seen = new Set<string>();
   const result: string[] = [];
 
   for (const url of matches) {
-    const normalized = url.split("?")[0];
+    const normalized = rewriteToLocal(url.split("?")[0]);
     if (THUMBNAIL_PATTERN.test(normalized)) continue;
     if (LOGO_PATTERN.test(normalized)) continue;
     if (options?.transparentOnly && !isTransparentAsset(normalized)) continue;
@@ -192,7 +198,7 @@ export function resolveEditorialImages(
   galleryMedia: Array<{ source_url: string; alt_text: string }>,
 ): SiteImage[] {
   const fromGallery = galleryMedia
-    .map((media) => media.source_url)
+    .map((media) => rewriteToLocal(media.source_url))
     .filter(isTransparentAsset);
 
   if (fromGallery.length >= 4) {

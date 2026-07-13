@@ -1,4 +1,5 @@
 import { wpFetch } from "./client";
+import { rewriteToLocal } from "./images";
 import type { WPPage } from "./types";
 
 export async function getPageBySlug(slug: string): Promise<WPPage | null> {
@@ -24,7 +25,8 @@ export async function getAllPages(): Promise<WPPage[]> {
 
 export function getFeaturedImage(page: WPPage | null): string | null {
   const media = page?._embedded?.["wp:featuredmedia"]?.[0];
-  return media?.source_url ?? null;
+  const url = media?.source_url ?? null;
+  return url ? rewriteToLocal(url) : null;
 }
 
 export function getFeaturedAlt(page: WPPage | null): string {

@@ -23,18 +23,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "rsg-ac.ca",
-        pathname: "/wp-content/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "**.rsg-ac.ca",
-        pathname: "/wp-content/uploads/**",
-      },
-    ],
+    remotePatterns: [],
   },
   async redirects() {
     return [
