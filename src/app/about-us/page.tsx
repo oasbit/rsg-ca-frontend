@@ -29,10 +29,12 @@ export default async function AboutPage() {
     <>
       <PageHero
         eyebrow={content.story.eyebrow}
+        headline={content.story.heroSubtitle}
         headlineEmphasis={content.story.headline}
         bodyParagraphs={content.story.paragraphs}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
+        cta={{ href: "/contact", label: "Start a conversation" }}
       />
       <WhoWeAreSection
         eyebrow={content.whoWeAre.eyebrow}

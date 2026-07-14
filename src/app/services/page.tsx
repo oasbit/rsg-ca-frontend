@@ -31,9 +31,12 @@ export default async function ServicesPage() {
     <>
       <PageHero
         eyebrow="Our Services"
+        headline={content.hero_subtitle}
         headlineEmphasis="Chart Your Course"
+        bodyParagraphs={[content.hero_body]}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
+        cta={{ href: "/contact", label: "Start a conversation" }}
       />
       <ServicesOverview services={content.service_blocks} />
       <QuoteBanner

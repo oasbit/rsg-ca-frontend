@@ -25,6 +25,7 @@ export default async function PrivacyPolicyPage() {
     <>
       <PageHero
         eyebrow="Legal"
+        headline="RS Group Advance Consulting"
         headlineEmphasis={content.title}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}

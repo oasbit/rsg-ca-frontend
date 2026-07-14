@@ -203,6 +203,8 @@ export function resolveAboutContent(page: WPPage | null) {
   return {
     story: {
       eyebrow: acf.story_eyebrow ?? "Our Story",
+      heroSubtitle:
+        acf.story_hero_subtitle ?? "About RS Group Advance Consulting",
       headline: acf.story_headline ?? "Building Strong Organizations and Communities",
       paragraphs: storyParagraphs,
       body:
@@ -264,11 +266,19 @@ export function resolveAboutContent(page: WPPage | null) {
 export function resolveServicesContent(page: WPPage | null): Required<
   Pick<ServicesACF, "intro" | "quote" | "quote_author" | "quote_role">
 > & {
+  hero_subtitle: string;
+  hero_body: string;
   service_blocks: NonNullable<ServicesACF["service_blocks"]>;
 } {
   const acf = page?.acf ?? {};
 
   return {
+    hero_subtitle:
+      acf.hero_subtitle ??
+      "Strategic Planning · Leadership · Team Building · Facilitation",
+    hero_body:
+      acf.hero_body ??
+      "We are committed to working with our growing list of clients in devising innovative solutions that creatively address expressed and assessed need.",
     intro:
       acf.intro ??
       "We are committed to working with our growing list of clients in devising innovative solutions that creatively address expressed and assessed need.",
@@ -346,12 +356,18 @@ export function resolveServicesContent(page: WPPage | null): Required<
 export function resolveContactContent(page: WPPage | null): Required<
   Pick<ContactACF, "headline" | "phone" | "email" | "address">
 > & {
+  hero_subtitle: string;
+  hero_body: string;
   social_links: NonNullable<ContactACF["social_links"]>;
 } {
   const acf = page?.acf ?? {};
 
   return {
     headline: acf.headline ?? "We'd Love to Hear From You!",
+    hero_subtitle: acf.hero_subtitle ?? "Reach Out to Our Team",
+    hero_body:
+      acf.hero_body ??
+      "Whether you're looking to strengthen your leadership, align your team, or develop a strategic plan—we're here to help. Reach out and let's start the conversation.",
     phone: acf.phone ?? "+1 905 518 7522",
     email: acf.email ?? "info@rsg-ac.ca",
     address:

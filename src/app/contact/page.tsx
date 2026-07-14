@@ -26,7 +26,9 @@ export default async function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
+        headline={content.hero_subtitle}
         headlineEmphasis={content.headline}
+        bodyParagraphs={[content.hero_body]}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />

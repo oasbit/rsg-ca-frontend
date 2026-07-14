@@ -70,6 +70,7 @@ export interface HomeACF {
 
 export interface AboutACF {
   story_eyebrow?: string;
+  story_hero_subtitle?: string;
   story_headline?: string;
   story_body?: string;
   story_paragraphs?: string[];
@@ -93,6 +94,8 @@ export interface AboutACF {
 }
 
 export interface ServicesACF {
+  hero_subtitle?: string;
+  hero_body?: string;
   intro?: string;
   quote?: string;
   quote_author?: string;
@@ -102,6 +105,8 @@ export interface ServicesACF {
 
 export interface ContactACF {
   headline?: string;
+  hero_subtitle?: string;
+  hero_body?: string;
   phone?: string;
   email?: string;
   address?: string;
