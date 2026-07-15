@@ -56,7 +56,7 @@ export function ConnectCta({
   const { lead, name } = splitConnectTitle(title);
 
   return (
-    <section className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
+    <section className="relative overflow-hidden bg-black pt-10 pb-24 text-white lg:pt-14 lg:pb-32">
       <GrainOverlay />
 
       <div

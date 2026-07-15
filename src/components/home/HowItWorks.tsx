@@ -18,19 +18,19 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-cream py-24 text-black lg:py-32">
+    <section className="bg-black pt-24 pb-10 text-white lg:pt-32 lg:pb-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
-            <SectionLabel className="text-body">How it works</SectionLabel>
-            <h2 className="mt-4 font-display text-4xl leading-tight text-body italic md:text-5xl">
+            <SectionLabel light>How it works</SectionLabel>
+            <h2 className="mt-4 font-display text-4xl italic leading-tight text-accent md:text-5xl">
               How It Works
             </h2>
           </Reveal>
 
           <Reveal variant="fadeUp" delay={0.08} className="lg:col-span-7">
             {intro ? (
-              <p className="max-w-lg text-sm leading-8 text-body md:text-base">
+              <p className="max-w-lg text-sm leading-8 text-white/65 md:text-base">
                 {intro}
               </p>
             ) : null}
@@ -39,12 +39,12 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
 
         <div className="relative mt-16 lg:mt-20">
           <div
-            className="pointer-events-none absolute top-5 right-0 left-0 hidden h-px bg-black/10 lg:block"
+            className="pointer-events-none absolute top-5 right-0 left-0 hidden h-px bg-white/10 lg:block"
             aria-hidden="true"
           />
           {!prefersReducedMotion ? (
             <motion.div
-              className="pointer-events-none absolute top-5 left-0 hidden h-px origin-left bg-body lg:block"
+              className="pointer-events-none absolute top-5 left-0 hidden h-px origin-left bg-accent/50 lg:block"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -63,23 +63,23 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
                 <article className="group relative h-full">
                   {index < steps.length - 1 ? (
                     <div
-                      className="absolute top-5 left-10 h-full w-px bg-black/10 sm:hidden"
+                      className="absolute top-5 left-10 h-full w-px bg-white/10 sm:hidden"
                       aria-hidden="true"
                     />
                   ) : null}
 
                   <div className="relative flex gap-5 sm:flex-col sm:gap-0">
                     <div className="relative z-10 shrink-0 sm:mb-8">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-cream text-[0.65rem] tracking-[0.28em] text-black/70 transition-all duration-500 ease-out group-hover:border-body group-hover:bg-body group-hover:text-cream">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black text-[0.65rem] tracking-[0.28em] text-white/60 transition-all duration-500 ease-out group-hover:border-accent/60 group-hover:bg-accent/10 group-hover:text-accent">
                         {String(index + 1).padStart(2, "0")}
                       </div>
                     </div>
 
-                    <div className="min-w-0 flex-1 border-l border-black/10 pl-5 sm:border-0 sm:pl-0">
-                      <h3 className="font-display text-2xl italic text-black transition-colors duration-300 group-hover:text-body md:text-3xl">
+                    <div className="min-w-0 flex-1 border-l border-white/10 pl-5 sm:border-0 sm:pl-0">
+                      <h3 className="font-display text-2xl italic text-white transition-colors duration-300 group-hover:text-accent md:text-3xl">
                         {step.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-7 text-body">
+                      <p className="mt-3 text-sm leading-7 text-white/55">
                         {step.description}
                       </p>
                     </div>
@@ -92,7 +92,7 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
 
         {services && services.length > 0 ? (
           <div className="mt-16 lg:mt-20">
-            <ServicesTabs services={services} images={serviceImages} theme="light" />
+            <ServicesTabs services={services} images={serviceImages} theme="dark" />
           </div>
         ) : null}
 
