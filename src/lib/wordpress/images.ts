@@ -70,6 +70,13 @@ export const BRAND = {
     outdoor: "/images/team-building/team-building-outdoor.jpg",
     coaching: "/images/team-building/team-building-coaching.jpg",
   },
+  /** Placeholder team member headshots — replace with real portraits when available. */
+  teamMembers: {
+    sarahMitchell: "/images/team/team-sarah-mitchell.jpg",
+    marcusThompson: "/images/team/team-marcus-thompson.jpg",
+    priyaSharma: "/images/team/team-priya-sharma.jpg",
+    jamesOkafor: "/images/team/team-james-okafor.jpg",
+  },
   about: {
     overlay: `${WP_UPLOADS}/2026/03/119dc_Overlays-About-Us-BG-3.webp`,
     communityPanel: `${WP_UPLOADS}/2026/03/286dc_Brew-Bloom-Gallery-Image-2.webp`,
