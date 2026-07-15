@@ -4,6 +4,7 @@ import Image from "next/image";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface FounderProfileProps {
   name: string;
@@ -23,7 +24,7 @@ export function FounderProfile({
   const [leadParagraph, ...bodyParagraphs] = paragraphs;
 
   return (
-    <section className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-20">
+    <SectionTransition className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-20">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -102,26 +103,28 @@ export function FounderProfile({
 
         {/* Mobile portrait strip */}
         {imageUrl ? (
-          <div className="relative mt-10 h-[280px] overflow-hidden lg:hidden">
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"
-            />
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              className="object-contain object-top"
-              sizes="80vw"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent"
-            />
-          </div>
+          <Reveal variant="fadeIn" delay={0.14} className="lg:hidden">
+            <div className="relative mt-10 h-[280px] overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"
+              />
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                className="object-contain object-top"
+                sizes="80vw"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent"
+              />
+            </div>
+          </Reveal>
         ) : null}
 
       </div>
-    </section>
+    </SectionTransition>
   );
 }

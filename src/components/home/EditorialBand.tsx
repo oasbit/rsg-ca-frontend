@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { resolveEditorialBackgroundImage } from "@/lib/wordpress/images";
 
 interface EditorialBandProps {
@@ -36,7 +37,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
   const backgroundImage = resolveEditorialBackgroundImage();
 
   return (
-    <section className="bg-cream text-black">
+    <SectionTransition className="bg-cream text-black">
       <div className="mx-auto max-w-4xl px-6 pt-16 text-center sm:pt-20 lg:px-10 lg:pt-24">
         <Reveal variant="fadeUp">
           <h2>
@@ -65,7 +66,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
         </Reveal>
       </div>
 
-      <div className="relative min-h-[16rem] w-full overflow-hidden md:min-h-[25rem] lg:min-h-[50rem]">
+      <Reveal variant="fadeIn" delay={0.14} className="relative min-h-[16rem] w-full overflow-hidden md:min-h-[25rem] lg:min-h-[50rem]">
         <Image
           src={backgroundImage.src}
           alt={backgroundImage.alt}
@@ -77,7 +78,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
           aria-hidden
           className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black"
         />
-      </div>
-    </section>
+      </Reveal>
+    </SectionTransition>
   );
 }

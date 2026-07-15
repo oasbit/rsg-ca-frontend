@@ -3,6 +3,7 @@
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface WhoWeAreSectionProps {
   eyebrow: string;
@@ -16,7 +17,7 @@ export function WhoWeAreSection({
   paragraphs,
 }: WhoWeAreSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-black pt-20 pb-8 text-white lg:pt-28 lg:pb-10">
+    <SectionTransition className="relative overflow-hidden bg-black pt-20 pb-8 text-white lg:pt-28 lg:pb-10">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -62,6 +63,6 @@ export function WhoWeAreSection({
           <div className="mt-20 h-px w-full bg-white/10 lg:mt-28" />
         </Reveal>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

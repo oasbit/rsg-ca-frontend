@@ -5,6 +5,7 @@ import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { LineCta } from "@/components/ui/LineCta";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { BRAND } from "@/lib/wordpress/images";
 
 interface AboutTeamProps {
@@ -14,7 +15,7 @@ interface AboutTeamProps {
 
 export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
   return (
-    <section className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-24">
+    <SectionTransition className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-24">
       <Image
         src={BRAND.about.teamBg}
         alt=""
@@ -87,6 +88,6 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
 
         </div>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

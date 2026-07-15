@@ -6,6 +6,7 @@ import { LineCta } from "@/components/ui/LineCta";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface AboutTeaserProps {
   title: string;
@@ -62,7 +63,7 @@ export function AboutTeaser({
   const { lead, emphasis } = splitAboutTitle(title);
 
   return (
-    <section className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -128,6 +129,6 @@ export function AboutTeaser({
           ))}
         </RevealStagger>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

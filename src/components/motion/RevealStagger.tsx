@@ -26,7 +26,7 @@ export function RevealStagger({
       className={cn(className)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px", amount: 0.15 }}
+      viewport={{ once: true, margin: "-30px", amount: 0.08 }}
       variants={{
         hidden: {},
         visible: {

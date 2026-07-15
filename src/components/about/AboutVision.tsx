@@ -4,6 +4,7 @@ import Image from "next/image";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { BRAND } from "@/lib/wordpress/images";
 
 interface AboutVisionProps {
@@ -13,7 +14,7 @@ interface AboutVisionProps {
 
 export function AboutVision({ title, body }: AboutVisionProps) {
   return (
-    <section className="relative overflow-hidden bg-black pt-16 pb-8 text-white lg:pt-24 lg:pb-10">
+    <SectionTransition className="relative overflow-hidden bg-black pt-16 pb-8 text-white lg:pt-24 lg:pb-10">
       <Image
         src={BRAND.about.communityPanel}
         alt=""
@@ -68,6 +69,6 @@ export function AboutVision({ title, body }: AboutVisionProps) {
           <div className="mt-14 h-px w-full bg-white/10 lg:mt-20" />
         </Reveal>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

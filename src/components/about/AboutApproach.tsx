@@ -5,6 +5,7 @@ import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { BRAND } from "@/lib/wordpress/images";
 
 interface AboutApproachProps {
@@ -23,7 +24,7 @@ export function AboutApproach({
   closing,
 }: AboutApproachProps) {
   return (
-    <section className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
       <Image
         src={BRAND.about.approachBg}
         alt=""
@@ -96,6 +97,6 @@ export function AboutApproach({
           </RevealStagger>
         </div>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import type { WPServiceBlock } from "@/lib/wordpress/types";
 
 interface ServicesOverviewProps {
@@ -49,7 +50,7 @@ const ICONS = [PlanningIcon, LeadershipIcon, TeamIcon, FacilitationIcon];
 
 export function ServicesOverview({ services }: ServicesOverviewProps) {
   return (
-    <section className="bg-black py-16 text-white lg:py-20">
+    <SectionTransition className="bg-black py-16 text-white lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <RevealStagger
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
@@ -79,6 +80,6 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
           })}
         </RevealStagger>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

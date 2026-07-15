@@ -1,6 +1,7 @@
 import type { WPPillar } from "@/lib/wordpress/types";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface PillarsGridProps {
   pillars: WPPillar[];
@@ -32,9 +33,9 @@ export function PillarsGrid({ pillars, embedded = false }: PillarsGridProps) {
   if (embedded) return grid;
 
   return (
-    <section className="relative bg-black py-24 text-white">
+    <SectionTransition className="relative bg-black py-24 text-white">
       <GrainOverlay />
       {grid}
-    </section>
+    </SectionTransition>
   );
 }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface AboutDetailSectionProps {
   title: string;
@@ -26,7 +27,7 @@ export function AboutDetailSection({
   backgroundPosition = "center center",
 }: AboutDetailSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
       {backgroundImage ? (
         <>
           <Image
@@ -97,6 +98,6 @@ export function AboutDetailSection({
           </Reveal>
         </div>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

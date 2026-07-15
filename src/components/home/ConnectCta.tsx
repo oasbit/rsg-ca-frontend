@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { resolveConnectCtaImage } from "@/lib/wordpress/images";
 
 interface ConnectCtaProps {
@@ -56,7 +57,7 @@ export function ConnectCta({
   const { lead, name } = splitConnectTitle(title);
 
   return (
-    <section className="relative overflow-hidden bg-black pt-10 pb-24 text-white lg:pt-14 lg:pb-32">
+    <SectionTransition className="relative overflow-hidden bg-black pt-10 pb-24 text-white lg:pt-14 lg:pb-32">
       <GrainOverlay />
 
       <div
@@ -176,6 +177,6 @@ export function ConnectCta({
           </Reveal>
         </div>
       </div>
-    </section>
+    </SectionTransition>
   );
 }

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 import { ServicesTabs } from "@/components/home/ServicesTabs";
 import type { WPProcessStep, WPServiceBlock } from "@/lib/wordpress/types";
 
@@ -18,7 +19,7 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-black pt-24 pb-10 text-white lg:pt-32 lg:pb-14">
+    <SectionTransition className="bg-black pt-24 pb-10 text-white lg:pt-32 lg:pb-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
@@ -97,6 +98,6 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
         ) : null}
 
       </div>
-    </section>
+    </SectionTransition>
   );
 }

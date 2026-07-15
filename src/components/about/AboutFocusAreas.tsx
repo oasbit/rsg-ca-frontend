@@ -4,6 +4,7 @@ import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
+import { SectionTransition } from "@/components/motion/SectionTransition";
 
 interface AboutFocusAreasProps {
   title: string;
@@ -19,7 +20,7 @@ export function AboutFocusAreas({
   closing,
 }: AboutFocusAreasProps) {
   return (
-    <section className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -85,6 +86,6 @@ export function AboutFocusAreas({
 
         </div>
       </div>
-    </section>
+    </SectionTransition>
   );
 }
