@@ -65,6 +65,10 @@ export const BRAND = {
   teamBuilding: {
     hero: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
     action: `${WP_UPLOADS}/2026/03/pexels-yankrukov-7693708-scaled.jpg`,
+    workshop: "/images/team-building/team-building-workshop.jpg",
+    keynote: "/images/team-building/team-building-keynote.jpg",
+    outdoor: "/images/team-building/team-building-outdoor.jpg",
+    coaching: "/images/team-building/team-building-coaching.jpg",
   },
   about: {
     overlay: `${WP_UPLOADS}/2026/03/119dc_Overlays-About-Us-BG-3.webp`,
