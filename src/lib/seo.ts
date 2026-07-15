@@ -9,7 +9,7 @@ export function organizationJsonLd() {
     name: "RS Group Advance Consulting",
     url: getSiteUrl(),
     email: "info@rsg-ac.ca",
-    telephone: "+1-905-518-7522",
+    telephone: "1-866-253-6650",
     address: {
       "@type": "PostalAddress",
       streetAddress: "92 Grand St.",

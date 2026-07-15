@@ -144,11 +144,11 @@ export function ConnectCta({
               </Link>
 
               <a
-                href="tel:+19055187522"
+                href="tel:+18662536650"
                 className="inline-flex items-center gap-3 text-sm text-white/75 transition-colors duration-300 hover:text-accent"
               >
                 <span className="h-px w-8 bg-accent/60" aria-hidden="true" />
-                +1 905 518 7522
+                1-866-253-6650
               </a>
             </div>
 

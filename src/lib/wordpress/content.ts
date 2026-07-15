@@ -368,7 +368,7 @@ export function resolveContactContent(page: WPPage | null): Required<
     hero_body:
       acf.hero_body ??
       "Whether you're looking to strengthen your leadership, align your team, or develop a strategic plan—we're here to help. Reach out and let's start the conversation.",
-    phone: acf.phone ?? "+1 905 518 7522",
+    phone: acf.phone ?? "1-866-253-6650",
     email: acf.email ?? "info@rsg-ac.ca",
     address:
       acf.address ?? "Dominate the Plate, 92 Grand St., Brantford, ON",
