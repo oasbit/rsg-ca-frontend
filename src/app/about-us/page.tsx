@@ -5,6 +5,7 @@ import { AboutVision } from "@/components/about/AboutVision";
 import { FounderProfile } from "@/components/about/FounderProfile";
 import { WhoWeAreSection } from "@/components/about/WhoWeAreSection";
 import { PageHero } from "@/components/ui/PageHero";
+import { ValuesBand } from "@/components/ui/ValuesBand";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveAboutContent } from "@/lib/wordpress/content";
 import { resolveAboutHeroImage, resolveFounderImage } from "@/lib/wordpress/images";
@@ -39,6 +40,7 @@ export default async function AboutPage() {
         imageAlt={heroImage.alt}
         cta={{ href: "/contact", label: "Start a conversation" }}
       />
+      <ValuesBand />
       <WhoWeAreSection
         eyebrow={content.whoWeAre.eyebrow}
         headline={content.whoWeAre.headline}

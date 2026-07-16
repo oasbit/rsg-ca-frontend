@@ -8,6 +8,7 @@ import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStag
 import { SectionTransition } from "@/components/motion/SectionTransition";
 import { buildPageMetadata } from "@/lib/seo";
 import { BRAND } from "@/lib/wordpress/images";
+import { ValuesBand } from "@/components/ui/ValuesBand";
 
 export async function generateMetadata() {
   return buildPageMetadata({
@@ -17,8 +18,6 @@ export async function generateMetadata() {
     path: "/services/team-building",
   });
 }
-
-const PROGRAM_VALUES = ["Inspiration", "Development", "Influence", "Action"];
 
 const WHAT_WE_DO = [
   "Interactive leadership development",
@@ -73,21 +72,7 @@ export default function TeamBuildingPage() {
         cta={{ href: "/contact", label: "Start a conversation" }}
       />
 
-      {/* Program values band */}
-      <SectionTransition className="border-y border-white/10 bg-black py-8 text-white">
-        <RevealStagger
-          className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-6 lg:px-10"
-          stagger={0.07}
-        >
-          {PROGRAM_VALUES.map((value) => (
-            <RevealStaggerItem key={value}>
-              <span className="text-xs font-light tracking-[0.35em] text-white/70 uppercase">
-                {value}
-              </span>
-            </RevealStaggerItem>
-          ))}
-        </RevealStagger>
-      </SectionTransition>
+      <ValuesBand />
 
       {/* What we do — split layout with workshop image */}
       <SectionTransition className="bg-surface py-24 text-white lg:py-32">

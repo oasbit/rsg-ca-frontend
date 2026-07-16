@@ -2,6 +2,7 @@ import { QuoteBanner } from "@/components/ui/QuoteBanner";
 import { ServiceBlock } from "@/components/services/ServiceBlock";
 import { ServicesOverview } from "@/components/services/ServicesOverview";
 import { PageHero } from "@/components/ui/PageHero";
+import { ValuesBand } from "@/components/ui/ValuesBand";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveServicesContent } from "@/lib/wordpress/content";
 import {
@@ -38,6 +39,7 @@ export default async function ServicesPage() {
         imageAlt={heroImage.alt}
         cta={{ href: "/contact", label: "Start a conversation" }}
       />
+      <ValuesBand />
       <ServicesOverview services={content.service_blocks} />
       <QuoteBanner
         quote={content.quote}

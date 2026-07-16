@@ -1,5 +1,6 @@
 import { PrivacyContent } from "@/components/privacy/PrivacyContent";
 import { PageHero } from "@/components/ui/PageHero";
+import { ValuesBand } from "@/components/ui/ValuesBand";
 import { SectionTransition } from "@/components/motion/SectionTransition";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolvePrivacyContent } from "@/lib/wordpress/content";
@@ -31,6 +32,7 @@ export default async function PrivacyPolicyPage() {
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
+      <ValuesBand />
       <SectionTransition className="bg-black pb-24 text-white">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <PrivacyContent body={content.body} />

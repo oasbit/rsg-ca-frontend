@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactInfo } from "@/components/contact/ContactInfo";
 import { PageHero } from "@/components/ui/PageHero";
+import { ValuesBand } from "@/components/ui/ValuesBand";
 import { SectionTransition } from "@/components/motion/SectionTransition";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveContactContent } from "@/lib/wordpress/content";
@@ -33,6 +34,7 @@ export default async function ContactPage() {
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
       />
+      <ValuesBand />
       <SectionTransition className="bg-black py-24 text-white">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
           <ContactInfo
