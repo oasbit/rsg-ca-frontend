@@ -20,18 +20,18 @@ export function AboutFocusAreas({
   closing,
 }: AboutFocusAreasProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-12 lg:py-24">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — editorial headline column (same structure as Approach) */}
           <Reveal variant="fadeUp" className="flex flex-col justify-between">
             <div>
               <SectionLabel light>Our Focus Areas</SectionLabel>
               <div className="mt-5 h-px w-10 bg-accent/50" />
-              <h2 className="mt-6 font-display text-5xl italic leading-[0.95] text-accent md:text-6xl lg:text-7xl">
+              <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
               <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
@@ -40,7 +40,7 @@ export function AboutFocusAreas({
             </div>
 
             {closing ? (
-              <blockquote className="mt-12 border-l-2 border-accent/50 pl-6 lg:mt-0">
+              <blockquote className="mt-8 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
                 <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
                   {closing}
                 </p>
@@ -50,7 +50,7 @@ export function AboutFocusAreas({
 
           {/* Right — 2-col cell grid (hairline gaps as dividers) */}
           <RevealStagger
-            className="grid grid-cols-2 gap-px self-start bg-white/10"
+            className="grid grid-cols-1 gap-px self-start bg-white/10 sm:grid-cols-2"
             stagger={0.07}
           >
             {bullets.map((area, index) => {
@@ -62,7 +62,7 @@ export function AboutFocusAreas({
                   key={area}
                   className={isLast && isOddTotal ? "col-span-2" : ""}
                 >
-                  <div className="group h-full bg-black p-5 transition-colors duration-300 hover:bg-white/[0.04] lg:p-6">
+                  <div className="group h-full bg-black p-4 transition-colors duration-300 hover:bg-white/[0.04] sm:p-5 lg:p-6">
                     {/* Small discreet index */}
                     <p
                       aria-hidden="true"

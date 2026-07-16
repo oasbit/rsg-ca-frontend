@@ -24,7 +24,7 @@ export function AboutApproach({
   closing,
 }: AboutApproachProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-16 text-white lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-12 lg:py-24">
       <Image
         src={BRAND.about.approachBg}
         alt=""
@@ -46,14 +46,14 @@ export function AboutApproach({
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         {/* Two-column grid */}
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — editorial headline column */}
           <Reveal variant="fadeUp" className="flex flex-col justify-between">
             <div>
               <SectionLabel light>Our Approach</SectionLabel>
               <div className="mt-5 h-px w-10 bg-accent/50" />
-              <h2 className="mt-6 font-display text-5xl italic leading-[0.95] text-accent md:text-6xl lg:text-7xl">
+              <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
               <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
@@ -70,7 +70,7 @@ export function AboutApproach({
             </div>
 
             {closing ? (
-              <blockquote className="mt-12 border-l-2 border-accent/50 pl-6 lg:mt-0">
+              <blockquote className="mt-8 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
                 <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
                   {closing}
                 </p>
@@ -83,7 +83,7 @@ export function AboutApproach({
             <ul className="divide-y divide-white/10">
               {bullets.map((bullet, index) => (
                 <RevealStaggerItem key={bullet}>
-                  <li className="flex gap-7 py-8">
+                  <li className="flex gap-5 py-5 sm:gap-7 sm:py-6">
                     <span className="shrink-0 font-display text-4xl leading-none text-accent/35 italic select-none lg:text-5xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>

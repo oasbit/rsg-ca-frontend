@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
+import { cn } from "@/lib/utils";
 import { heroTransition, staggerTransition } from "@/lib/motion";
 
 interface PageHeroProps {
@@ -18,6 +19,10 @@ interface PageHeroProps {
   imageAlt: string;
   fullHeight?: boolean;
   cta?: { href: string; label: string };
+  /** Serve hero image at full source resolution (no Next.js optimization). */
+  imageUnoptimized?: boolean;
+  /** Apply black-and-white filter to the hero background image. */
+  imageGrayscale?: boolean;
   /** Optional content rendered below the CTA, still inside the hero background. */
   footer?: ReactNode;
 }
@@ -48,6 +53,8 @@ export function PageHero({
   imageAlt,
   fullHeight = false,
   cta,
+  imageUnoptimized = false,
+  imageGrayscale = false,
   footer,
 }: PageHeroProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -56,7 +63,7 @@ export function PageHero({
     <section
       className={
         fullHeight
-          ? "relative flex min-h-screen flex-col overflow-hidden bg-black text-white"
+          ? "relative flex min-h-[85svh] flex-col overflow-hidden bg-black text-white md:min-h-screen"
           : "relative overflow-hidden bg-black text-white"
       }
     >
@@ -72,11 +79,14 @@ export function PageHero({
             alt={imageAlt}
             fill
             priority={fullHeight}
-            className={
+            unoptimized={imageUnoptimized}
+            className={cn(
+              "object-cover",
               fullHeight
-                ? "object-cover opacity-55 animate-[kenburns_18s_ease-in-out_infinite_alternate]"
-                : "object-cover opacity-45"
-            }
+                ? "opacity-55 animate-[kenburns_18s_ease-in-out_infinite_alternate]"
+                : "opacity-45",
+              imageGrayscale && "grayscale",
+            )}
             sizes="100vw"
           />
         ) : (
@@ -90,15 +100,15 @@ export function PageHero({
       <motion.div
         className={
           fullHeight
-            ? "relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-6 pb-10 pt-[calc(var(--header-height)+4rem)] lg:px-10 lg:pb-14"
-            : "relative mx-auto flex min-h-[44vh] max-w-7xl flex-col justify-end px-6 pb-14 pt-[calc(var(--header-height)+3rem)] md:min-h-[50vh] lg:px-10 lg:pb-16"
+            ? "relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-6 pb-8 pt-[calc(var(--header-height)+1.5rem)] sm:pb-10 sm:pt-[calc(var(--header-height)+2.5rem)] lg:px-10 lg:pb-14"
+            : "relative mx-auto flex min-h-[36vh] max-w-7xl flex-col justify-end px-6 pb-10 pt-[calc(var(--header-height)+1.5rem)] sm:min-h-[40vh] md:min-h-[50vh] lg:px-10 lg:pb-16"
         }
         variants={prefersReducedMotion ? undefined : containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
         animate="visible"
       >
         <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
-          <SectionLabel light className={fullHeight ? "mb-8" : "mb-5"}>
+          <SectionLabel light className={fullHeight ? "mb-4 sm:mb-6 lg:mb-8" : "mb-3 sm:mb-5"}>
             {eyebrow}
           </SectionLabel>
         </motion.div>
@@ -115,8 +125,8 @@ export function PageHero({
           <p
             className={
               fullHeight
-                ? "font-display text-5xl leading-[0.95] italic md:text-7xl lg:text-8xl"
-                : "font-display text-4xl leading-[1.02] italic md:text-5xl lg:text-6xl"
+                ? "font-display text-3xl leading-[0.95] italic sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
+                : "font-display text-2xl leading-[1.02] italic sm:text-3xl md:text-5xl lg:text-6xl"
             }
           >
             {headlineEmphasis}
@@ -127,8 +137,8 @@ export function PageHero({
           <motion.div
             className={
               fullHeight
-                ? "mt-10 max-w-xl space-y-5 text-sm leading-7 text-white/75 md:text-base"
-                : "mt-6 max-w-2xl space-y-4 text-sm leading-7 text-white/75 md:text-base"
+                ? "mt-6 max-w-xl space-y-4 text-sm leading-7 text-white/75 sm:mt-8 md:text-base"
+                : "mt-4 max-w-2xl space-y-3 text-sm leading-7 text-white/75 sm:mt-6 md:text-base"
             }
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
@@ -140,8 +150,8 @@ export function PageHero({
           <motion.p
             className={
               fullHeight
-                ? "mt-10 max-w-xl text-sm leading-7 text-white/75 md:text-base"
-                : "mt-6 max-w-2xl text-sm leading-7 text-white/75 md:text-base"
+                ? "mt-6 max-w-xl text-sm leading-7 text-white/75 sm:mt-8 md:text-base"
+                : "mt-4 max-w-2xl text-sm leading-7 text-white/75 sm:mt-6 md:text-base"
             }
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
@@ -151,7 +161,7 @@ export function PageHero({
 
         {cta ? (
           <motion.div
-            className={fullHeight ? "mt-10" : "mt-8"}
+            className={fullHeight ? "mt-6 sm:mt-8" : "mt-5 sm:mt-8"}
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
             <LineCta href={cta.href} light>

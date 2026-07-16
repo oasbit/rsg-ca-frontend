@@ -17,13 +17,13 @@ export function WhoWeAreSection({
   paragraphs,
 }: WhoWeAreSectionProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-20 pb-8 text-white lg:pt-28 lg:pb-10">
+    <SectionTransition className="relative overflow-hidden bg-black pt-10 pb-6 text-white sm:pt-14 lg:pt-28 lg:pb-10">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
 
         {/* Full-width 2-column editorial split */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-16">
 
           {/* Left — eyebrow + oversized display headline */}
           <Reveal variant="fadeUp" className="lg:col-span-5 xl:col-span-5">
@@ -32,7 +32,7 @@ export function WhoWeAreSection({
             {/* AP-style: thin accent rule below label, above headline */}
             <div className="mt-5 h-px w-10 bg-accent/50" />
 
-            <h2 className="mt-6 font-display text-5xl italic leading-[0.95] text-accent md:text-6xl lg:text-7xl xl:text-8xl">
+            <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
               {headline}
             </h2>
           </Reveal>
@@ -60,7 +60,7 @@ export function WhoWeAreSection({
 
         {/* Full-width bottom rule — visual bridge to the next section */}
         <Reveal variant="fade" delay={0.2}>
-          <div className="mt-20 h-px w-full bg-white/10 lg:mt-28" />
+          <div className="mt-10 h-px w-full bg-white/10 sm:mt-14 lg:mt-28" />
         </Reveal>
       </div>
     </SectionTransition>

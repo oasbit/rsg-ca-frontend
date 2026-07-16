@@ -24,7 +24,7 @@ export function FounderProfile({
   const [leadParagraph, ...bodyParagraphs] = paragraphs;
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-20">
+    <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-10 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-20">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -33,7 +33,7 @@ export function FounderProfile({
         <Reveal variant="fadeUp">
           <SectionLabel light>Principal Facilitator</SectionLabel>
           <div className="mt-5 h-px w-10 bg-accent/50" />
-          <h2 className="mt-5 font-display text-5xl italic leading-[0.92] text-white md:text-6xl lg:text-7xl xl:text-8xl">
+          <h2 className="mt-4 font-display text-3xl italic leading-[0.92] text-white sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
             {name}
           </h2>
           <div className="mt-6 flex items-center gap-4">
@@ -48,7 +48,7 @@ export function FounderProfile({
         </Reveal>
 
         {/* ── Content row — bio left, portrait right ── */}
-        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16 lg:items-stretch">
+        <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:grid-cols-12 lg:gap-16 lg:items-stretch">
 
           {/* Bio column */}
           <Reveal variant="fadeUp" delay={0.12} className="lg:col-span-7 xl:col-span-8">
@@ -104,7 +104,7 @@ export function FounderProfile({
         {/* Mobile portrait strip */}
         {imageUrl ? (
           <Reveal variant="fadeIn" delay={0.14} className="lg:hidden">
-            <div className="relative mt-10 h-[280px] overflow-hidden">
+            <div className="relative mt-8 h-[200px] overflow-hidden sm:mt-10 sm:h-[240px]">
               <div
                 aria-hidden
                 className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"

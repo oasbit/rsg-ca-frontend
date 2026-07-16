@@ -33,7 +33,7 @@ export default async function PrivacyPolicyPage() {
         imageAlt={heroImage.alt}
       />
       <ValuesBand />
-      <SectionTransition className="bg-black pb-24 text-white">
+      <SectionTransition className="bg-black pb-10 pt-8 text-white sm:pb-14 sm:pt-10 lg:pb-24 lg:pt-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <PrivacyContent body={content.body} />
         </div>

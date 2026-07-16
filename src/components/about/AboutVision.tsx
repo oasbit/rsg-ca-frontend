@@ -14,7 +14,7 @@ interface AboutVisionProps {
 
 export function AboutVision({ title, body }: AboutVisionProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-16 pb-8 text-white lg:pt-24 lg:pb-10">
+    <SectionTransition className="relative overflow-hidden bg-black pt-10 pb-6 text-white sm:pt-12 lg:pt-24 lg:pb-10">
       <Image
         src={BRAND.about.communityPanel}
         alt=""
@@ -47,8 +47,8 @@ export function AboutVision({ title, body }: AboutVisionProps) {
 
         {/* Vision statement — AP-scale italic display */}
         <Reveal variant="fadeUp" delay={0.12}>
-          <blockquote className="mt-14 lg:mt-20">
-            <p className="font-display text-3xl italic leading-[1.2] text-white/90 md:text-4xl lg:text-5xl xl:text-6xl">
+          <blockquote className="mt-8 sm:mt-10 lg:mt-20">
+            <p className="font-display text-2xl italic leading-[1.2] text-white/90 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               &ldquo;{body}&rdquo;
             </p>
           </blockquote>
@@ -56,7 +56,7 @@ export function AboutVision({ title, body }: AboutVisionProps) {
 
         {/* AP-style attribution block */}
         <Reveal variant="fadeUp" delay={0.22}>
-          <div className="mt-14 flex flex-col items-center gap-3 lg:mt-20">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 lg:mt-20">
             <span className="h-px w-12 bg-accent/50" />
             <p className="text-xs tracking-[0.35em] text-white/55 uppercase">
               RS Group Advance Consulting
@@ -66,7 +66,7 @@ export function AboutVision({ title, body }: AboutVisionProps) {
 
         {/* Bottom rule */}
         <Reveal variant="fade" delay={0.28}>
-          <div className="mt-14 h-px w-full bg-white/10 lg:mt-20" />
+          <div className="mt-8 h-px w-full bg-white/10 sm:mt-10 lg:mt-20" />
         </Reveal>
       </div>
     </SectionTransition>

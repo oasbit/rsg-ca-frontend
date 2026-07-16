@@ -10,12 +10,9 @@ export function organizationJsonLd() {
     url: getSiteUrl(),
     email: "info@rsg-ac.ca",
     telephone: "1-866-253-6650",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "92 Grand St.",
-      addressLocality: "Brantford",
-      addressRegion: "ON",
-      addressCountry: "CA",
+    areaServed: {
+      "@type": "Continent",
+      name: "North America",
     },
   };
 }

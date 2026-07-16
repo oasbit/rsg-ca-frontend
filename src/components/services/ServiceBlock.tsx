@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
+import { OutlineButton } from "@/components/ui/OutlineButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SectionTransition } from "@/components/motion/SectionTransition";
@@ -32,16 +33,16 @@ export function ServiceBlock({
   return (
     <SectionTransition
       id={service.title.toLowerCase().replace(/\s+/g, "-")}
-      className={cn("py-20 text-white lg:py-28", solid)}
+      className={cn("py-12 text-white sm:py-16 lg:py-28", solid)}
     >
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-10">
         {/* Text column — each element reveals independently for a cascade effect */}
         <div className={cn("lg:self-center", reversed ? "lg:order-2" : "")}>
           <Reveal variant={reversed ? "slideLeft" : "slideRight"} delay={0}>
             <p className="text-xs tracking-[0.28em] text-accent uppercase">
               {service.tagline}
             </p>
-            <h2 className="mt-4 font-display text-4xl italic md:text-5xl">
+            <h2 className="mt-3 font-display text-2xl italic sm:mt-4 sm:text-3xl md:text-5xl">
               {service.title}
             </h2>
           </Reveal>
@@ -96,19 +97,15 @@ export function ServiceBlock({
           ) : null}
 
           <Reveal variant="fadeUp" delay={0.26}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4">
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 sm:mt-10 sm:gap-y-4">
               {service.detailHref ? (
                 <LineCta href={service.detailHref} light>
                   Explore the program
                 </LineCta>
               ) : null}
-              <LineCta
-                href="/contact"
-                light
-                className={service.detailHref ? "text-white/60 hover:text-accent" : undefined}
-              >
+              <OutlineButton href="/contact" variant="light" icon="arrow-right">
                 Start a conversation
-              </LineCta>
+              </OutlineButton>
             </div>
           </Reveal>
         </div>
@@ -121,7 +118,7 @@ export function ServiceBlock({
           >
             <div
               className={cn(
-                "relative h-[22rem] w-full overflow-hidden sm:h-[26rem] lg:h-full lg:min-h-[28rem]",
+                "relative h-[16rem] w-full overflow-hidden sm:h-[20rem] md:h-[24rem] lg:h-full lg:min-h-[28rem]",
                 isTransparent
                   ? ""
                   : "rounded-2xl border border-white/10",
@@ -131,12 +128,13 @@ export function ServiceBlock({
                 src={imageUrl}
                 alt={imageAlt}
                 fill
+                unoptimized
                 className={cn(
                   isTransparent
                     ? "object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
                     : "object-cover",
                 )}
-                sizes="(max-width: 1024px) 90vw, 40vw"
+                sizes="(max-width: 1024px) 100vw, 640px"
               />
             </div>
           </Reveal>

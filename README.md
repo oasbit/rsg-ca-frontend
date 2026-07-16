@@ -137,7 +137,7 @@ Services page order: **PageHero** → **ServicesOverview** (four linked cards) �
 |-------|------|
 | `body` | WYSIWYG |
 
-Until ACF is populated, the frontend uses built-in fallbacks from page titles, excerpts, and featured images.
+The frontend ships a complete PIPEDA-aligned privacy policy in `src/lib/privacy-policy.ts`. It is shown when the WordPress ACF `body` field and page content are empty. To override from WordPress, populate the ACF body with your custom policy text.
 
 ## CORS and on-demand revalidation (WordPress)
 
@@ -320,6 +320,25 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 - **Patterns:** transparent-to-white header, line CTAs, grain overlays, editorial typography
 - **Motion:** page fade-in on route change, scroll-reveal sections, staggered grids, mobile menu animation (respects `prefers-reduced-motion`)
 
+### Mobile layout
+
+All sections use a mobile-first spacing scale so pages stay compact on small screens without changing desktop layout:
+
+| Pattern | Mobile | Tablet (`sm`/`md`) | Desktop (`lg`+) |
+|---------|--------|---------------------|-----------------|
+| Section padding | `py-10`–`py-12` | `py-14`–`py-16` | `py-24`–`py-32` |
+| Grid gaps | `gap-6`–`gap-8` | `gap-8`–`gap-10` | `gap-16`–`gap-20` |
+| Display headings | `text-2xl`–`text-3xl` | `text-3xl`–`text-4xl` | `text-5xl`–`text-7xl` |
+| Hero height | `min-h-[85svh]` | — | full viewport on `/` |
+
+Global tweaks in `src/styles/globals.css`:
+
+- Responsive `--header-height` (96px → 120px → 140px) for the hero/at-top header; `--header-height-compact` (52px → 58px → 64px) when the sticky bar appears on scroll-up, with a matching smaller logo
+- `overflow-x: clip` on `body` to prevent horizontal scroll from full-bleed sections
+- Tighter `.prose-legal` typography on mobile for the privacy policy page
+
+Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Footer`, `ServiceBlock`, about sections, contact layout) all follow this scale. Test at 375px and 390px widths when changing section spacing.
+
 ### Homepage section order
 
 1. PageHero → 2. PillarsGrid → 3. EditorialBand → 4. **AboutTeaser** → 5. **ServicesTabs** → 6. HowItWorks → (layout) ConnectCta
@@ -330,31 +349,25 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 
 ### Image mapping
 
-**Hero backgrounds** use full-bleed photographic assets. **Content images** use transparent PNG cutouts only (`object-contain`, no backing panels).
+All site images live under `public/assets/` and `public/images/` (23 files total). Unused WordPress export copies and scaffold SVGs have been removed.
 
-| Section | Image type |
-|---------|------------|
+| Section | Asset |
+|---------|-------|
 | Page heroes | WebP/JPG backgrounds (`heroBackgrounds` in `images.ts`) |
-| Home hero | Self-hosted `public/images/home-hero.jpg` (Pexels license, free, no attribution required) |
-| Home editorial strip | `coworking-space-hero-scaled-1.webp` background only (live site Elementor `a24e4f4`) |
-| Home about teaser | Text and pillar highlight cards only (no image) |
+| Home hero | `public/images/home-hero.jpg` |
+| Home editorial strip | `coworking-space-hero-scaled-1.webp` |
 | About page hero | `rs-group-group-pic.jpg` |
-| About page founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
-| Services hero background | `Generated-Image-March-18-2026-10_21AM.jpg` |
-| Service blocks (services page) | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: transparent PNG; Team Building: `pexels-yankrukov-7693708-scaled.jpg`; Facilitation: transparent PNG |
-| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
-| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
-| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
-| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
-| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
-| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
-| Home services tabs | Strategic Planning: `Andrew-Peters-1.jpeg`; Leadership Development: `leadership.jpg`; Team Building: `rs-group-group-pic.jpg`; Facilitation: `8-glp-1-roi.webp` |
-| Service blocks (services page) | Transparent PNGs from services page or fallbacks |
-| Contact hero | `financial-services-features-hero-scaled-1.webp` (pinned) |
-| Connect CTA | `Andrew-Peters-RS-Consulting-Photo.png` |
-| Logo | `RS-Group_black_high-res.png` (header scrolled) / white inverse over hero |
-
-When ACF gallery fields are populated, only transparent PNG entries are used for editorial content.
+| About founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
+| About vision panel | `286dc_Brew-Bloom-Gallery-Image-2.webp` |
+| About approach background | `leadership.jpg` |
+| Services hero | `Generated-Image-March-18-2026-10_21AM.jpg` |
+| Service blocks / home tabs | `Andrew-Peters-1.jpeg`, `leadership.jpg`, `pexels-yankrukov-7693708-scaled.jpg`, `8-glp-1-roi.webp`, `rs-group-group-pic.jpg` |
+| Team building detail page | `public/images/team-building/*.jpg` + shared assets above |
+| About team headshots | `public/images/team/*.jpg` |
+| Contact hero | `financial-services-features-hero-scaled-1.webp` |
+| Privacy hero | `financial-services-contact-hero-scaled-1.webp` |
+| Connect CTA (footer) | `andrew-peters-transparent-background.png` |
+| Logo | `RS-Group_black_high-res.png` / `RS-Group_white_high-res.png` |
 
 ## Project structure
 

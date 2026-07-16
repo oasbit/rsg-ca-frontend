@@ -5,6 +5,16 @@ import type {
   WPPage,
   WPServiceBlock,
 } from "@/lib/wordpress/types";
+import {
+  PRIVACY_POLICY_BODY,
+  PRIVACY_POLICY_TITLE,
+} from "@/lib/privacy-policy";
+import { SERVICE_AREA } from "@/lib/site";
+
+function formatFounderName(name?: string): string {
+  const value = name ?? "Dr. Andrew Peters";
+  return value.replace(/,\s*BA,\s*MA,\s*PhD\b/gi, "");
+}
 
 export function resolveHomeContent(page: WPPage | null): Required<
   Pick<
@@ -217,7 +227,7 @@ export function resolveAboutContent(page: WPPage | null) {
       paragraphs: whoWeAreParagraphs,
     },
     founder: {
-      name: acf.founder_name ?? "Dr. Andrew Peters, BA, MA, PhD",
+      name: formatFounderName(acf.founder_name),
       title: acf.founder_title ?? "Managing Director",
       paragraphs: founderBioParagraphs,
       bio: acf.founder_bio ?? founderBioParagraphs.join(" "),
@@ -370,8 +380,7 @@ export function resolveContactContent(page: WPPage | null): Required<
       "Whether you're looking to strengthen your leadership, align your team, or develop a strategic plan—we're here to help. Reach out and let's start the conversation.",
     phone: acf.phone ?? "1-866-253-6650",
     email: acf.email ?? "info@rsg-ac.ca",
-    address:
-      acf.address ?? "Dominate the Plate, 92 Grand St., Brantford, ON",
+    address: SERVICE_AREA,
     social_links: acf.social_links ?? [],
   };
 }
@@ -381,9 +390,11 @@ export function resolvePrivacyContent(page: WPPage | null): {
   body: string;
 } {
   const acf = page?.acf ?? {};
+  const wpBody = typeof acf.body === "string" ? acf.body.trim() : "";
+  const pageBody = page?.content?.rendered?.trim() ?? "";
 
   return {
-    title: page?.title?.rendered?.replace(/<[^>]*>/g, "") ?? "Privacy Policy",
-    body: acf.body ?? page?.content?.rendered ?? "",
+    title: page?.title?.rendered?.replace(/<[^>]*>/g, "") ?? PRIVACY_POLICY_TITLE,
+    body: wpBody || pageBody || PRIVACY_POLICY_BODY,
   };
 }

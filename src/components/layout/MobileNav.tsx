@@ -2,7 +2,9 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import { MobileServicesMenu } from "@/components/layout/MobileServicesMenu";
 import { NAV_ITEMS } from "@/lib/wordpress/menus";
+import { OutlineButton } from "@/components/ui/OutlineButton";
 import { pageTransition } from "@/lib/motion";
 
 interface MobileNavProps {
@@ -32,17 +34,17 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           >
             <div className="flex items-center justify-between">
               <span className="font-display text-lg tracking-[0.18em] uppercase">Menu</span>
-              <button
-                type="button"
-                aria-label="Close menu"
+              <OutlineButton
                 onClick={onClose}
-                className="text-sm tracking-[0.2em] uppercase text-muted transition-colors duration-300 hover:text-white"
+                icon="close"
+                iconPosition="left"
+                ariaLabel="Close menu"
               >
                 Close
-              </button>
+              </OutlineButton>
             </div>
 
-            <nav className="mt-16 flex flex-col">
+            <nav className="mt-8 flex flex-col sm:mt-12">
               {NAV_ITEMS.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -50,13 +52,17 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ ...pageTransition, delay: 0.08 + index * 0.05 }}
                 >
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className="block border-b border-white/10 py-5 text-2xl font-light tracking-wide transition-colors duration-300 hover:text-accent"
-                  >
-                    {item.label}
-                  </Link>
+                  {item.href === "/services" ? (
+                    <MobileServicesMenu onNavigate={onClose} />
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      className="block border-b border-white/10 py-4 text-xl font-light tracking-wide transition-colors duration-300 hover:text-accent sm:py-5 sm:text-2xl"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div
@@ -64,14 +70,14 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ ...pageTransition, delay: 0.08 + NAV_ITEMS.length * 0.05 }}
               >
-                <Link
+                <OutlineButton
                   href="/contact"
                   onClick={onClose}
-                  className="mt-8 inline-flex items-center gap-4 text-sm tracking-[0.2em] uppercase text-accent transition-opacity duration-300 hover:opacity-80"
+                  icon="arrow-right"
+                  className="mt-8"
                 >
-                  <span className="h-px w-10 bg-accent" />
                   Get Started
-                </Link>
+                </OutlineButton>
               </motion.div>
             </nav>
           </motion.div>

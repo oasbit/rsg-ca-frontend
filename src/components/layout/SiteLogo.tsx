@@ -7,6 +7,8 @@ interface SiteLogoProps {
   /** `main` = black logo (live site). `inverse` = white logo on dark backgrounds. */
   variant?: "main" | "inverse";
   size?: "header" | "footer";
+  /** Smaller logo for compact sticky header */
+  compact?: boolean;
   align?: "left" | "center";
   className?: string;
   priority?: boolean;
@@ -14,14 +16,17 @@ interface SiteLogoProps {
 
 const sizeClasses = {
   header:
-    "h-[5.5rem] w-[20rem] sm:h-24 sm:w-[24rem] md:h-28 md:w-[28rem] lg:h-[7.5rem] lg:w-[32rem]",
+    "h-16 w-[11rem] sm:h-20 sm:w-[16rem] md:h-24 md:w-[22rem] lg:h-[7.5rem] lg:w-[32rem]",
+  headerCompact:
+    "h-8 w-[6.25rem] sm:h-9 sm:w-[7.25rem] md:h-10 md:w-[8.5rem] lg:h-11 lg:w-40",
   footer:
-    "h-32 w-[32rem] sm:h-36 sm:w-[36rem] md:h-44 md:w-[42rem] lg:h-52 lg:w-[48rem] xl:h-56 xl:w-[52rem]",
+    "h-20 w-full max-w-[16rem] sm:h-24 sm:max-w-[20rem] md:h-32 md:max-w-[28rem] lg:h-52 lg:max-w-[48rem]",
 } as const;
 
 export function SiteLogo({
   variant = "main",
   size = "header",
+  compact = false,
   align = "center",
   className,
   priority = false,
@@ -29,12 +34,15 @@ export function SiteLogo({
   const src =
     variant === "inverse" ? BRAND.logos.inverse : BRAND.logos.main;
 
+  const dimensionClasses =
+    size === "header" && compact ? sizeClasses.headerCompact : sizeClasses[size];
+
   return (
     <Link
       href="/"
       className={cn(
-        "relative block shrink-0 transition-opacity duration-300 ease-out hover:opacity-90",
-        sizeClasses[size],
+        "relative block shrink-0 transition-all duration-500 ease-out hover:opacity-90",
+        dimensionClasses,
         className,
       )}
       aria-label="RS Group Advance Consulting home"
@@ -49,7 +57,13 @@ export function SiteLogo({
           align === "left" ? "object-left" : "object-center",
         )}
         sizes={
-          size === "footer" ? "832px" : size === "header" ? "512px" : "160px"
+          size === "footer"
+            ? "832px"
+            : compact
+              ? "160px"
+              : size === "header"
+                ? "512px"
+                : "160px"
         }
       />
     </Link>

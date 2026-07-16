@@ -2,39 +2,33 @@
 
 import { useCallback, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { LineCta } from "@/components/ui/LineCta";
+import { OutlineButton } from "@/components/ui/OutlineButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { isTransparentAsset } from "@/lib/wordpress/images";
+import { ServiceTabIcon } from "@/components/icons/ServiceIcons";
 import type { WPServiceBlock } from "@/lib/wordpress/types";
 
 interface ServicesTabsProps {
   services: WPServiceBlock[];
   images?: string[];
   theme?: "dark" | "light";
+  embedded?: boolean;
 }
 
 function serviceSlug(service: WPServiceBlock): string {
   return service.title.toLowerCase().replace(/\s+/g, "-");
 }
 
-function ListIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 512 512"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M48 48a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm448 16H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" />
-    </svg>
-  );
-}
-
-export function ServicesTabs({ services, images = [], theme = "dark" }: ServicesTabsProps) {
+export function ServicesTabs({
+  services,
+  images = [],
+  theme = "dark",
+  embedded = false,
+}: ServicesTabsProps) {
   const isLight = theme === "light";
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -75,13 +69,19 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
   return (
     <div
       className={cn(
-        "relative overflow-hidden",
-        isLight ? "bg-cream" : "bg-black pb-24 text-white lg:pb-32",
+        "relative",
+        !embedded && "overflow-hidden",
+        !embedded && (isLight ? "bg-cream" : "bg-black pb-10 text-white sm:pb-14 lg:pb-32"),
       )}
     >
-      {!isLight ? <GrainOverlay /> : null}
+      {!isLight && !embedded ? <GrainOverlay /> : null}
 
-      <div className={cn("relative", isLight ? "" : "mx-auto max-w-7xl px-6 lg:px-10")}>
+      <div
+        className={cn(
+          "relative",
+          !embedded && !isLight && "mx-auto max-w-7xl px-6 lg:px-10",
+        )}
+      >
         <Reveal variant="fadeUp">
           <div
             role="tablist"
@@ -103,7 +103,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   onClick={() => selectTab(index)}
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
-                    "border-b-2 px-4 py-5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-6",
+                    "border-b-2 px-3 py-4 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
                     isLight
                       ? isActive
                         ? "border-body bg-cream text-black"
@@ -114,9 +114,10 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   )}
                 >
                   <span className="inline-flex items-center justify-center gap-2 text-[0.62rem] tracking-[0.22em] uppercase sm:text-[0.65rem]">
-                    <ListIcon
+                    <ServiceTabIcon
+                      title={service.title}
                       className={cn(
-                        "h-3.5 w-3.5 shrink-0",
+                        "h-4 w-4 shrink-0",
                         isLight
                           ? isActive
                             ? "text-black"
@@ -150,7 +151,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
               animate={{ opacity: 1, y: 0 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-10 p-8 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:p-12 xl:p-14"
+              className="grid gap-6 p-5 sm:gap-8 sm:p-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:p-12 xl:p-14"
             >
               <div
                 className={cn(
@@ -163,7 +164,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                 </p>
                 <h3
                   className={cn(
-                    "mt-3 font-display text-3xl leading-tight italic md:text-4xl lg:text-5xl",
+                    "mt-2 font-display text-2xl leading-tight italic sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl",
                     isLight ? "text-black" : "text-white",
                   )}
                 >
@@ -225,7 +226,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   ))}
                 </ul>
 
-                <div className="mt-10 flex flex-wrap items-center gap-8">
+                <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
                   <LineCta
                     href={
                       activeService.detailHref ??
@@ -235,15 +236,13 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   >
                     Learn more
                   </LineCta>
-                  <Link
+                  <OutlineButton
                     href="/contact"
-                    className={cn(
-                      "text-xs tracking-[0.22em] uppercase transition-colors duration-300 hover:text-accent",
-                      isLight ? "text-black/50" : "text-white/60",
-                    )}
+                    variant={isLight ? "dark" : "light"}
+                    icon="arrow-right"
                   >
                     Get in touch
-                  </Link>
+                  </OutlineButton>
                 </div>
               </div>
 
@@ -251,7 +250,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                 <div className="lg:col-span-5">
                   <div
                     className={cn(
-                      "relative h-[20rem] w-full overflow-hidden sm:h-[24rem] lg:h-full lg:min-h-[26rem]",
+                      "relative h-[14rem] w-full overflow-hidden sm:h-[18rem] md:h-[22rem] lg:h-full lg:min-h-[26rem]",
                       isTransparent
                         ? ""
                         : cn("border", isLight ? "border-black/10" : "border-white/10"),

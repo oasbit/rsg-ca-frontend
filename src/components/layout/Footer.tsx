@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
+import { SERVICE_AREA } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SiteLogo } from "@/components/layout/SiteLogo";
 import { NAV_ITEMS } from "@/lib/wordpress/menus";
+
+import { OutlineButton } from "@/components/ui/OutlineButton";
 
 function BackToTopButton() {
   const prefersReducedMotion = useReducedMotion();
@@ -18,28 +21,13 @@ function BackToTopButton() {
   }
 
   return (
-    <button
-      type="button"
+    <OutlineButton
       onClick={scrollToTop}
-      className="inline-flex items-center gap-3 border border-white/20 px-4 py-2.5 text-xs tracking-[0.22em] text-white/85 uppercase transition-all duration-300 ease-out hover:border-accent hover:text-accent"
-      aria-label="Back to top"
+      icon="arrow-up"
+      ariaLabel="Back to top"
     >
       Back to top
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-        className="h-3.5 w-3.5"
-      >
-        <path
-          d="M12 5v14M12 5l-5 5M12 5l5 5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </button>
+    </OutlineButton>
   );
 }
 
@@ -48,7 +36,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-black">
-      <RevealStagger className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-3 lg:items-center lg:px-10">
+      <RevealStagger className="mx-auto grid max-w-7xl gap-8 px-6 py-10 sm:gap-10 sm:py-12 lg:grid-cols-3 lg:items-center lg:px-10 lg:py-16">
         <RevealStaggerItem className="flex items-center justify-center">
           <SiteLogo variant="inverse" size="footer" align="center" />
         </RevealStaggerItem>
@@ -88,9 +76,7 @@ export function Footer() {
                 info@rsg-ac.ca
               </a>
             </li>
-            <li className="text-muted">
-              Dominate the Plate, 92 Grand St., Brantford, ON
-            </li>
+            <li className="text-muted">{SERVICE_AREA}</li>
           </ul>
         </RevealStaggerItem>
       </RevealStagger>

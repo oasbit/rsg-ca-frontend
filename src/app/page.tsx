@@ -7,7 +7,6 @@ import {
 import { buildPageMetadata } from "@/lib/seo";
 import { EditorialBand } from "@/components/home/EditorialBand";
 import { HowItWorks } from "@/components/home/HowItWorks";
-import { ServicesTabsSection } from "@/components/home/ServicesTabsSection";
 import { PillarsGrid } from "@/components/home/PillarsGrid";
 import { PageHero } from "@/components/ui/PageHero";
 
@@ -52,10 +51,8 @@ export default async function HomePage() {
       <HowItWorks
         steps={content.process_steps}
         intro={content.process_intro}
-      />
-      <ServicesTabsSection
         services={content.home_service_blocks}
-        images={serviceImages}
+        serviceImages={serviceImages}
       />
     </>
   );

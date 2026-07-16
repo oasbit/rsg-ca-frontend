@@ -1,34 +1,23 @@
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
+import { OutlineButton } from "@/components/ui/OutlineButton";
 
 interface LineCtaProps {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   light?: boolean;
 }
 
+/** Outline CTA link — matches footer button styling. */
 export function LineCta({ href, children, className, light = false }: LineCtaProps) {
   return (
-    <Link
+    <OutlineButton
       href={href}
-      className={cn(
-        "group inline-flex items-center gap-4 text-sm tracking-[0.18em] uppercase transition-all duration-300 ease-out",
-        light
-          ? "text-white hover:text-accent"
-          : "text-black hover:text-body",
-        className,
-      )}
+      variant={light ? "light" : "dark"}
+      className={className}
+      icon="arrow-right"
     >
-      <span
-        className={cn(
-          "h-px w-10 transition-all duration-500 ease-out group-hover:w-14",
-          light
-            ? "bg-white/80 group-hover:bg-accent"
-            : "bg-black/80 group-hover:bg-body",
-        )}
-      />
-      <span>{children}</span>
-    </Link>
+      {children}
+    </OutlineButton>
   );
 }

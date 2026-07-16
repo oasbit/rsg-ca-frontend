@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { LineCta } from "@/components/ui/LineCta";
+import { OutlineButton } from "@/components/ui/OutlineButton";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
@@ -36,25 +36,6 @@ function splitAboutTitle(title: string): { lead: string; emphasis: string } {
   return { lead: "", emphasis: title };
 }
 
-function ArrowIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M5 12h14M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function AboutTeaser({
   title,
   body,
@@ -63,7 +44,7 @@ export function AboutTeaser({
   const { lead, emphasis } = splitAboutTitle(title);
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-24 text-white lg:py-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-14 lg:py-32">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -74,7 +55,7 @@ export function AboutTeaser({
           {emphasis || title}
         </p>
 
-        <div className="relative grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <div className="relative grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel light>About us</SectionLabel>
 
@@ -84,7 +65,7 @@ export function AboutTeaser({
                   {lead}
                 </span>
               ) : null}
-              <span className="mt-2 block font-display text-4xl leading-[1.02] text-accent italic md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-3xl leading-[1.02] text-accent italic sm:text-4xl md:text-5xl lg:text-6xl">
                 {emphasis || title}
               </span>
             </h2>
@@ -95,28 +76,24 @@ export function AboutTeaser({
               {body}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-8">
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
               <LineCta href="/about-us" light>
                 Learn more
               </LineCta>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-3 text-xs tracking-[0.22em] text-white/60 uppercase transition-colors duration-300 hover:text-accent"
-              >
+              <OutlineButton href="/contact" variant="light" icon="arrow-right">
                 Get in touch
-                <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              </OutlineButton>
             </div>
           </Reveal>
         </div>
 
         <RevealStagger
-          className="mt-16 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4"
+          className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:mt-20 lg:grid-cols-4"
           stagger={0.08}
         >
           {highlights.map((item, index) => (
             <RevealStaggerItem key={item}>
-              <article className="group relative h-full border border-white/10 bg-white/[0.02] p-6 transition-all duration-500 ease-out hover:border-accent/30 hover:bg-white/[0.04]">
+              <article className="group relative h-full border border-white/10 bg-white/[0.02] p-4 transition-all duration-500 ease-out hover:border-accent/30 hover:bg-white/[0.04] sm:p-6">
                 <span className="text-[0.65rem] tracking-[0.32em] text-accent/70 uppercase">
                   {String(index + 1).padStart(2, "0")}
                 </span>

@@ -37,6 +37,7 @@ export default async function ServicesPage() {
         bodyParagraphs={[content.hero_body]}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}
+        imageUnoptimized
         cta={{ href: "/contact", label: "Start a conversation" }}
       />
       <ValuesBand />

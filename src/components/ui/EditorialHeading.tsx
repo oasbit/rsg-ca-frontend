@@ -25,7 +25,7 @@ export function EditorialHeading({
       </h2>
       <p
         className={cn(
-          "font-display text-4xl leading-[1.05] italic md:text-6xl lg:text-7xl",
+          "font-display text-3xl leading-[1.05] italic sm:text-4xl md:text-6xl lg:text-7xl",
           light ? "text-white" : "text-foreground",
         )}
       >

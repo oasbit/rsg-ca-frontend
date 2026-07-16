@@ -5,23 +5,26 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SectionTransition } from "@/components/motion/SectionTransition";
-import type { WPProcessStep } from "@/lib/wordpress/types";
+import { ServicesTabs } from "@/components/home/ServicesTabs";
+import type { WPProcessStep, WPServiceBlock } from "@/lib/wordpress/types";
 
 interface HowItWorksProps {
   steps: WPProcessStep[];
   intro?: string;
+  services?: WPServiceBlock[];
+  serviceImages?: string[];
 }
 
-export function HowItWorks({ steps, intro }: HowItWorksProps) {
+export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: HowItWorksProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionTransition className="bg-black pt-24 pb-24 text-white lg:pt-32 lg:pb-32">
+    <SectionTransition className="bg-black py-10 text-white sm:py-12 lg:pt-32 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel light>How it works</SectionLabel>
-            <h2 className="mt-4 font-display text-4xl italic leading-tight text-accent md:text-5xl">
+            <h2 className="mt-3 font-display text-2xl italic leading-tight text-accent sm:mt-4 sm:text-3xl md:text-5xl">
               How It Works
             </h2>
           </Reveal>
@@ -35,7 +38,7 @@ export function HowItWorks({ steps, intro }: HowItWorksProps) {
           </Reveal>
         </div>
 
-        <div className="relative mt-16 lg:mt-20">
+        <div className="relative mt-8 sm:mt-12 lg:mt-20">
           <div
             className="pointer-events-none absolute top-5 right-0 left-0 hidden h-px bg-white/10 lg:block"
             aria-hidden="true"
@@ -53,7 +56,7 @@ export function HowItWorks({ steps, intro }: HowItWorksProps) {
           ) : null}
 
           <RevealStagger
-            className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+            className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6"
             stagger={0.12}
           >
             {steps.map((step, index) => (
@@ -74,7 +77,7 @@ export function HowItWorks({ steps, intro }: HowItWorksProps) {
                     </div>
 
                     <div className="min-w-0 flex-1 border-l border-white/10 pl-5 sm:border-0 sm:pl-0">
-                      <h3 className="font-display text-2xl italic text-white transition-colors duration-300 group-hover:text-accent md:text-3xl">
+                      <h3 className="font-display text-xl italic text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
                         {step.title}
                       </h3>
                       <p className="mt-3 text-sm leading-7 text-white/55">
@@ -88,6 +91,16 @@ export function HowItWorks({ steps, intro }: HowItWorksProps) {
           </RevealStagger>
         </div>
 
+        {services.length > 0 ? (
+          <div className="mt-10 border-t border-white/10 pt-8 sm:mt-12 sm:pt-10 lg:mt-24 lg:pt-20">
+            <ServicesTabs
+              services={services}
+              images={serviceImages}
+              theme="dark"
+              embedded
+            />
+          </div>
+        ) : null}
       </div>
     </SectionTransition>
   );

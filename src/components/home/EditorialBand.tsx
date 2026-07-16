@@ -38,7 +38,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
 
   return (
     <SectionTransition className="bg-cream text-black">
-      <div className="mx-auto max-w-4xl px-6 pt-16 text-center sm:pt-20 lg:px-10 lg:pt-24">
+      <div className="mx-auto max-w-4xl px-6 pt-10 text-center sm:pt-14 lg:px-10 lg:pt-24">
         <Reveal variant="fadeUp">
           <h2>
             {lead ? (
@@ -47,11 +47,11 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
               </span>
             ) : null}
             {emphasis ? (
-              <span className="mt-3 block font-display text-4xl leading-tight text-body italic md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-2xl leading-tight text-body italic sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
                 {emphasis}
               </span>
             ) : (
-              <span className="mt-3 block font-display text-4xl leading-tight text-body italic md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-2xl leading-tight text-body italic sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
                 {headline}
               </span>
             )}
@@ -66,7 +66,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
         </Reveal>
       </div>
 
-      <Reveal variant="fadeIn" delay={0.14} className="relative min-h-[16rem] w-full overflow-hidden md:min-h-[25rem] lg:min-h-[50rem]">
+      <Reveal variant="fadeIn" delay={0.14} className="relative min-h-[12rem] w-full overflow-hidden sm:min-h-[16rem] md:min-h-[25rem] lg:min-h-[50rem]">
         <Image
           src={backgroundImage.src}
           alt={backgroundImage.alt}

@@ -55,17 +55,17 @@ const TEAM_MEMBERS = [
 
 export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-8 pb-16 text-white lg:pt-10 lg:pb-24">
+    <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-10 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-24">
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
 
         {/* Section header */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal variant="fadeUp" className="lg:col-span-7">
             <SectionLabel light>Our Team</SectionLabel>
             <div className="mt-5 h-px w-10 bg-accent/50" />
-            <h2 className="mt-5 font-display text-5xl italic leading-[0.95] text-accent md:text-6xl lg:text-7xl">
+            <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl">
               {title}
             </h2>
           </Reveal>
@@ -89,7 +89,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
         </div>
 
         {/* Roster */}
-        <RevealStagger className="mt-16 lg:mt-20" stagger={0.1}>
+        <RevealStagger className="mt-10 sm:mt-12 lg:mt-20" stagger={0.1}>
           {/* Top divider */}
           <div className="h-px bg-white/10" />
 
@@ -102,7 +102,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
                   className={`group flex items-stretch gap-0 ${reversed ? "flex-row-reverse" : ""}`}
                 >
                   {/* Portrait */}
-                  <div className="relative w-[110px] flex-shrink-0 overflow-hidden sm:w-[140px] lg:w-[180px]">
+                  <div className="relative w-[88px] flex-shrink-0 overflow-hidden sm:w-[120px] lg:w-[180px]">
                     <Image
                       src={member.image}
                       alt={member.imageAlt}
@@ -123,14 +123,14 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
 
                   {/* Content */}
                   <div
-                    className={`flex flex-1 flex-col justify-center py-8 lg:py-10 ${
-                      reversed ? "pr-6 lg:pr-10 items-end text-right" : "pl-6 lg:pl-10 items-start text-left"
+                    className={`flex flex-1 flex-col justify-center py-5 sm:py-6 lg:py-10 ${
+                      reversed ? "pr-4 sm:pr-6 lg:pr-10 items-end text-right" : "pl-4 sm:pl-6 lg:pl-10 items-start text-left"
                     }`}
                   >
                     <p className="text-[0.6rem] tracking-[0.32em] text-accent/60 uppercase">
                       {String(index + 1).padStart(2, "0")} &mdash;&ensp;{member.role}
                     </p>
-                    <h3 className="mt-2 font-display leading-[0.95] italic text-white transition-colors duration-300 group-hover:text-accent text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                    <h3 className="mt-1.5 font-display text-xl leading-[0.95] italic text-white transition-colors duration-300 group-hover:text-accent sm:mt-2 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                       {member.firstName}
                       <br />
                       {member.lastName}
@@ -149,8 +149,8 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
         </RevealStagger>
 
         {/* CTA panel */}
-        <Reveal variant="fadeUp" delay={0.1} className="mt-16 lg:mt-20">
-          <div className="border-t border-accent/20 pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
+        <Reveal variant="fadeUp" delay={0.1} className="mt-10 sm:mt-12 lg:mt-20">
+          <div className="border-t border-accent/20 pt-8 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
             <div className="max-w-lg">
               <p className="text-xs tracking-[0.3em] text-accent/70 uppercase">Partner with us</p>
               <h3 className="mt-4 font-display text-3xl italic leading-tight text-white md:text-4xl">
