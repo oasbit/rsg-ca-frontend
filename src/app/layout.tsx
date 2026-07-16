@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Strategic planning, leadership development, and team-building for organizations and communities.",
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_CA",
