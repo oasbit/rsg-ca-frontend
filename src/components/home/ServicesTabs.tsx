@@ -103,14 +103,14 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   onClick={() => selectTab(index)}
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
-                    "border-t px-4 py-5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-6",
+                    "border-b-2 px-4 py-5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-6",
                     isLight
                       ? isActive
                         ? "border-body bg-cream text-black"
-                        : "border-black/10 bg-cream text-body/60 hover:text-black"
+                        : "border-transparent bg-cream text-body/50 hover:border-body/30 hover:text-black"
                       : isActive
-                        ? "border-accent/40 bg-black text-accent"
-                        : "border-white/10 bg-black text-muted hover:text-white",
+                        ? "border-accent bg-black text-accent"
+                        : "border-transparent bg-black text-muted hover:border-accent/30 hover:text-white",
                   )}
                 >
                   <span className="inline-flex items-center justify-center gap-2 text-[0.62rem] tracking-[0.22em] uppercase sm:text-[0.65rem]">
@@ -136,8 +136,8 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
 
         <div
           className={cn(
-            "relative mt-0 border border-t-0",
-            isLight ? "border-black/10 bg-cream text-black" : "border-white/10 bg-black text-white",
+            "relative mt-0",
+            isLight ? "bg-cream text-black" : "bg-black text-white",
           )}
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -158,7 +158,7 @@ export function ServicesTabs({ services, images = [], theme = "dark" }: Services
                   showImage ? "lg:col-span-7" : "lg:col-span-12",
                 )}
               >
-                <p className="text-xs tracking-[0.28em] text-accent uppercase">
+                <p className={cn("text-xs tracking-[0.28em] uppercase", isLight ? "text-body/70" : "text-accent")}>
                   {activeService.tagline}
                 </p>
                 <h3

@@ -5,21 +5,18 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SectionTransition } from "@/components/motion/SectionTransition";
-import { ServicesTabs } from "@/components/home/ServicesTabs";
-import type { WPProcessStep, WPServiceBlock } from "@/lib/wordpress/types";
+import type { WPProcessStep } from "@/lib/wordpress/types";
 
 interface HowItWorksProps {
   steps: WPProcessStep[];
   intro?: string;
-  services?: WPServiceBlock[];
-  serviceImages?: string[];
 }
 
-export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorksProps) {
+export function HowItWorks({ steps, intro }: HowItWorksProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionTransition className="bg-black pt-24 pb-10 text-white lg:pt-32 lg:pb-14">
+    <SectionTransition className="bg-black pt-24 pb-24 text-white lg:pt-32 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
@@ -90,12 +87,6 @@ export function HowItWorks({ steps, intro, services, serviceImages }: HowItWorks
             ))}
           </RevealStagger>
         </div>
-
-        {services && services.length > 0 ? (
-          <div className="mt-16 lg:mt-20">
-            <ServicesTabs services={services} images={serviceImages} theme="dark" />
-          </div>
-        ) : null}
 
       </div>
     </SectionTransition>
