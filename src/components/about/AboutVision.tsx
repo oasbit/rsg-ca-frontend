@@ -19,18 +19,19 @@ export function AboutVision({ title, body }: AboutVisionProps) {
         src={BRAND.about.communityPanel}
         alt=""
         fill
-        className="object-cover object-center opacity-20"
+        unoptimized
+        className="object-cover object-center opacity-55"
         sizes="100vw"
         aria-hidden
       />
       {/* Vignette — stronger at edges, open at centre */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_30%,rgba(0,0,0,0.85)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_30%,rgba(0,0,0,0.65)_100%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"
+        className="absolute inset-0 bg-gradient-to-b from-black/90 via-transparent to-black/90"
       />
       <GrainOverlay />
 

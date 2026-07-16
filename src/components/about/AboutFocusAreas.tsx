@@ -27,7 +27,7 @@ export function AboutFocusAreas({
         <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — editorial headline column (same structure as Approach) */}
-          <Reveal variant="fadeUp" className="flex flex-col justify-between">
+          <Reveal variant="fadeUp">
             <div>
               <SectionLabel light>Our Focus Areas</SectionLabel>
               <div className="mt-5 h-px w-10 bg-accent/50" />
@@ -37,15 +37,15 @@ export function AboutFocusAreas({
               <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
                 {intro}
               </p>
-            </div>
 
-            {closing ? (
-              <blockquote className="mt-8 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
-                <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
-                  {closing}
-                </p>
-              </blockquote>
-            ) : null}
+              {closing ? (
+                <blockquote className="mt-5 border-l-2 border-accent/50 pl-4 sm:mt-6 sm:pl-6">
+                  <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
+                    {closing}
+                  </p>
+                </blockquote>
+              ) : null}
+            </div>
           </Reveal>
 
           {/* Right — 2-col cell grid (hairline gaps as dividers) */}

@@ -109,6 +109,10 @@ Install [Advanced Custom Fields](https://www.wordpress.org/plugins/advanced-cust
 
 Live-site section order: **Our Story** hero → **Who We Are** → **Meet Dr. Andrew Peters** → **Our Approach** → **Our Focus Areas** → **Our Vision** → **Our Team** → Connect CTA (layout).
 
+In **Our Focus Areas**, the closing strategy statement sits directly beneath the introductory performance statement before the focus-area grid.
+
+The **Our Team** partnership CTA follows the team profiles without a decorative top rule.
+
 ### Services (`services`)
 
 | Field | Type |
@@ -320,7 +324,7 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Muted | `#8C8C8C` | Supporting text |
 
 - **Font:** Clash Display (loaded from WordPress media library, same as live site)
-- **Page hero:** shared `PageHero` component on every route — full viewport height on `/`, compact (~44–50vh) on inner pages
+- **Page hero:** shared `PageHero` component on every route — full viewport height without an eyebrow label on `/`, compact (~44–50vh) on inner pages
 - **Patterns:** transparent-to-white header, line CTAs, grain overlays, editorial typography
 - **Motion:** page fade-in on route change, scroll-reveal sections, staggered grids, mobile menu animation (respects `prefers-reduced-motion`)
 
@@ -338,6 +342,7 @@ All sections use a mobile-first spacing scale so pages stay compact on small scr
 Global tweaks in `src/styles/globals.css`:
 
 - Responsive `--header-height` (96px → 120px → 140px) for the hero/at-top header; `--header-height-compact` (52px → 58px → 64px) when the sticky bar appears on scroll-up, with a matching smaller logo
+- Shared contrast tokens keep dividers and borders visible without dominating the layout, while improving numbering, captions, supporting copy, and small labels
 - `overflow-x: clip` on `body` to prevent horizontal scroll from full-bleed sections
 - Tighter `.prose-legal` typography on mobile for the privacy policy page
 
@@ -362,8 +367,8 @@ All site images live under `public/assets/` and `public/images/` (23 files total
 | Home editorial strip | `coworking-space-hero-scaled-1.webp` |
 | About page hero | `rs-group-group-pic.jpg` |
 | About founder profile | `Dr-Andrew-Peters-RS-Consulting.png` |
-| About vision panel | `286dc_Brew-Bloom-Gallery-Image-2.webp` |
-| About approach background | `leadership.jpg` |
+| About vision panel | `286dc_Brew-Bloom-Gallery-Image-2.webp`, served unoptimized at its native 866×984 resolution with a visible center and strong top/bottom fades |
+| About approach background | `leadership.jpg`, shown at increased opacity with a softened directional overlay and strong top/bottom fades |
 | Services hero | `Generated-Image-March-18-2026-10_21AM.jpg` |
 | Service blocks / home tabs | `Andrew-Peters-1.jpeg`, `leadership.jpg`, `pexels-yankrukov-7693708-scaled.jpg`, `8-glp-1-roi.webp`, `rs-group-group-pic.jpg` |
 | Team building detail page | `public/images/team-building/*.jpg` + shared assets above |

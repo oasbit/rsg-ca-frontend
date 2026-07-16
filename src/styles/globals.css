@@ -28,6 +28,13 @@
   --cream: #fefdf0;
   --muted: #8c8c8c;
   --surface: #232323;
+  --divider-on-dark: rgb(255 255 255 / 20%);
+  --divider-on-dark-strong: rgb(255 255 255 / 30%);
+  --divider-on-light: rgb(0 0 0 / 16%);
+  --divider-on-light-strong: rgb(0 0 0 / 24%);
+  --text-subtle-on-dark: rgb(255 255 255 / 68%);
+  --text-muted-on-dark: rgb(255 255 255 / 78%);
+  --accent-subtle-on-dark: rgb(241 236 220 / 76%);
   --header-height: 96px;
   --header-height-compact: 52px;
 }
@@ -74,6 +81,55 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+}
+
+/*
+ * Raise separator contrast consistently across dark and light surfaces.
+ * These selectors strengthen the shared Tailwind divider utilities without
+ * affecting text opacity or solid surface backgrounds.
+ */
+.border-white\/10,
+.divide-white\/10 > :not(:last-child) {
+  border-color: var(--divider-on-dark);
+}
+
+.border-white\/15,
+.border-white\/20 {
+  border-color: var(--divider-on-dark-strong);
+}
+
+.bg-white\/10 {
+  background-color: var(--divider-on-dark);
+}
+
+.border-black\/10 {
+  border-color: var(--divider-on-light);
+}
+
+.border-black\/20 {
+  border-color: var(--divider-on-light-strong);
+}
+
+.text-white\/25,
+.text-white\/30,
+.text-white\/40,
+.text-white\/45 {
+  color: var(--text-subtle-on-dark);
+}
+
+.text-white\/50,
+.text-white\/55,
+.text-white\/60 {
+  color: var(--text-muted-on-dark);
+}
+
+.text-accent\/35,
+.text-accent\/60 {
+  color: var(--accent-subtle-on-dark);
+}
+
+.text-body\/50 {
+  color: color-mix(in srgb, var(--body) 82%, transparent);
 }
 
 ::selection {

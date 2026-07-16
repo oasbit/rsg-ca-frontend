@@ -150,7 +150,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
 
         {/* CTA panel */}
         <Reveal variant="fadeUp" delay={0.1} className="mt-10 sm:mt-12 lg:mt-20">
-          <div className="border-t border-accent/20 pt-8 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
+          <div className="pt-8 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
             <div className="max-w-lg">
               <p className="text-xs tracking-[0.3em] text-accent/70 uppercase">Partner with us</p>
               <h3 className="mt-4 font-display text-3xl italic leading-tight text-white md:text-4xl">

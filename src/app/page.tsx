@@ -35,7 +35,6 @@ export default async function HomePage() {
     <>
       <PageHero
         fullHeight
-        eyebrow={content.hero_eyebrow}
         headline={content.hero_headline}
         headlineEmphasis={content.hero_headline_emphasis}
         body={content.hero_body}

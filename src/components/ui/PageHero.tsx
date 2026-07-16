@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { heroTransition, staggerTransition } from "@/lib/motion";
 
 interface PageHeroProps {
-  eyebrow: string;
+  eyebrow?: string;
   headline?: string;
   headlineEmphasis: string;
   body?: string;
@@ -107,11 +107,13 @@ export function PageHero({
         initial={prefersReducedMotion ? false : "hidden"}
         animate="visible"
       >
-        <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
-          <SectionLabel light className={fullHeight ? "mb-4 sm:mb-6 lg:mb-8" : "mb-3 sm:mb-5"}>
-            {eyebrow}
-          </SectionLabel>
-        </motion.div>
+        {eyebrow ? (
+          <motion.div variants={prefersReducedMotion ? undefined : itemVariants}>
+            <SectionLabel light className={fullHeight ? "mb-4 sm:mb-6 lg:mb-8" : "mb-3 sm:mb-5"}>
+              {eyebrow}
+            </SectionLabel>
+          </motion.div>
+        ) : null}
 
         <motion.div
           className="max-w-5xl space-y-2"

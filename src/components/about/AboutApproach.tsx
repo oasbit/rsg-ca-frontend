@@ -29,18 +29,18 @@ export function AboutApproach({
         src={BRAND.about.approachBg}
         alt=""
         fill
-        className="object-cover object-center opacity-30"
+        className="object-cover object-center opacity-55"
         sizes="100vw"
         aria-hidden
       />
       {/* Directional gradient — content reads left-to-right */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20"
+        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/10"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/50"
+        className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/80"
       />
       <GrainOverlay />
 
