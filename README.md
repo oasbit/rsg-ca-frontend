@@ -22,6 +22,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+### Favicons and app icons
+
+Browser icons are defined through the Next.js App Router files in `src/app`, while installable web app icons and `site.webmanifest` are served from `public`.
+
 ### Environment variables
 
 | Variable | Description |
