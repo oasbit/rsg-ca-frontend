@@ -202,12 +202,15 @@ export function ServicesTabs({
                   </p>
                 ) : null}
 
-                <ul className={cn("space-y-4", activeService.bulletsLead ? "mt-4" : "mt-8")}>
+                <ul className={cn("space-y-3", activeService.bulletsLead ? "mt-4" : "mt-8")}>
                   {activeService.bullets.map((bullet) => (
                     <li
                       key={bullet}
                       className={cn(
-                        "flex gap-3 text-sm",
+                        "group flex gap-3 rounded-lg border px-4 py-3 text-sm transition-all duration-300",
+                        isLight
+                          ? "border-black/10 hover:border-body/35 hover:bg-body/[0.06] hover:shadow-sm"
+                          : "border-white/10 hover:border-accent/35 hover:bg-white/[0.05]",
                         activeService.quoteBullets
                           ? cn("font-display", isLight ? "text-black/75" : "text-white/75")
                           : isLight
@@ -217,11 +220,14 @@ export function ServicesTabs({
                     >
                       <span
                         className={cn(
-                          "mt-2 shrink-0 bg-accent",
+                          "mt-2 shrink-0 transition-all duration-300 group-hover:w-6",
+                          isLight ? "bg-body" : "bg-accent",
                           activeService.quoteBullets ? "h-px w-6" : "h-px w-4",
                         )}
                       />
-                      <span>{bullet}</span>
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        {bullet}
+                      </span>
                     </li>
                   ))}
                 </ul>

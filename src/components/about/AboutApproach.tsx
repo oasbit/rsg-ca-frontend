@@ -83,11 +83,11 @@ export function AboutApproach({
             <ul className="divide-y divide-white/10">
               {bullets.map((bullet, index) => (
                 <RevealStaggerItem key={bullet}>
-                  <li className="flex gap-5 py-5 sm:gap-7 sm:py-6">
-                    <span className="shrink-0 font-display text-4xl leading-none text-accent/35 select-none lg:text-5xl">
+                  <li className="group -mx-3 flex gap-5 rounded-lg px-3 py-5 transition-all duration-300 hover:bg-white/[0.06] sm:gap-7 sm:py-6">
+                    <span className="shrink-0 font-display text-4xl leading-none text-accent/35 transition-colors duration-300 select-none group-hover:text-accent lg:text-5xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <p className="pt-2 text-sm leading-7 text-white/80 md:text-base">
+                    <p className="pt-2 text-sm leading-7 text-white/80 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white md:text-base">
                       {bullet}
                     </p>
                   </li>

@@ -353,9 +353,11 @@ Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Foote
 
 1. PageHero → 2. PillarsGrid → 3. EditorialBand → 4. **AboutTeaser** → 5. **ServicesTabs** → 6. HowItWorks → (layout) ConnectCta
 
-**ServicesTabs** replaces the old services list — four tabbed panels (Strategic Planning, Leadership Development, Team Building, Facilitation) matching the live site, with content from the services page `service_blocks`.
+**ServicesTabs** presents four homepage service panels (Strategic Planning, Leadership Development, Team Building, and Facilitation) from `home_service_blocks`. Their bullets use action-oriented marketing copy and gain a bordered background, extended accent rule, and subtle text movement on hover. Leadership focuses on applied development and organizational advocacy; Team Building is rooted in creating environments for leadership development; Facilitation uses an “As facilitators, we will…” framework.
 
 **AboutTeaser** uses a black editorial layout: split headline/body, numbered highlight cards from pillars, no image.
+
+The four numbered points in **Our Approach** also receive a background, brighter number, and slight text movement on hover.
 
 ### Image mapping
 
