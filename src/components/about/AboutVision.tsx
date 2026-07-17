@@ -46,10 +46,10 @@ export function AboutVision({ title, body }: AboutVisionProps) {
           </div>
         </Reveal>
 
-        {/* Vision statement — AP-scale italic display */}
+        {/* Vision statement — AP-scale display */}
         <Reveal variant="fadeUp" delay={0.12}>
           <blockquote className="mt-8 sm:mt-10 lg:mt-20">
-            <p className="font-display text-2xl italic leading-[1.2] text-white/90 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+            <p className="font-display text-2xl leading-[1.2] text-white/90 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               &ldquo;{body}&rdquo;
             </p>
           </blockquote>

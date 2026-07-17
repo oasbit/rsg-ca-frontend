@@ -47,11 +47,11 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
               </span>
             ) : null}
             {emphasis ? (
-              <span className="mt-2 block font-display text-2xl leading-tight text-body italic sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-2xl leading-tight text-body sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
                 {emphasis}
               </span>
             ) : (
-              <span className="mt-2 block font-display text-2xl leading-tight text-body italic sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-2xl leading-tight text-body sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
                 {headline}
               </span>
             )}

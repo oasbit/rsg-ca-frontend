@@ -324,6 +324,7 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Muted | `#8C8C8C` | Supporting text |
 
 - **Font:** Clash Display (loaded from WordPress media library, same as live site)
+- **Typography style:** headings, quotations, labels, and supporting copy use upright type; italic styling is intentionally disabled throughout the interface
 - **Page hero:** shared `PageHero` component on every route — full viewport height without an eyebrow label on `/`, compact (~44–50vh) on inner pages
 - **Patterns:** transparent-to-white header, line CTAs, grain overlays, editorial typography
 - **Motion:** page fade-in on route change, scroll-reveal sections, staggered grids, mobile menu animation (respects `prefers-reduced-motion`)

@@ -24,7 +24,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel light>How it works</SectionLabel>
-            <h2 className="mt-3 font-display text-2xl italic leading-tight text-accent sm:mt-4 sm:text-3xl md:text-5xl">
+            <h2 className="mt-3 font-display text-2xl leading-tight text-accent sm:mt-4 sm:text-3xl md:text-5xl">
               How It Works
             </h2>
           </Reveal>
@@ -77,7 +77,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
                     </div>
 
                     <div className="min-w-0 flex-1 border-l border-white/10 pl-5 sm:border-0 sm:pl-0">
-                      <h3 className="font-display text-xl italic text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
+                      <h3 className="font-display text-xl text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
                         {step.title}
                       </h3>
                       <p className="mt-3 text-sm leading-7 text-white/55">

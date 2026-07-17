@@ -31,7 +31,7 @@ export function AboutFocusAreas({
             <div>
               <SectionLabel light>Our Focus Areas</SectionLabel>
               <div className="mt-5 h-px w-10 bg-accent/50" />
-              <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
+              <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
               <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
@@ -40,7 +40,7 @@ export function AboutFocusAreas({
 
               {closing ? (
                 <blockquote className="mt-5 border-l-2 border-accent/50 pl-4 sm:mt-6 sm:pl-6">
-                  <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
+                  <p className="font-display text-base leading-8 text-white/75 md:text-lg">
                     {closing}
                   </p>
                 </blockquote>
@@ -72,7 +72,7 @@ export function AboutFocusAreas({
                     </p>
 
                     {/* Focus area title */}
-                    <h3 className="mt-3 font-display text-base italic leading-snug text-white/80 transition-colors duration-300 group-hover:text-white md:text-lg lg:text-xl">
+                    <h3 className="mt-3 font-display text-base leading-snug text-white/80 transition-colors duration-300 group-hover:text-white md:text-lg lg:text-xl">
                       {area}
                     </h3>
 

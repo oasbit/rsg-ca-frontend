@@ -127,8 +127,8 @@ export function PageHero({
           <p
             className={
               fullHeight
-                ? "font-display text-3xl leading-[0.95] italic sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
-                : "font-display text-2xl leading-[1.02] italic sm:text-3xl md:text-5xl lg:text-6xl"
+                ? "font-display text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
+                : "font-display text-2xl leading-[1.02] sm:text-3xl md:text-5xl lg:text-6xl"
             }
           >
             {headlineEmphasis}

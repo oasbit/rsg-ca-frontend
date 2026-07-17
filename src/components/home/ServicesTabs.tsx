@@ -164,7 +164,7 @@ export function ServicesTabs({
                 </p>
                 <h3
                   className={cn(
-                    "mt-2 font-display text-2xl leading-tight italic sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl",
+                    "mt-2 font-display text-2xl leading-tight sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl",
                     isLight ? "text-black" : "text-white",
                   )}
                 >
@@ -209,7 +209,7 @@ export function ServicesTabs({
                       className={cn(
                         "flex gap-3 text-sm",
                         activeService.quoteBullets
-                          ? cn("font-display italic", isLight ? "text-black/75" : "text-white/75")
+                          ? cn("font-display", isLight ? "text-black/75" : "text-white/75")
                           : isLight
                             ? "text-black/85"
                             : "text-white/85",

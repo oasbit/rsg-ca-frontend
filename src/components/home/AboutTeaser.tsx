@@ -50,7 +50,7 @@ export function AboutTeaser({
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <p
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 left-0 text-center font-display text-[clamp(3.5rem,14vw,11rem)] leading-none text-white/[0.03] italic select-none"
+          className="pointer-events-none absolute top-0 right-0 left-0 text-center font-display text-[clamp(3.5rem,14vw,11rem)] leading-none text-white/[0.03] select-none"
         >
           {emphasis || title}
         </p>
@@ -65,7 +65,7 @@ export function AboutTeaser({
                   {lead}
                 </span>
               ) : null}
-              <span className="mt-2 block font-display text-3xl leading-[1.02] text-accent italic sm:text-4xl md:text-5xl lg:text-6xl">
+              <span className="mt-2 block font-display text-3xl leading-[1.02] text-accent sm:text-4xl md:text-5xl lg:text-6xl">
                 {emphasis || title}
               </span>
             </h2>
@@ -97,7 +97,7 @@ export function AboutTeaser({
                 <span className="text-[0.65rem] tracking-[0.32em] text-accent/70 uppercase">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-5 font-display text-2xl italic text-white transition-colors duration-300 group-hover:text-accent md:text-3xl">
+                <h3 className="mt-5 font-display text-2xl text-white transition-colors duration-300 group-hover:text-accent md:text-3xl">
                   {item}
                 </h3>
                 <div className="mt-6 h-px w-10 bg-white/20 transition-all duration-500 group-hover:w-full group-hover:bg-accent/60" />

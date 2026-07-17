@@ -54,7 +54,7 @@ export function AboutDetailSection({
       <div className="relative mx-auto max-w-3xl px-6 lg:px-10">
         <div className="max-w-xl">
           <Reveal variant="fadeUp">
-            <h2 className="font-display text-2xl italic text-accent sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="font-display text-2xl text-accent sm:text-3xl md:text-4xl lg:text-5xl">
               {title}
             </h2>
 

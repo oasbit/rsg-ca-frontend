@@ -32,7 +32,7 @@ export function WhoWeAreSection({
             {/* AP-style: thin accent rule below label, above headline */}
             <div className="mt-5 h-px w-10 bg-accent/50" />
 
-            <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
+            <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
               {headline}
             </h2>
           </Reveal>

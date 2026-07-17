@@ -42,7 +42,7 @@ export function ServiceBlock({
             <p className="text-xs tracking-[0.28em] text-accent uppercase">
               {service.tagline}
             </p>
-            <h2 className="mt-3 font-display text-2xl italic sm:mt-4 sm:text-3xl md:text-5xl">
+            <h2 className="mt-3 font-display text-2xl sm:mt-4 sm:text-3xl md:text-5xl">
               {service.title}
             </h2>
           </Reveal>
@@ -78,7 +78,7 @@ export function ServiceBlock({
                       className={cn(
                         "flex gap-3 text-sm md:text-base list-none",
                         service.quoteBullets
-                          ? "font-display italic text-white/75"
+                          ? "font-display text-white/75"
                           : "text-white/85",
                       )}
                     >

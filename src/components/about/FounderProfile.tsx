@@ -33,7 +33,7 @@ export function FounderProfile({
         <Reveal variant="fadeUp">
           <SectionLabel light>Principal Facilitator</SectionLabel>
           <div className="mt-5 h-px w-10 bg-accent/50" />
-          <h2 className="mt-4 font-display text-3xl italic leading-[0.92] text-white sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
+          <h2 className="mt-4 font-display text-3xl leading-[0.92] text-white sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
             {name}
           </h2>
           <div className="mt-6 flex items-center gap-4">

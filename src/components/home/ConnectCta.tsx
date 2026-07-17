@@ -102,11 +102,11 @@ export function ConnectCta({
                 </span>
               ) : null}
               {name ? (
-                <span className="mt-2 block font-display text-3xl leading-[1.05] text-accent italic sm:text-4xl md:text-5xl lg:text-7xl">
+                <span className="mt-2 block font-display text-3xl leading-[1.05] text-accent sm:text-4xl md:text-5xl lg:text-7xl">
                   {name}
                 </span>
               ) : (
-                <span className="mt-2 block font-display text-3xl leading-[1.05] text-accent italic sm:text-4xl md:text-5xl lg:text-7xl">
+                <span className="mt-2 block font-display text-3xl leading-[1.05] text-accent sm:text-4xl md:text-5xl lg:text-7xl">
                   {title}
                 </span>
               )}

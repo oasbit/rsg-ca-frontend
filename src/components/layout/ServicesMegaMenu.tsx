@@ -110,7 +110,7 @@ export function ServicesMegaMenuPanel({
               <p className="text-[0.65rem] tracking-[0.32em] text-accent uppercase">
                 Our Services
               </p>
-              <h2 className="mt-3 font-display text-2xl italic leading-tight text-white md:text-3xl">
+              <h2 className="mt-3 font-display text-2xl leading-tight text-white md:text-3xl">
                 Strategic support for organizations and communities
               </h2>
               <p className="mt-4 text-sm leading-7 text-white/55">
@@ -141,7 +141,7 @@ export function ServicesMegaMenuPanel({
                     <span className="mt-5 flex h-11 w-11 items-center justify-center rounded-full border border-accent/25 bg-accent/5 text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/10">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <h3 className="mt-5 font-display text-lg italic leading-snug text-white transition-colors duration-300 group-hover:text-accent lg:text-xl">
+                    <h3 className="mt-5 font-display text-lg leading-snug text-white transition-colors duration-300 group-hover:text-accent lg:text-xl">
                       {service.title}
                     </h3>
                     <p className="mt-3 text-[0.68rem] leading-relaxed tracking-[0.12em] text-accent/80 uppercase lg:text-xs">

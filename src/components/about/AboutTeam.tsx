@@ -65,7 +65,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
           <Reveal variant="fadeUp" className="lg:col-span-7">
             <SectionLabel light>Our Team</SectionLabel>
             <div className="mt-5 h-px w-10 bg-accent/50" />
-            <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl">
+            <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl">
               {title}
             </h2>
           </Reveal>
@@ -130,7 +130,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
                     <p className="text-[0.6rem] tracking-[0.32em] text-accent/60 uppercase">
                       {String(index + 1).padStart(2, "0")} &mdash;&ensp;{member.role}
                     </p>
-                    <h3 className="mt-1.5 font-display text-xl leading-[0.95] italic text-white transition-colors duration-300 group-hover:text-accent sm:mt-2 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+                    <h3 className="mt-1.5 font-display text-xl leading-[0.95] text-white transition-colors duration-300 group-hover:text-accent sm:mt-2 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                       {member.firstName}
                       <br />
                       {member.lastName}
@@ -153,7 +153,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
           <div className="pt-8 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
             <div className="max-w-lg">
               <p className="text-xs tracking-[0.3em] text-accent/70 uppercase">Partner with us</p>
-              <h3 className="mt-4 font-display text-3xl italic leading-tight text-white md:text-4xl">
+              <h3 className="mt-4 font-display text-3xl leading-tight text-white md:text-4xl">
                 Work with our team
               </h3>
               <p className="mt-4 text-sm leading-7 text-white/55">

@@ -53,7 +53,7 @@ export function AboutApproach({
             <div>
               <SectionLabel light>Our Approach</SectionLabel>
               <div className="mt-5 h-px w-10 bg-accent/50" />
-              <h2 className="mt-4 font-display text-3xl italic leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
+              <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
               <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
@@ -71,7 +71,7 @@ export function AboutApproach({
 
             {closing ? (
               <blockquote className="mt-8 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
-                <p className="font-display text-base italic leading-8 text-white/75 md:text-lg">
+                <p className="font-display text-base leading-8 text-white/75 md:text-lg">
                   {closing}
                 </p>
               </blockquote>
@@ -84,7 +84,7 @@ export function AboutApproach({
               {bullets.map((bullet, index) => (
                 <RevealStaggerItem key={bullet}>
                   <li className="flex gap-5 py-5 sm:gap-7 sm:py-6">
-                    <span className="shrink-0 font-display text-4xl leading-none text-accent/35 italic select-none lg:text-5xl">
+                    <span className="shrink-0 font-display text-4xl leading-none text-accent/35 select-none lg:text-5xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <p className="pt-2 text-sm leading-7 text-white/80 md:text-base">

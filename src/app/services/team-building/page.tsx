@@ -82,7 +82,7 @@ export default function TeamBuildingPage() {
           <div className="lg:col-span-5 lg:pr-12">
             <Reveal variant="fadeUp">
               <SectionLabel light>What We Do</SectionLabel>
-              <h2 className="mt-3 font-display text-2xl italic text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
+              <h2 className="mt-3 font-display text-2xl text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
                 Build Teams That Work Together
               </h2>
               <p className="mt-6 text-sm leading-8 text-white/80 md:text-base">
@@ -96,7 +96,7 @@ export default function TeamBuildingPage() {
 
             <Reveal variant="fadeUp" delay={0.12}>
               <blockquote className="mt-6 border-l border-accent/50 pl-4 sm:mt-8 sm:pl-6">
-                <p className="font-display text-lg leading-relaxed text-white/90 italic md:text-xl">
+                <p className="font-display text-lg leading-relaxed text-white/90 md:text-xl">
                   &ldquo;Leadership is so much more than holding a position in a
                   school, community, or organization. Leadership is working well
                   with other people to make a positive difference in the world
@@ -121,7 +121,7 @@ export default function TeamBuildingPage() {
                 {WHAT_WE_DO.map((item, index) => (
                   <RevealStaggerItem key={item}>
                     <li className="flex items-start gap-4 border-b border-white/10 pb-4 sm:gap-5 sm:pb-6">
-                      <span className="font-display text-2xl text-accent/70 italic">
+                      <span className="font-display text-2xl text-accent/70">
                         0{index + 1}
                       </span>
                       <span className="pt-1 text-sm leading-7 text-white/85 md:text-base">
@@ -177,7 +177,7 @@ export default function TeamBuildingPage() {
             <div className="mx-auto w-full max-w-7xl px-6 pb-8 sm:pb-12 lg:px-10 lg:pb-20">
               <Reveal variant="fadeUp">
                 <SectionLabel light>Interactive &amp; Engaging Development</SectionLabel>
-                <h2 className="mt-2 font-display text-2xl italic text-accent sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl">
+                <h2 className="mt-2 font-display text-2xl text-accent sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl">
                   Not Just Another Team-Building Exercise
                 </h2>
               </Reveal>
@@ -216,7 +216,7 @@ export default function TeamBuildingPage() {
                 to build cohesive teams—and develop the leadership capacity that
                 emerges from doing it well.
               </p>
-              <p className="mt-6 text-xs leading-6 text-muted italic">
+              <p className="mt-6 text-xs leading-6 text-muted">
                 * We work with our community partners in devising unique programs
                 to meet expressed or assessed need.
               </p>
@@ -230,7 +230,7 @@ export default function TeamBuildingPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal variant="fadeUp" className="max-w-2xl">
             <SectionLabel light>Why Choose Us</SectionLabel>
-            <h2 className="mt-3 font-display text-2xl italic text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-display text-2xl text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
               A Program Built for Real Impact
             </h2>
           </Reveal>
@@ -255,7 +255,7 @@ export default function TeamBuildingPage() {
                       aria-hidden
                       className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"
                     />
-                    <span className="absolute top-5 left-5 font-display text-2xl text-accent/70 italic">
+                    <span className="absolute top-5 left-5 font-display text-2xl text-accent/70">
                       0{index + 1}
                     </span>
                   </div>
@@ -300,7 +300,7 @@ export default function TeamBuildingPage() {
             <SectionLabel light className="justify-center">
               Get Started
             </SectionLabel>
-            <h2 className="mt-3 font-display text-2xl italic text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-display text-2xl text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
               Ready to Build a Stronger Team?
             </h2>
           </Reveal>

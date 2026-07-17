@@ -12,7 +12,7 @@ export function QuoteBanner({ quote, author, role }: QuoteBannerProps) {
     <SectionTransition className="bg-surface py-10 text-white sm:py-14 lg:py-24">
       <RevealStagger className="mx-auto max-w-4xl px-6 text-center lg:px-10" stagger={0.12}>
         <RevealStaggerItem>
-          <p className="font-display text-xl leading-snug italic sm:text-2xl md:text-4xl">
+          <p className="font-display text-xl leading-snug sm:text-2xl md:text-4xl">
             &ldquo;{quote}&rdquo;
           </p>
         </RevealStaggerItem>
