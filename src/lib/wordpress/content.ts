@@ -178,24 +178,68 @@ export function resolveHomeContent(page: WPPage | null): Required<
 export function resolveAboutContent(page: WPPage | null) {
   const acf = page?.acf ?? {};
 
-  const storyParagraphs = acf.story_paragraphs ?? [
-    "RS Advanced Group Consulting was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations.",
-    "With over 25 years of proven impact through leadership development and community programming, we bring tested, real-world frameworks into the corporate environment—helping organizations strengthen culture, align teams, and drive sustainable performance.",
+  const storyLeadDefault =
+    "RS Advanced Group Consulting was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations.";
+  const storyBodyDefault =
+    "With over 25 years of proven impact through leadership development and community programming, we bring tested, real-world frameworks into the corporate environment—helping organizations strengthen culture, align teams, and drive sustainable performance.";
+  const storyParagraphsRaw = acf.story_paragraphs ?? [
+    storyLeadDefault,
+    storyBodyDefault,
   ];
+  /** First paragraph is the hero deck; remaining paragraphs are secondary body. */
+  const [storyLeadFromAcf, ...storyBodyFromAcf] = storyParagraphsRaw;
+  const storyLead = storyLeadFromAcf || storyLeadDefault;
+  const storyParagraphs =
+    storyBodyFromAcf.length > 0 ? storyBodyFromAcf : [storyBodyDefault];
 
-  const whoWeAreParagraphs = acf.who_we_are_paragraphs ?? [
+  const whoWeAreParagraphsRaw = acf.who_we_are_paragraphs ?? [
     "RS Advanced Group Consulting partners with organizations, institutions, and leadership teams to unlock growth through people.",
     "Our approach is rooted in decades of experience in community engagement, leadership development, and high-performance coaching. What sets us apart is our ability to translate these proven methods into practical, scalable strategies for businesses.",
-    "Originating from the success of Rising Stars Athletics & Education, our foundation is built on delivering measurable impact—developing leaders, strengthening teams, and creating environments where individuals and organizations thrive.",
+    "Our foundation is built on delivering measurable impact, developing leaders, strengthening teams, and creating environments where individuals and organizations thrive.",
     "We don't just advise—we implement, guide, and elevate.",
   ];
+  /** Drop the Rising Stars origin clause from Who We Are (per client edit). */
+  const whoWeAreParagraphs = whoWeAreParagraphsRaw
+    .map((paragraph) =>
+      paragraph
+        .replace(
+          /^Originating from the success of Rising Stars Athletics & Education,\s*/i,
+          "",
+        )
+        .replace(
+          /\s*Originating from the success of Rising Stars Athletics & Education,?\s*/i,
+          " ",
+        )
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
+    .map((paragraph) =>
+      paragraph.length > 0
+        ? paragraph.charAt(0).toUpperCase() + paragraph.slice(1)
+        : paragraph,
+    )
+    .filter(Boolean);
 
-  const founderBioParagraphs = acf.founder_bio_paragraphs ?? [
-    "Dr. Andrew Peters is an executive advisor, educator, and founder with over two decades of experience in leadership, performance, and team development.",
-    "As the driving force behind Rising Stars and RS Advanced Group Consulting, Dr. Peters has built a reputation for transforming teams and organizations by strengthening culture, improving accountability, and elevating performance.",
-    "Holding a Ph.D. in Education and a background in high-level athletics, he brings a unique blend of academic insight and real-world execution. His methodology is rooted in high-performance principles—focusing on leadership alignment, team cohesion, and sustainable growth.",
+  const founderBioParagraphsRaw = acf.founder_bio_paragraphs ?? [
+    "Dr. Andrew Peters is an executive coach, advisor, educator and developer with over 25 years of experience in community building, consulting, leadership, performance, and team development.",
+    "As the driving force behind RS Advanced Group Consulting, Dr. Peters has built a reputation for transforming teams and organizations by strengthening culture, improving accountability, and elevating performance.",
+    "Holding a Ph.D., specializing in Human, Economic & Business Development, Dr. Peters and his team bring a unique blend of academic insight and real-world execution. His methodology is rooted in high-performance principles, and focuses on leadership, team and organizational development and sustainable growth.",
     "Today, Dr. Peters works with organizations across industries, helping them implement proven systems that increase engagement, boost morale, and drive measurable results.",
   ];
+  /** Prefer brand naming; drop Rising Stars pairing from founder bio when present. */
+  const founderBioParagraphs = founderBioParagraphsRaw.map((paragraph) =>
+    paragraph
+      .replace(
+        /Rising Stars and RS Advanced Group Consulting/gi,
+        "RS Advanced Group Consulting",
+      )
+      .replace(
+        /Rising Stars and RS Advanced Consulting Group/gi,
+        "RS Advanced Group Consulting",
+      )
+      .replace(/RS Advanced Consulting Group/gi, "RS Advanced Group Consulting")
+      .replace(/\bfocusses\b/gi, "focuses"),
+  );
 
   const approachBullets = acf.approach_bullets ?? [
     "Deeply understanding your organization's structure, culture, and challenges",
@@ -223,10 +267,11 @@ export function resolveAboutContent(page: WPPage | null) {
       heroSubtitle:
         acf.story_hero_subtitle ?? "About RS Group Advance Consulting",
       headline: acf.story_headline ?? "Building Strong Organizations and Communities",
+      lead: storyLead,
       paragraphs: storyParagraphs,
       body:
         acf.story_body ??
-        storyParagraphs.join(" "),
+        [storyLead, ...storyParagraphs].join(" "),
     },
     whoWeAre: {
       eyebrow: acf.who_we_are_eyebrow ?? "Introduction",

@@ -13,6 +13,8 @@ interface PageHeroProps {
   eyebrow?: string;
   headline?: string;
   headlineEmphasis: string;
+  /** Emphasized deck under the title — wider and distinct from body copy. */
+  bodyLead?: string;
   body?: string;
   bodyParagraphs?: string[];
   imageUrl: string | null;
@@ -47,6 +49,7 @@ export function PageHero({
   eyebrow,
   headline,
   headlineEmphasis,
+  bodyLead,
   body,
   bodyParagraphs,
   imageUrl,
@@ -135,13 +138,27 @@ export function PageHero({
           </p>
         </motion.div>
 
-        {bodyParagraphs?.length ? (
-          <motion.div
+        {bodyLead ? (
+          <motion.p
             className={
               fullHeight
-                ? "mt-6 max-w-xl space-y-4 text-sm leading-7 text-white/75 sm:mt-8 md:text-base"
-                : "mt-4 max-w-2xl space-y-3 text-sm leading-7 text-white/75 sm:mt-6 md:text-base"
+                ? "mt-4 max-w-4xl text-base leading-8 text-white/90 sm:mt-5 md:max-w-5xl md:text-lg md:leading-9"
+                : "mt-3 max-w-3xl text-base leading-8 text-white/90 sm:mt-4 md:max-w-4xl md:text-lg md:leading-9 lg:max-w-5xl"
             }
+            variants={prefersReducedMotion ? undefined : itemVariants}
+          >
+            {bodyLead}
+          </motion.p>
+        ) : null}
+
+        {bodyParagraphs?.length ? (
+          <motion.div
+            className={cn(
+              "space-y-3 text-sm leading-7 text-white/65 md:text-base",
+              fullHeight
+                ? cn("max-w-xl", bodyLead ? "mt-4 sm:mt-5" : "mt-6 sm:mt-8")
+                : cn("max-w-2xl", bodyLead ? "mt-3 sm:mt-4" : "mt-4 sm:mt-6"),
+            )}
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
             {bodyParagraphs.map((paragraph) => (
@@ -150,11 +167,12 @@ export function PageHero({
           </motion.div>
         ) : body ? (
           <motion.p
-            className={
+            className={cn(
+              "text-sm leading-7 text-white/65 md:text-base",
               fullHeight
-                ? "mt-6 max-w-xl text-sm leading-7 text-white/75 sm:mt-8 md:text-base"
-                : "mt-4 max-w-2xl text-sm leading-7 text-white/75 sm:mt-6 md:text-base"
-            }
+                ? cn("max-w-xl", bodyLead ? "mt-4 sm:mt-5" : "mt-6 sm:mt-8")
+                : cn("max-w-2xl", bodyLead ? "mt-3 sm:mt-4" : "mt-4 sm:mt-6"),
+            )}
             variants={prefersReducedMotion ? undefined : itemVariants}
           >
             {body}

@@ -35,6 +35,7 @@ export default async function AboutPage() {
         eyebrow={content.story.eyebrow}
         headline={content.story.heroSubtitle}
         headlineEmphasis={content.story.headline}
+        bodyLead={content.story.lead}
         bodyParagraphs={content.story.paragraphs}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}

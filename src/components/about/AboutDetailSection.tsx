@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ListCheckMark } from "@/components/icons/ListCheckMark";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionTransition } from "@/components/motion/SectionTransition";
@@ -85,7 +86,7 @@ export function AboutDetailSection({
             <ul className="mt-8 space-y-4">
               {bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-3 text-sm text-white/85 md:text-base">
-                  <span className="mt-2 h-px w-4 shrink-0 bg-accent" />
+                  <ListCheckMark />
                   <span>{bullet}</span>
                 </li>
               ))}

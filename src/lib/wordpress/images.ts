@@ -33,19 +33,19 @@ export const BRAND = {
     founder: `${WP_UPLOADS}/2026/04/Dr-Andrew-Peters-RS-Consulting.png`,
     connectCta: `${WP_UPLOADS}/2026/03/andrew-peters-transparent-background.png`,
   },
-  /** Services page — photographic and illustration assets per block (live site order). */
+  /** Services page — photographic assets per block. */
   servicePageBlocks: {
     strategicPlanning: `${WP_UPLOADS}/2026/04/Andrew-Peters-1.jpeg`,
-    leadershipDevelopment: `${WP_UPLOADS}/2026/04/leadership.jpg`,
-    teamBuilding: `${WP_UPLOADS}/2026/03/pexels-yankrukov-7693708-scaled.jpg`,
-    facilitation: `${WP_UPLOADS}/2026/04/8-glp-1-roi.webp`,
+    leadershipDevelopment: "/images/services/service-leadership.jpg",
+    teamBuilding: "/images/services/service-team-building.jpg",
+    facilitation: "/images/services/service-facilitation.jpg",
   },
   /** Home services tabs — photographic assets where specified. */
   serviceTabs: {
     strategicPlanning: `${WP_UPLOADS}/2026/04/Andrew-Peters-1.jpeg`,
-    leadershipDevelopment: `${WP_UPLOADS}/2026/04/leadership.jpg`,
-    teamBuilding: `${WP_UPLOADS}/2026/04/rs-group-group-pic.jpg`,
-    facilitation: `${WP_UPLOADS}/2026/04/8-glp-1-roi.webp`,
+    leadershipDevelopment: "/images/services/service-leadership.jpg",
+    teamBuilding: "/images/services/service-team-building.jpg",
+    facilitation: "/images/services/service-facilitation.jpg",
   },
   /** Team Building service detail page assets. */
   teamBuilding: {

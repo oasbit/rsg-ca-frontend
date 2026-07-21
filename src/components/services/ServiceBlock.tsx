@@ -6,6 +6,7 @@ import { OutlineButton } from "@/components/ui/OutlineButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SectionTransition } from "@/components/motion/SectionTransition";
+import { ListCheckMark } from "@/components/icons/ListCheckMark";
 import { cn } from "@/lib/utils";
 import { isTransparentAsset } from "@/lib/wordpress/images";
 import type { WPServiceBlock } from "@/lib/wordpress/types";
@@ -82,12 +83,7 @@ export function ServiceBlock({
                           : "text-white/85",
                       )}
                     >
-                      <span
-                        className={cn(
-                          "mt-2 shrink-0 bg-accent",
-                          service.quoteBullets ? "h-px w-6" : "h-px w-4",
-                        )}
-                      />
+                      <ListCheckMark />
                       <span>{bullet}</span>
                     </li>
                   </RevealStaggerItem>

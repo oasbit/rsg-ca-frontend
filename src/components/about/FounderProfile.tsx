@@ -14,6 +14,22 @@ interface FounderProfileProps {
   imageAlt: string;
 }
 
+function splitFounderCopy(paragraphs: string[]) {
+  const closingIndex = paragraphs.findIndex((paragraph) =>
+    /^Today,\s*Dr\.\s*Peters/i.test(paragraph.trim()),
+  );
+
+  if (closingIndex === -1) {
+    const [leadParagraph, ...bodyParagraphs] = paragraphs;
+    return { leadParagraph, bodyParagraphs, closing: undefined as string | undefined };
+  }
+
+  const closing = paragraphs[closingIndex];
+  const before = paragraphs.slice(0, closingIndex);
+  const [leadParagraph, ...bodyParagraphs] = before;
+  return { leadParagraph, bodyParagraphs, closing };
+}
+
 export function FounderProfile({
   name,
   title,
@@ -21,7 +37,7 @@ export function FounderProfile({
   imageUrl,
   imageAlt,
 }: FounderProfileProps) {
-  const [leadParagraph, ...bodyParagraphs] = paragraphs;
+  const { leadParagraph, bodyParagraphs, closing } = splitFounderCopy(paragraphs);
 
   return (
     <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-10 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-20">
@@ -120,6 +136,17 @@ export function FounderProfile({
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent"
               />
+            </div>
+          </Reveal>
+        ) : null}
+
+        {/* Closing emphasis band — distinct from body bio copy */}
+        {closing ? (
+          <Reveal variant="fadeUp" delay={0.2}>
+            <div className="mt-10 border border-white/12 bg-white/[0.04] px-5 py-5 sm:mt-12 sm:px-8 sm:py-6 lg:mt-14 lg:px-10 lg:py-7">
+              <p className="max-w-5xl text-base leading-8 text-white/90 md:text-lg md:leading-9">
+                {closing}
+              </p>
             </div>
           </Reveal>
         ) : null}

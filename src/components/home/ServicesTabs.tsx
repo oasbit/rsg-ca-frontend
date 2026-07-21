@@ -9,6 +9,7 @@ import { OutlineButton } from "@/components/ui/OutlineButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { isTransparentAsset } from "@/lib/wordpress/images";
+import { ListCheckMark } from "@/components/icons/ListCheckMark";
 import { ServiceTabIcon } from "@/components/icons/ServiceIcons";
 import type { WPServiceBlock } from "@/lib/wordpress/types";
 
@@ -218,12 +219,9 @@ export function ServicesTabs({
                             : "text-white/85",
                       )}
                     >
-                      <span
-                        className={cn(
-                          "mt-2 shrink-0 transition-all duration-300 group-hover:w-6",
-                          isLight ? "bg-body" : "bg-accent",
-                          activeService.quoteBullets ? "h-px w-6" : "h-px w-4",
-                        )}
+                      <ListCheckMark
+                        tone={isLight ? "body" : "accent"}
+                        className="transition-transform duration-300 group-hover:scale-110"
                       />
                       <span className="transition-transform duration-300 group-hover:translate-x-1">
                         {bullet}

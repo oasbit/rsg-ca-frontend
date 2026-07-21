@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { ListCheckMark } from "@/components/icons/ListCheckMark";
+import { ListCrossMark } from "@/components/icons/ListCrossMark";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
@@ -174,7 +176,7 @@ export default function TeamBuildingPage() {
           />
 
           <div className="absolute inset-0 flex items-end">
-            <div className="mx-auto w-full max-w-7xl px-6 pb-8 sm:pb-12 lg:px-10 lg:pb-20">
+            <div className="mx-auto w-full max-w-7xl px-6 pb-5 sm:pb-6 lg:px-10 lg:pb-8">
               <Reveal variant="fadeUp">
                 <SectionLabel light>Interactive &amp; Engaging Development</SectionLabel>
                 <h2 className="mt-2 font-display text-2xl text-accent sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl">
@@ -185,41 +187,67 @@ export default function TeamBuildingPage() {
           </div>
         </div>
 
-        {/* Body copy below the image */}
+        {/* Lead + matching tiles */}
         <GrainOverlay />
-        <div className="relative mx-auto max-w-7xl px-6 py-10 sm:py-12 lg:px-10 lg:py-20">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-16">
-            <Reveal variant="fadeUp">
-              <p className="text-sm leading-8 text-white/80 md:text-base">
-                Through continual effort, clear mandates, and special
-                initiatives, staff are able to work, learn, and grow in
-                positive, healthy, and productive environments. Too often,
-                organizations do not take the necessary time from demanding
-                schedules for team-building and collaborative development.
-                Our collection of interactive workshops is designed to
-                build strong, connected teams and prepare participants for the
-                variety of opportunities to contribute and lead effectively.
-              </p>
+        <div className="relative mx-auto max-w-7xl px-6 pt-4 pb-10 sm:pt-5 sm:pb-12 lg:px-10 lg:pt-6 lg:pb-20">
+          <Reveal variant="fadeUp">
+            <p className="max-w-3xl text-sm leading-7 text-white/90 sm:text-base sm:leading-8 md:text-lg">
+              Our collection of interactive workshops is designed to build
+              strong, connected teams and prepare participants for the variety
+              of opportunities that come with working together effectively.
+            </p>
+          </Reveal>
+
+          <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:mt-12 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
+            <Reveal variant="fadeUp" className="h-full">
+              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-5 sm:p-7 lg:p-8">
+                <h3 className="text-sm font-medium tracking-[0.08em] text-white uppercase">
+                  Leadership &amp; Team-Building — The Competitive Advantage
+                </h3>
+
+                <ul className="mt-6 space-y-5 sm:mt-7 sm:space-y-6">
+                  <li className="flex gap-3 sm:gap-4">
+                    <ListCheckMark className="mt-1.5" />
+                    <p className="text-sm leading-7 text-white/85 md:text-base md:leading-8">
+                      Creating positive and supportive workplace environments and
+                      developing leadership and interpersonal skills at the
+                      corporate and organizational levels allows staff to work,
+                      learn, and grow within productive and supportive
+                      environments.
+                    </p>
+                  </li>
+                  <li className="flex gap-3 border-t border-white/10 pt-5 sm:gap-4 sm:pt-6">
+                    <ListCrossMark className="mt-1.5" />
+                    <p className="text-sm leading-7 text-white/65 md:text-base md:leading-8">
+                      All too often, organizations do not take the necessary time
+                      from demanding schedules for team-building and collaborative
+                      activities focused on the development of leadership skills.
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </Reveal>
 
-            <Reveal variant="fadeUp" delay={0.1}>
-              <h3 className="text-sm font-medium tracking-[0.08em] text-white uppercase">
-                How does the program work?
-              </h3>
-              <p className="mt-5 text-sm leading-8 text-white/80 md:text-base">
-                With the goal of supporting sustainable organizational growth,
-                inspiring positive team environments, and strengthening how people
-                work together, our team plans, organizes, and delivers a carefully
-                crafted combination of awareness and empowerment activities and
-                challenges. As participants complete each progressive activity,
-                they refine the essential skills, tools, and techniques required
-                to build cohesive teams—and develop the leadership capacity that
-                emerges from doing it well.
-              </p>
-              <p className="mt-6 text-xs leading-6 text-muted">
-                * We work with our community partners in devising unique programs
-                to meet expressed or assessed need.
-              </p>
+            <Reveal variant="fadeUp" delay={0.1} className="h-full">
+              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-5 sm:p-7 lg:p-8">
+                <h3 className="text-sm font-medium tracking-[0.08em] text-white uppercase">
+                  How does the program work?
+                </h3>
+                <p className="mt-6 text-sm leading-7 text-white/85 sm:mt-7 md:text-base md:leading-8">
+                  With the goal of supporting sustainable organizational change,
+                  creating positive team environments, and strengthening leadership
+                  skills, our team plans, organizes, and delivers a carefully
+                  curated series of self-awareness and empowerment activities and
+                  exercises. As participants complete each progressive activity,
+                  they refine the communication and leadership techniques required
+                  to build cohesive teams—and develop the leadership capacity that
+                  emerges from doing it well.
+                </p>
+                <p className="mt-auto pt-6 text-xs leading-6 text-muted">
+                  * We work with our community partners in devising unique programs
+                  to meet expressed or assessed need.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
