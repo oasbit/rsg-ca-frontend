@@ -11,6 +11,29 @@ import {
 } from "@/lib/privacy-policy";
 import { SERVICE_AREA } from "@/lib/site";
 
+const SERVICE_DISPLAY_ORDER = [
+  "Team Building",
+  "Strategic Planning",
+  "Leadership Development",
+  "Facilitation",
+] as const;
+
+function sortServicesByDisplayOrder<T extends { title: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    const aIndex = SERVICE_DISPLAY_ORDER.indexOf(
+      a.title as (typeof SERVICE_DISPLAY_ORDER)[number],
+    );
+    const bIndex = SERVICE_DISPLAY_ORDER.indexOf(
+      b.title as (typeof SERVICE_DISPLAY_ORDER)[number],
+    );
+
+    return (
+      (aIndex === -1 ? SERVICE_DISPLAY_ORDER.length : aIndex) -
+      (bIndex === -1 ? SERVICE_DISPLAY_ORDER.length : bIndex)
+    );
+  });
+}
+
 function formatFounderName(name?: string): string {
   const value = name ?? "Dr. Andrew Peters";
   return value.replace(/,\s*BA,\s*MA,\s*PhD\b/gi, "");
@@ -47,13 +70,13 @@ export function resolveHomeContent(page: WPPage | null): Required<
     hero_headline_emphasis: acf.hero_headline_emphasis ?? "FACILITATING CHANGE.",
     hero_body:
       acf.hero_body ??
-      "We support individuals, organizations, corporations, and Indigenous communities in the areas of: Education, Leadership, Strategic Planning, Advancement, and Development.",
+      "We support individuals, organizations, corporations, educational institutions and Indigenous communities in the areas of: Education, Leadership, Strategic Planning, Advancement, and Development.",
     editorial_headline:
       acf.editorial_headline ??
       "Connected and Collaborative Organizations and Communities",
     editorial_body:
       acf.editorial_body ??
-      "We support organizations and communities through strategic planning, leadership development, and team-building programs designed for sustainable growth.",
+      "We support offices, departments, special corporate teams, not-for-profit boards and teams, organizations, institutions and communities through strategic planning, leadership development, and team-building programs designed for sustainable growth.",
     about_teaser_title: acf.about_teaser_title ?? "Who We Are",
     about_teaser_body:
       acf.about_teaser_body ??
@@ -68,7 +91,13 @@ export function resolveHomeContent(page: WPPage | null): Required<
       { title: "Awareness", description: "Develop social awareness" },
       { title: "Development", description: "Develop capacity and growth" },
     ],
-    services_preview: acf.services_preview ?? [
+    services_preview: sortServicesByDisplayOrder(
+      acf.services_preview ?? [
+      {
+        title: "Team Building",
+        tagline: "Develop Cohesive Teams",
+        slug: "team-building",
+      },
       {
         title: "Strategic Planning",
         tagline: "Chart Your Course",
@@ -80,17 +109,28 @@ export function resolveHomeContent(page: WPPage | null): Required<
         slug: "leadership",
       },
       {
-        title: "Team Building",
-        tagline: "Develop Cohesive Teams",
-        slug: "team-building",
-      },
-      {
         title: "Facilitation",
         tagline: "Efficiency, Accountability, Synergy",
         slug: "facilitation",
       },
     ],
-    home_service_blocks: acf.home_service_blocks ?? [
+    ),
+    home_service_blocks: sortServicesByDisplayOrder(
+      acf.home_service_blocks ?? [
+      {
+        title: "Team Building",
+        tagline: "Develop Cohesive Teams",
+        detailHref: "/services/team-building",
+        body: "We create environments where leadership development happens through shared experience. Participants practice communication, accountability, trust, and collaborative problem-solving while building the confidence to lead within their teams.",
+        bulletsLead: "Together, we will:",
+        bullets: [
+          "Create a safe, engaging environment where every participant can contribute and lead",
+          "Build trust, communication, and shared accountability across the team",
+          "Turn real team challenges into practical leadership-development opportunities",
+          "Strengthen collaboration, confidence, and constructive decision-making",
+          "Establish team practices that support healthy relationships and sustainable performance",
+        ],
+      },
       {
         title: "Strategic Planning",
         tagline: "Chart Your Course",
@@ -119,20 +159,6 @@ export function resolveHomeContent(page: WPPage | null): Required<
         ],
       },
       {
-        title: "Team Building",
-        tagline: "Develop Cohesive Teams",
-        detailHref: "/services/team-building",
-        body: "We create environments where leadership development happens through shared experience. Participants practice communication, accountability, trust, and collaborative problem-solving while building the confidence to lead within their teams.",
-        bulletsLead: "Together, we will:",
-        bullets: [
-          "Create a safe, engaging environment where every participant can contribute and lead",
-          "Build trust, communication, and shared accountability across the team",
-          "Turn real team challenges into practical leadership-development opportunities",
-          "Strengthen collaboration, confidence, and constructive decision-making",
-          "Establish team practices that support healthy relationships and sustainable performance",
-        ],
-      },
-      {
         title: "Facilitation",
         tagline: "Efficiency, Accountability, Synergy",
         body: "We design and guide focused conversations that help groups move from competing perspectives to shared decisions and practical next steps. Every engagement is tailored to the people, context, and outcome in front of us.",
@@ -146,6 +172,7 @@ export function resolveHomeContent(page: WPPage | null): Required<
         ],
       },
     ],
+    ),
     process_intro:
       acf.process_intro ??
       "We work closely with organizations and communities to understand their needs, develop effective strategies, and implement practical solutions that strengthen leadership and teamwork.",
@@ -337,7 +364,7 @@ export function resolveServicesContent(page: WPPage | null): Required<
   return {
     hero_subtitle:
       acf.hero_subtitle ??
-      "Strategic Planning · Leadership · Team Building · Facilitation",
+      "Team Building · Strategic Planning · Leadership · Facilitation",
     hero_body:
       acf.hero_body ??
       "We are committed to working with our growing list of clients in devising innovative solutions that creatively address expressed and assessed need.",
@@ -349,7 +376,26 @@ export function resolveServicesContent(page: WPPage | null): Required<
       "We are committed to working with our growing list of clients in devising innovative solutions that creatively address expressed and/or assessed need.",
     quote_author: acf.quote_author ?? "Dr. Andrew Peters",
     quote_role: acf.quote_role ?? "Managing Director",
-    service_blocks: acf.service_blocks ?? [
+    service_blocks: sortServicesByDisplayOrder(
+      acf.service_blocks ?? [
+      {
+        title: "Team Building",
+        tagline: "Develop Cohesive Teams",
+        detailHref: "/services/team-building",
+        body: "Team-building is essential for an organization's long-term development and success, yet many stakeholders feel dissatisfied with past experiences. We believe the right facilitator can make all the difference.",
+        paragraphs: [
+          "Our team-building activities promote positive and active organizations while strengthening leadership and soft skills. Participants are encouraged to build strong connections and collaborate effectively. Through this program, individuals support their personal and professional growth and can immediately apply what they learn within the organization and beyond.",
+        ],
+        bulletsLead:
+          "Our creative collection of Team-building activities and challenges will:",
+        bullets: [
+          "Foster the development of essential team and leadership skills, while maximizing participation",
+          "Engage participants in the learning and development process, and equip them with essential knowledge and confidence in team environments",
+          "Promote positive, healthy, active organizations, and creatively facilitate positive connections and relations",
+          "Maximize leadership development skills and competencies",
+          "Provide guidance, assistance, and assurance to participants, in the process of building community and capacity.",
+        ],
+      },
       {
         title: "Strategic Planning",
         tagline: "Chart Your Course",
@@ -381,24 +427,6 @@ export function resolveServicesContent(page: WPPage | null): Required<
         ],
       },
       {
-        title: "Team Building",
-        tagline: "Develop Cohesive Teams",
-        detailHref: "/services/team-building",
-        body: "Team-building is essential for an organization's long-term development and success, yet many stakeholders feel dissatisfied with past experiences. We believe the right facilitator can make all the difference.",
-        paragraphs: [
-          "Our team-building activities promote positive and active organizations while strengthening leadership and soft skills. Participants are encouraged to build strong connections and collaborate effectively. Through this program, individuals support their personal and professional growth and can immediately apply what they learn within the organization and beyond.",
-        ],
-        bulletsLead:
-          "Our creative collection of Team-building activities and challenges will:",
-        bullets: [
-          "Foster the development of essential team and leadership skills, while maximizing participation",
-          "Engage participants in the learning and development process, and equip them with essential knowledge and confidence in team environments",
-          "Promote positive, healthy, active organizations, and creatively facilitate positive connections and relations",
-          "Maximize leadership development skills and competencies",
-          "Provide guidance, assistance, and assurance to participants, in the process of building community and capacity.",
-        ],
-      },
-      {
         title: "Facilitation",
         tagline: "Efficiency, Accountability, Synergy",
         body: "We understand the essential role of a facilitator in today's world, and can provide your group with the highest quality process and experience that promises to help make your strategic planning and corporate restructuring sessions as effective and productive as possible. Whether it is a cohesive and cooperative group, or a reluctant and dysfunctional team, we have identified effective workshops, activities, & processes for virtually every scenario, and can adapt our programs to any circumstances, while building consensus and successfully accomplishing the task at hand.",
@@ -412,6 +440,7 @@ export function resolveServicesContent(page: WPPage | null): Required<
         ],
       },
     ],
+    ),
   };
 }
 

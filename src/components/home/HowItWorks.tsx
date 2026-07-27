@@ -19,7 +19,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionTransition className="bg-black py-10 text-white sm:py-12 lg:pt-32 lg:pb-32">
+    <SectionTransition className="relative z-10 bg-black py-10 text-white sm:py-12 lg:pt-32 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">

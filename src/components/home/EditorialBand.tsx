@@ -37,7 +37,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
   const backgroundImage = resolveEditorialBackgroundImage();
 
   return (
-    <SectionTransition className="bg-cream text-black">
+    <SectionTransition className="relative bg-cream text-black">
       <div className="mx-auto max-w-4xl px-6 pt-10 text-center sm:pt-14 lg:px-10 lg:pt-24">
         <Reveal variant="fadeUp">
           <h2>
@@ -66,7 +66,11 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
         </Reveal>
       </div>
 
-      <Reveal variant="fadeIn" delay={0.14} className="relative min-h-[12rem] w-full overflow-hidden sm:min-h-[16rem] md:min-h-[25rem] lg:min-h-[50rem]">
+      <Reveal
+        variant="fadeIn"
+        delay={0.14}
+        className="relative z-0 h-[6rem] w-full overflow-hidden sm:h-[8rem] md:h-[12.5rem] lg:h-[25rem]"
+      >
         <Image
           src={backgroundImage.src}
           alt={backgroundImage.alt}
@@ -76,7 +80,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_8%,rgba(0,0,0,0.22)_32%,rgba(0,0,0,0.48)_55%,rgba(0,0,0,0.78)_78%,#000_100%)]"
         />
       </Reveal>
     </SectionTransition>

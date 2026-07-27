@@ -152,9 +152,9 @@ export function resolveServicesHeroImage(page: WPPage | null): SiteImage {
 export function resolveServiceBlockImages(page: WPPage | null): string[] {
   void page;
   return [
+    BRAND.servicePageBlocks.teamBuilding,
     BRAND.servicePageBlocks.strategicPlanning,
     BRAND.servicePageBlocks.leadershipDevelopment,
-    BRAND.servicePageBlocks.teamBuilding,
     BRAND.servicePageBlocks.facilitation,
   ];
 }
@@ -163,9 +163,9 @@ export function resolveServiceBlockImages(page: WPPage | null): string[] {
 export function resolveHomeServiceTabImages(page: WPPage | null): string[] {
   void page;
   return [
+    BRAND.serviceTabs.teamBuilding,
     BRAND.serviceTabs.strategicPlanning,
     BRAND.serviceTabs.leadershipDevelopment,
-    BRAND.serviceTabs.teamBuilding,
     BRAND.serviceTabs.facilitation,
   ];
 }

@@ -55,8 +55,8 @@ const WHY_US = [
     title: "Employability Skills",
     subtitle: "Workplace prep",
     body: "This team-building initiative directly addresses and reinforces the development of interpersonal, personal and group management, and critical-thinking skills—while preparing participants to lead when the moment calls for it.",
-    image: BRAND.teamBuilding.keynote,
-    imageAlt: "Corporate team-building keynote presentation",
+    image: BRAND.heroBackgrounds.services,
+    imageAlt: "RS Group services",
   },
 ];
 

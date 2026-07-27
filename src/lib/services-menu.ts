@@ -20,6 +20,12 @@ function serviceAnchor(title: string): string {
 /** Primary services surfaced in the header mega menu and mobile submenu. */
 export const SERVICES_MENU_ITEMS: ServiceMenuItem[] = [
   {
+    title: "Team Building",
+    tagline: "Develop Cohesive Teams",
+    href: "/services/team-building",
+    Icon: TeamIcon,
+  },
+  {
     title: "Strategic Planning",
     tagline: "Chart Your Course",
     href: serviceAnchor("Strategic Planning"),
@@ -30,12 +36,6 @@ export const SERVICES_MENU_ITEMS: ServiceMenuItem[] = [
     tagline: "Empower Positive Change",
     href: serviceAnchor("Leadership Development"),
     Icon: LeadershipIcon,
-  },
-  {
-    title: "Team Building",
-    tagline: "Develop Cohesive Teams",
-    href: "/services/team-building",
-    Icon: TeamIcon,
   },
   {
     title: "Facilitation",

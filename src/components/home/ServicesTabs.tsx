@@ -87,7 +87,7 @@ export function ServicesTabs({
           <div
             role="tablist"
             aria-label="Services"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
           >
             {services.map((service, index) => {
               const isActive = index === activeIndex;
@@ -102,9 +102,11 @@ export function ServicesTabs({
                   aria-controls={`service-panel-${index}`}
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => selectTab(index)}
+                  onMouseEnter={() => selectTab(index)}
+                  onFocus={() => selectTab(index)}
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
-                    "border-b-2 px-3 py-4 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
+                    "cursor-pointer border-b-2 px-3 py-4 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
                     isLight
                       ? isActive
                         ? "border-body bg-cream text-black"
@@ -152,7 +154,7 @@ export function ServicesTabs({
               animate={{ opacity: 1, y: 0 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-6 p-5 sm:gap-8 sm:p-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:p-12 xl:p-14"
+              className="grid gap-6 py-5 sm:gap-8 sm:py-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:py-12 xl:py-14"
             >
               <div
                 className={cn(

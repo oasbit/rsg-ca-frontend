@@ -38,7 +38,7 @@ export function ConnectCta({
   const { lead, name } = splitConnectTitle(title);
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-3 pb-12 text-white sm:pb-16 lg:pt-4 lg:pb-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-12 text-white sm:py-16 lg:py-24">
       <GrainOverlay />
 
       <div
@@ -50,11 +50,14 @@ export function ConnectCta({
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-10">
-          <Reveal variant="slideRight" className="relative lg:col-span-5 xl:col-span-5">
-            <div className="relative mx-auto max-w-md lg:mx-0 lg:max-w-none">
+        <div className="grid items-center gap-8 sm:gap-10 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-10 xl:min-h-[32rem]">
+          <Reveal
+            variant="slideRight"
+            className="relative flex items-center justify-center lg:col-span-5 xl:col-span-5"
+          >
+            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
               <motion.div
-                className="relative flex justify-center lg:justify-start"
+                className="relative flex items-center justify-center"
                 whileHover={
                   prefersReducedMotion ? undefined : { y: -4 }
                 }
@@ -91,7 +94,7 @@ export function ConnectCta({
           <Reveal
             variant="fadeUp"
             delay={0.12}
-            className="lg:col-span-7 lg:pl-4 xl:pl-10"
+            className="flex flex-col justify-center lg:col-span-7 lg:pl-4 xl:pl-10"
           >
             <SectionLabel light>Start a conversation</SectionLabel>
 

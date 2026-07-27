@@ -129,7 +129,7 @@ The **Our Team** partnership CTA follows the team profiles without a decorative 
 | `quote_role` | Text |
 | `service_blocks` | Repeater: `title`, `tagline`, `body`, `paragraphs`, `bulletsLead`, `bullets`, `quoteBullets`, `detailHref` |
 
-Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Strategic Planning (black) → Leadership (gray) → Team Building (black) → Facilitation (gray).
+Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Service order is **Team Building**, Strategic Planning, Leadership Development, Facilitation. Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Team Building (black) → Strategic Planning (gray) → Leadership (black) → Facilitation (gray).
 
 **Service detail pages.** A `service_blocks` entry with a `detailHref` links to a dedicated detail page. When present, the homepage `ServicesTabs` "Learn more" link and the services page `ServiceBlock` "Explore the program" link both point to it. These detail pages are intentionally **not** in the main menu (`menus.ts`); they are reached only from the Team Building sections.
 
@@ -325,15 +325,31 @@ Brand tokens are taken from the live WordPress Elementor kit (UICore theme):
 | Secondary | `#232323` | Surfaces, hover states |
 | Accent | `#F1ECDC` | Headlines, CTAs, links |
 | Light | `#DFDECD` | Secondary text on dark |
-| Body | `#49685E` | Body copy on light sections |
+| Body | `#3F5C52` | Body copy on light sections |
 | Cream | `#FEFDF0` | Light section backgrounds |
-| Muted | `#8C8C8C` | Supporting text |
+| Muted | `#A8A8A8` | Supporting text |
 
-- **Font:** Clash Display (loaded from WordPress media library, same as live site)
+- **Fonts:** Inter for body copy (via `next/font/google`); Clash Display for headings and display type
+- **Body readability:** 18px base size (+2px), 1.65 line-height, improved muted/subtle text contrast on dark surfaces (`--text-muted-on-dark`, `--text-body-on-dark`, etc.)
 - **Typography style:** headings, quotations, labels, and supporting copy use upright type; italic styling is intentionally disabled throughout the interface
 - **Page hero:** shared `PageHero` component on every route — full viewport height without an eyebrow label on `/`, compact (~44–50vh) on inner pages
 - **Patterns:** transparent-to-white header, line CTAs, grain overlays, editorial typography
 - **Motion:** page fade-in on route change, scroll-reveal sections, staggered grids, mobile menu animation (respects `prefers-reduced-motion`)
+
+### Accessibility widget
+
+A fixed **Accessibility** button appears at the bottom-left of every page (`AccessibilityWidget` in the root layout). It opens a panel with user-controlled options:
+
+| Option | Effect |
+|--------|--------|
+| Text size (A− / A+) | Scales root font size from 100% to 140% |
+| High contrast | Brighter text, links, and borders; light sections switch to black-on-white |
+| Highlight links | Underlines all links site-wide |
+| Readable font | Switches body copy to a system sans-serif with extra line spacing |
+| Reduce motion | Disables animations and transitions |
+| Reset | Clears saved preferences |
+
+Preferences persist in `localStorage` (`rsg-a11y-preferences`) and are applied on load via a bootstrap script to avoid a flash of the default theme. Global styles live in `src/styles/globals.css` under `[data-a11y-*]` selectors; logic is in `src/lib/accessibility/`.
 
 ### Mobile layout
 
@@ -359,7 +375,7 @@ Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Foote
 
 1. PageHero → 2. PillarsGrid → 3. EditorialBand → 4. **AboutTeaser** → 5. **ServicesTabs** → 6. HowItWorks → (layout) ConnectCta
 
-**ServicesTabs** presents four homepage service panels (Strategic Planning, Leadership Development, Team Building, and Facilitation) from `home_service_blocks`. Their bullets use action-oriented marketing copy, bordered backgrounds, and subtle hover motion. List markers use the shared `ListCheckMark` icon (not thin dashes) across homepage tabs, service blocks, and about detail lists. Leadership focuses on applied development and organizational advocacy; Team Building is rooted in creating environments for leadership development; Facilitation uses an “As facilitators, we will…” framework.
+**ServicesTabs** presents four homepage service panels (**Team Building**, Strategic Planning, Leadership Development, and Facilitation) from `home_service_blocks`. Their bullets use action-oriented marketing copy, bordered backgrounds, and subtle hover motion. List markers use the shared `ListCheckMark` icon (not thin dashes) across homepage tabs, service blocks, and about detail lists. Leadership focuses on applied development and organizational advocacy; Team Building is rooted in creating environments for leadership development; Facilitation uses an “As facilitators, we will…” framework.
 
 **AboutTeaser** uses a black editorial layout: split headline/body, numbered highlight cards from pillars, no image.
 

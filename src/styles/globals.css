@@ -24,17 +24,19 @@
   --secondary: #232323;
   --accent: #f1ecdc;
   --light: #dfdecd;
-  --body: #49685e;
+  --body: #3f5c52;
   --cream: #fefdf0;
-  --muted: #8c8c8c;
+  --muted: #a8a8a8;
   --surface: #232323;
   --divider-on-dark: rgb(255 255 255 / 20%);
   --divider-on-dark-strong: rgb(255 255 255 / 30%);
   --divider-on-light: rgb(0 0 0 / 16%);
   --divider-on-light-strong: rgb(0 0 0 / 24%);
-  --text-subtle-on-dark: rgb(255 255 255 / 68%);
-  --text-muted-on-dark: rgb(255 255 255 / 78%);
-  --accent-subtle-on-dark: rgb(241 236 220 / 76%);
+  --text-subtle-on-dark: rgb(255 255 255 / 74%);
+  --text-muted-on-dark: rgb(255 255 255 / 82%);
+  --text-body-on-dark: rgb(255 255 255 / 88%);
+  --text-body-emphasis-on-dark: rgb(255 255 255 / 92%);
+  --accent-subtle-on-dark: rgb(241 236 220 / 82%);
   --header-height: 96px;
   --header-height-compact: 52px;
 }
@@ -64,23 +66,41 @@
   --color-light: var(--light);
   --color-body: var(--body);
   --color-cream: var(--cream);
-  --font-sans: "Clash Display", system-ui, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   --font-display: "Clash Display", system-ui, sans-serif;
+  --text-xs: calc(0.75rem + 2px);
+  --text-xs--line-height: 1.65;
+  --text-sm: calc(0.875rem + 2px);
+  --text-sm--line-height: 1.65;
+  --text-base: calc(1rem + 2px);
+  --text-base--line-height: 1.65;
+  --text-lg: calc(1.125rem + 2px);
+  --text-lg--line-height: 1.65;
+  --text-xl: calc(1.25rem + 2px);
+  --text-xl--line-height: 1.65;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: calc(100% * var(--a11y-font-scale, 1));
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  font-size: calc(1rem + 2px);
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
 
 .font-display {
   font-family: var(--font-display);
+  letter-spacing: normal;
 }
 
 /*
@@ -119,8 +139,19 @@ body {
 
 .text-white\/50,
 .text-white\/55,
-.text-white\/60 {
+.text-white\/60,
+.text-white\/65 {
   color: var(--text-muted-on-dark);
+}
+
+.text-white\/75,
+.text-white\/80 {
+  color: var(--text-body-on-dark);
+}
+
+.text-white\/85,
+.text-white\/90 {
+  color: var(--text-body-emphasis-on-dark);
 }
 
 .text-accent\/35,
@@ -129,7 +160,73 @@ body {
 }
 
 .text-body\/50 {
-  color: color-mix(in srgb, var(--body) 82%, transparent);
+  color: color-mix(in srgb, var(--body) 88%, transparent);
+}
+
+.text-body\/70 {
+  color: color-mix(in srgb, var(--body) 94%, transparent);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+/*
+ * Accessibility widget preferences (see AccessibilityWidget).
+ */
+html[data-a11y-highlight-links="true"] a:where(:not([aria-hidden="true"])) {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+html[data-a11y-readable-font="true"] body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif !important;
+  letter-spacing: 0.02em;
+  line-height: 1.8 !important;
+}
+
+html[data-a11y-readable-font="true"] body :where(p, li, span, a, button, input, textarea, label, small) {
+  font-family: inherit !important;
+}
+
+html[data-a11y-high-contrast="true"] {
+  --foreground: #ffffff;
+  --muted: #f2f2f2;
+  --accent: #ffea00;
+  --body: #ffffff;
+  --text-subtle-on-dark: #ffffff;
+  --text-muted-on-dark: #ffffff;
+  --text-body-on-dark: #ffffff;
+  --text-body-emphasis-on-dark: #ffffff;
+  --accent-subtle-on-dark: #ffea00;
+  --divider-on-dark: rgb(255 255 255 / 65%);
+  --divider-on-dark-strong: #ffffff;
+}
+
+html[data-a11y-high-contrast="true"] body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html[data-a11y-high-contrast="true"] .bg-cream,
+html[data-a11y-high-contrast="true"] .bg-cream.text-black {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html[data-a11y-high-contrast="true"] .bg-cream :where(.text-body, .text-black, .text-black\/80, .text-black\/85, .text-body\/50, .text-body\/70) {
+  color: #000000 !important;
+}
+
+html[data-a11y-reduce-motion="true"] *,
+html[data-a11y-reduce-motion="true"] *::before,
+html[data-a11y-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
 }
 
 ::selection {
@@ -177,18 +274,18 @@ body {
 
 .prose-legal p,
 .prose-legal li {
-  color: var(--muted);
-  line-height: 1.65;
+  color: var(--text-body-on-dark);
+  line-height: 1.75;
   margin-bottom: 0.75rem;
-  font-size: 0.875rem;
+  font-size: calc(0.9375rem + 2px);
 }
 
 @media (min-width: 640px) {
   .prose-legal p,
   .prose-legal li {
-    line-height: 1.75;
+    line-height: 1.8;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: calc(1.0625rem + 2px);
   }
 }
 
@@ -225,4 +322,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+html[data-a11y-reduce-motion="true"] {
+  scroll-behavior: auto;
 }

@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ConnectCtaSection } from "@/components/layout/ConnectCtaSection";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { AccessibilityWidget } from "@/components/accessibility/AccessibilityWidget";
+import { A11Y_BOOTSTRAP_SCRIPT } from "@/lib/accessibility/bootstrap-script";
 import { getSiteUrl, organizationJsonLd } from "@/lib/seo";
 import "@/styles/globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -28,11 +37,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html lang="en" className={`h-full ${inter.variable}`} suppressHydrationWarning>
       <body
-        className="min-h-full bg-black text-white antialiased"
+        className="min-h-full bg-black font-sans text-base leading-relaxed text-white antialiased"
         suppressHydrationWarning
       >
+        <script
+          dangerouslySetInnerHTML={{ __html: A11Y_BOOTSTRAP_SCRIPT }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
@@ -43,6 +55,7 @@ export default function RootLayout({
           <ConnectCtaSection />
         </main>
         <Footer />
+        <AccessibilityWidget />
       </body>
     </html>
   );
