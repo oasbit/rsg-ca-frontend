@@ -53,9 +53,9 @@ export function ConnectCta({
         <div className="grid items-center gap-5 sm:gap-10 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-10 xl:min-h-[32rem]">
           <Reveal
             variant="slideRight"
-            className="relative flex items-center justify-center lg:col-span-5 xl:col-span-5"
+            className="relative -mx-4 flex items-center justify-center sm:mx-0 lg:col-span-5 xl:col-span-5"
           >
-            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+            <div className="relative mx-auto w-full sm:max-w-md lg:mx-0 lg:max-w-none">
               <motion.div
                 className="relative flex items-center justify-center"
                 whileHover={
@@ -63,14 +63,14 @@ export function ConnectCta({
                 }
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative w-full overflow-hidden">
                   <Image
                     src={imageUrl}
                     alt={imageAlt}
                     width={614}
                     height={1024}
-                    className="h-auto w-full max-w-[16rem] object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:max-w-xs lg:max-w-sm xl:max-w-md"
-                    sizes="(max-width: 1024px) 90vw, 40vw"
+                    className="h-auto w-full object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:mx-auto sm:max-w-xs lg:max-w-sm xl:max-w-md"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 40vw"
                   />
                   <div
                     aria-hidden

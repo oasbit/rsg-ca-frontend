@@ -87,7 +87,7 @@ export function ServicesTabs({
           <div
             role="tablist"
             aria-label="Services"
-            className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            className="relative z-10 -mx-4 flex snap-x snap-mandatory gap-0 overflow-x-auto overscroll-x-contain px-4 [scrollbar-width:none] sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden"
           >
             {services.map((service, index) => {
               const isActive = index === activeIndex;
@@ -106,7 +106,7 @@ export function ServicesTabs({
                   onFocus={() => selectTab(index)}
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
-                    "cursor-pointer border-b-2 px-3 py-3.5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
+                    "snap-start shrink-0 cursor-pointer border-b-2 px-4 py-3.5 text-center whitespace-nowrap transition-all duration-400 ease-out sm:w-auto sm:shrink sm:px-5 sm:py-5 sm:whitespace-normal lg:py-6",
                     isLight
                       ? isActive
                         ? "border-body bg-cream text-black"
@@ -156,9 +156,34 @@ export function ServicesTabs({
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="grid gap-4 py-4 sm:gap-8 sm:py-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:py-12 xl:py-14"
             >
+              {showImage ? (
+                <div className="order-1 lg:order-2 lg:col-span-5">
+                  <div
+                    className={cn(
+                      "relative h-[11rem] w-full overflow-hidden sm:h-[18rem] md:h-[22rem] lg:h-full lg:min-h-[26rem]",
+                      isTransparent
+                        ? ""
+                        : cn("border", isLight ? "border-black/10" : "border-white/10"),
+                    )}
+                  >
+                    <Image
+                      src={activeImage}
+                      alt={activeService.title}
+                      fill
+                      className={cn(
+                        isTransparent
+                          ? "object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
+                          : "object-cover",
+                      )}
+                      sizes="(max-width: 1024px) 90vw, 40vw"
+                    />
+                  </div>
+                </div>
+              ) : null}
+
               <div
                 className={cn(
-                  "lg:self-center",
+                  "order-2 lg:order-1 lg:self-center",
                   showImage ? "lg:col-span-7" : "lg:col-span-12",
                 )}
               >
@@ -251,31 +276,6 @@ export function ServicesTabs({
                   </OutlineButton>
                 </div>
               </div>
-
-              {showImage ? (
-                <div className="lg:col-span-5">
-                  <div
-                    className={cn(
-                      "relative h-[11rem] w-full overflow-hidden sm:h-[18rem] md:h-[22rem] lg:h-full lg:min-h-[26rem]",
-                      isTransparent
-                        ? ""
-                        : cn("border", isLight ? "border-black/10" : "border-white/10"),
-                    )}
-                  >
-                    <Image
-                      src={activeImage}
-                      alt={activeService.title}
-                      fill
-                      className={cn(
-                        isTransparent
-                          ? "object-contain object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
-                          : "object-cover",
-                      )}
-                      sizes="(max-width: 1024px) 90vw, 40vw"
-                    />
-                  </div>
-                </div>
-              ) : null}
             </motion.div>
           </AnimatePresence>
         </div>

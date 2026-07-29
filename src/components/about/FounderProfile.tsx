@@ -41,6 +41,21 @@ export function FounderProfile({
 
   return (
     <SectionTransition className="relative overflow-hidden bg-black pt-4 pb-6 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-20">
+      {/* Mobile-only full-bleed portrait background */}
+      {imageUrl ? (
+        <div className="pointer-events-none absolute inset-0 lg:hidden" aria-hidden>
+          <Image
+            src={imageUrl}
+            alt=""
+            fill
+            className="object-cover object-[center_20%] opacity-45"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/95" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+        </div>
+      ) : null}
+
       <GrainOverlay />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -87,7 +102,7 @@ export function FounderProfile({
             ) : null}
           </Reveal>
 
-          {/* Portrait column — constrained, deliberately cropped at base */}
+          {/* Portrait column — desktop only (mobile uses section background) */}
           {imageUrl ? (
             <Reveal
               variant="fade"
@@ -95,7 +110,6 @@ export function FounderProfile({
               className="hidden lg:col-span-5 lg:block xl:col-span-4"
             >
               <div className="relative h-full min-h-[320px] w-full overflow-hidden">
-                {/* Subtle warm glow behind the figure */}
                 <div
                   aria-hidden
                   className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_70%,rgba(241,236,220,0.07)_0%,transparent_70%)]"
@@ -107,7 +121,6 @@ export function FounderProfile({
                   className="object-contain object-top"
                   sizes="35vw"
                 />
-                {/* Bottom crop fade — intentionally cuts the lower figure */}
                 <div
                   aria-hidden
                   className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black via-black/60 to-transparent"
@@ -117,33 +130,10 @@ export function FounderProfile({
           ) : null}
         </div>
 
-        {/* Mobile portrait strip */}
-        {imageUrl ? (
-          <Reveal variant="fadeIn" delay={0.14} className="lg:hidden">
-            <div className="relative mt-5 h-[280px] overflow-hidden sm:mt-10 sm:h-[320px]">
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"
-              />
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
-                fill
-                className="object-contain object-top"
-                sizes="80vw"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent"
-              />
-            </div>
-          </Reveal>
-        ) : null}
-
         {/* Closing emphasis band — distinct from body bio copy */}
         {closing ? (
           <Reveal variant="fadeUp" delay={0.2}>
-            <div className="mt-6 border border-white/12 bg-white/[0.04] px-5 py-3.5 sm:mt-12 sm:px-8 sm:py-6 lg:mt-14 lg:px-10 lg:py-7">
+            <div className="mt-6 border border-white/12 bg-white/[0.04] px-5 py-3.5 backdrop-blur-[2px] sm:mt-12 sm:px-8 sm:py-6 lg:mt-14 lg:px-10 lg:py-7">
               <p className="max-w-5xl text-base leading-8 text-white/90 md:text-lg md:leading-9">
                 {closing}
               </p>

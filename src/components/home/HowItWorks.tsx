@@ -64,7 +64,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
                 <article className="group relative h-full">
                   {index < steps.length - 1 ? (
                     <div
-                      className="absolute top-5 left-10 h-full w-px bg-white/10 sm:hidden"
+                      className="absolute top-9 bottom-0 left-[1.125rem] w-px -translate-x-1/2 bg-white/10 sm:hidden"
                       aria-hidden="true"
                     />
                   ) : null}
@@ -76,7 +76,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
                       </div>
                     </div>
 
-                    <div className="min-w-0 flex-1 border-l border-white/10 pl-4 sm:border-0 sm:pl-0">
+                    <div className="min-w-0 flex-1">
                       <h3 className="font-display text-lg text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
                         {step.title}
                       </h3>
