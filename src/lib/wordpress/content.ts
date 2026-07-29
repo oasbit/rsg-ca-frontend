@@ -13,8 +13,8 @@ import { COMPANY_NAME, SERVICE_AREA } from "@/lib/site";
 
 const SERVICE_DISPLAY_ORDER = [
   "Team Building",
-  "Strategic Planning",
   "Leadership Development",
+  "Strategic Planning",
   "Facilitation",
 ] as const;
 
@@ -99,14 +99,14 @@ export function resolveHomeContent(page: WPPage | null): Required<
         slug: "team-building",
       },
       {
-        title: "Strategic Planning",
-        tagline: "Chart Your Course",
-        slug: "strategic-planning",
-      },
-      {
         title: "Leadership Development",
         tagline: "Empower Positive Change",
         slug: "leadership",
+      },
+      {
+        title: "Strategic Planning",
+        tagline: "Chart Your Course",
+        slug: "strategic-planning",
       },
       {
         title: "Facilitation",
@@ -132,6 +132,19 @@ export function resolveHomeContent(page: WPPage | null): Required<
         ],
       },
       {
+        title: "Leadership Development",
+        tagline: "Empower Positive Change",
+        body: "We turn leadership potential into practical action. Our customized development programs help leaders communicate with purpose, guide teams through change, and represent their organization with confidence.",
+        bulletsLead: "We will help your organization:",
+        bullets: [
+          "Assess leadership strengths, gaps, and development priorities",
+          "Build a customized leadership roadmap aligned with organizational goals",
+          "Deliver workshops, coaching, and applied learning experiences",
+          "Strengthen communication, decision-making, accountability, and team engagement",
+          "Equip leaders to champion your mission and communicate its value to staff, partners, and communities",
+        ],
+      },
+      {
         title: "Strategic Planning",
         tagline: "Chart Your Course",
         body: "We help organizations create clear, effective strategies for sustainable growth. Through analysis, collaboration, and guided planning, we support teams in defining goals, improving processes, and building strong action plans for long-term success.",
@@ -143,19 +156,6 @@ export function resolveHomeContent(page: WPPage | null): Required<
           "Establish a strong vision, mission, and organizational direction",
           "Create short-, medium-, and long-term action plans",
           "Encourage collaboration while integrating community input",
-        ],
-      },
-      {
-        title: "Leadership Development",
-        tagline: "Empower Positive Change",
-        body: "We turn leadership potential into practical action. Our customized development programs help leaders communicate with purpose, guide teams through change, and represent their organization with confidence.",
-        bulletsLead: "We will help your organization:",
-        bullets: [
-          "Assess leadership strengths, gaps, and development priorities",
-          "Build a customized leadership roadmap aligned with organizational goals",
-          "Deliver workshops, coaching, and applied learning experiences",
-          "Strengthen communication, decision-making, accountability, and team engagement",
-          "Equip leaders to champion your mission and communicate its value to staff, partners, and communities",
         ],
       },
       {
@@ -364,7 +364,7 @@ export function resolveServicesContent(page: WPPage | null): Required<
   return {
     hero_subtitle:
       acf.hero_subtitle ??
-      "Team Building · Strategic Planning · Leadership · Facilitation",
+      "Team Building · Leadership · Strategic Planning · Facilitation",
     hero_body:
       acf.hero_body ??
       "We are committed to working with our growing list of clients in devising innovative solutions that creatively address expressed and assessed need.",
@@ -397,20 +397,6 @@ export function resolveServicesContent(page: WPPage | null): Required<
         ],
       },
       {
-        title: "Strategic Planning",
-        tagline: "Chart Your Course",
-        body: "An organization's strategy for sustainable growth involves evaluating its current environment, processes, procedures, and practices. This information helps guide strategic planning to improve operations and management. Implementing necessary changes increases accountability, enhances efficiency, and supports long-term success in achieving departmental and community goals.",
-        bullets: [
-          "Ensure that your strategic planning process is progressive, inclusive, efficient, and effective",
-          "Help you establish goals and objectives for your process that are meaningful and achievable.",
-          "Customize a process and plan to match your specific need, desire, & unique circumstances.",
-          "Effectively lead interviews, community forums, sessions, activities, and workshops, while guiding progress with energy and skill.",
-          "Guide your team through the process of establishing a clear vision, mission, & mandate, while making constructive recommendations in establishing a confident organizational structure.",
-          "Accomplish strategic direction, while considering short, medium, & long range action plans.",
-          "Maximize interdepartmental collaboration and support, while allowing for community input and maintaining administrative/management direction.",
-        ],
-      },
-      {
         title: "Leadership Development",
         tagline: "Empower Positive Change",
         body: "Leadership is a powerful tool that can create competitive advantages. We believe that intentional training and development help strengthen leadership skills and should be part of every responsible organizational culture.",
@@ -424,6 +410,20 @@ export function resolveServicesContent(page: WPPage | null): Required<
           "Leadership is the \"process of social influence in which one person can enlist the aid and support of others in the accomplishment of a common task\".",
           '"Leadership is ultimately about creating a way for people to contribute to making something extraordinary happen." Alan Keith',
           '"Effective leadership is the ability to successfully integrate and maximize available resources within the internal and external environment for the attainment of organizational or societal goals." Ken Ogbonnia',
+        ],
+      },
+      {
+        title: "Strategic Planning",
+        tagline: "Chart Your Course",
+        body: "An organization's strategy for sustainable growth involves evaluating its current environment, processes, procedures, and practices. This information helps guide strategic planning to improve operations and management. Implementing necessary changes increases accountability, enhances efficiency, and supports long-term success in achieving departmental and community goals.",
+        bullets: [
+          "Ensure that your strategic planning process is progressive, inclusive, efficient, and effective",
+          "Help you establish goals and objectives for your process that are meaningful and achievable.",
+          "Customize a process and plan to match your specific need, desire, & unique circumstances.",
+          "Effectively lead interviews, community forums, sessions, activities, and workshops, while guiding progress with energy and skill.",
+          "Guide your team through the process of establishing a clear vision, mission, & mandate, while making constructive recommendations in establishing a confident organizational structure.",
+          "Accomplish strategic direction, while considering short, medium, & long range action plans.",
+          "Maximize interdepartmental collaboration and support, while allowing for community input and maintaining administrative/management direction.",
         ],
       },
       {

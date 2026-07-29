@@ -129,7 +129,7 @@ The **Our Team** partnership CTA follows the team profiles without a decorative 
 | `quote_role` | Text |
 | `service_blocks` | Repeater: `title`, `tagline`, `body`, `paragraphs`, `bulletsLead`, `bullets`, `quoteBullets`, `detailHref` |
 
-Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Service order is **Team Building**, Strategic Planning, Leadership Development, Facilitation. Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Team Building (black) → Strategic Planning (gray) → Leadership (black) → Facilitation (gray).
+Services page order: **PageHero** → **ServicesOverview** (four linked cards) → **QuoteBanner** → four **ServiceBlock** sections → Connect CTA (layout). Service order is **Team Building**, Leadership Development, Strategic Planning, Facilitation. Section backgrounds alternate black (`--background`) and gray (`--surface`): Overview (black) → Quote (gray) → Team Building (black) → Leadership (gray) → Strategic Planning (black) → Facilitation (gray).
 
 **Service detail pages.** A `service_blocks` entry with a `detailHref` links to a dedicated detail page. When present, the homepage `ServicesTabs` "Learn more" link and the services page `ServiceBlock` "Explore the program" link both point to it. These detail pages are intentionally **not** in the main menu (`menus.ts`); they are reached only from the Team Building sections.
 
@@ -375,7 +375,7 @@ Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Foote
 
 1. PageHero → 2. PillarsGrid → 3. EditorialBand → 4. **AboutTeaser** → 5. **ServicesTabs** → 6. HowItWorks → (layout) ConnectCta
 
-**ServicesTabs** presents four homepage service panels (**Team Building**, Strategic Planning, Leadership Development, and Facilitation) from `home_service_blocks`. Their bullets use action-oriented marketing copy, bordered backgrounds, and subtle hover motion. List markers use the shared `ListCheckMark` icon (not thin dashes) across homepage tabs, service blocks, and about detail lists. Leadership focuses on applied development and organizational advocacy; Team Building is rooted in creating environments for leadership development; Facilitation uses an “As facilitators, we will…” framework.
+**ServicesTabs** presents four homepage service panels (**Team Building**, Leadership Development, Strategic Planning, and Facilitation) from `home_service_blocks`. Their bullets use action-oriented marketing copy, bordered backgrounds, and subtle hover motion. List markers use the shared `ListCheckMark` icon (not thin dashes) across homepage tabs, service blocks, and about detail lists. Leadership focuses on applied development and organizational advocacy; Team Building is rooted in creating environments for leadership development; Facilitation uses an “As facilitators, we will…” framework.
 
 **AboutTeaser** uses a black editorial layout: split headline/body, numbered highlight cards from pillars, no image.
 

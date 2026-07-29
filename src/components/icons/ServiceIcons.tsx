@@ -104,7 +104,7 @@ export function ServiceTabIcon({
 
 export const SERVICE_TAB_ICONS_BY_INDEX = [
   TeamIcon,
-  PlanningIcon,
   LeadershipIcon,
+  PlanningIcon,
   FacilitationIcon,
 ] as const;

@@ -26,16 +26,16 @@ export const SERVICES_MENU_ITEMS: ServiceMenuItem[] = [
     Icon: TeamIcon,
   },
   {
-    title: "Strategic Planning",
-    tagline: "Chart Your Course",
-    href: serviceAnchor("Strategic Planning"),
-    Icon: PlanningIcon,
-  },
-  {
     title: "Leadership Development",
     tagline: "Empower Positive Change",
     href: serviceAnchor("Leadership Development"),
     Icon: LeadershipIcon,
+  },
+  {
+    title: "Strategic Planning",
+    tagline: "Chart Your Course",
+    href: serviceAnchor("Strategic Planning"),
+    Icon: PlanningIcon,
   },
   {
     title: "Facilitation",

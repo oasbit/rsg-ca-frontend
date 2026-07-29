@@ -241,7 +241,7 @@ export function AccessibilityWidget() {
         aria-label="Open accessibility options"
         onClick={() => setOpen((current) => !current)}
         className={cn(
-          "inline-flex size-12 items-center justify-center rounded-full border p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.45)] transition-colors duration-200",
+          "inline-flex size-12 cursor-pointer items-center justify-center rounded-full border p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.45)] transition-colors duration-200",
           open
             ? "border-accent bg-accent text-black"
             : "border-white/20 bg-black/90 text-accent hover:border-accent hover:bg-black",
