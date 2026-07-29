@@ -55,7 +55,7 @@ export function ConnectCta({
             variant="slideRight"
             className="relative -mx-4 flex items-center justify-center sm:mx-0 lg:col-span-5 xl:col-span-5"
           >
-            <div className="relative mx-auto w-full sm:max-w-md lg:mx-0 lg:max-w-none">
+            <div className="relative mx-auto w-[85%] sm:w-full sm:max-w-md lg:mx-0 lg:max-w-none">
               <motion.div
                 className="relative flex items-center justify-center"
                 whileHover={
@@ -63,14 +63,14 @@ export function ConnectCta({
                 }
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative w-full overflow-hidden max-sm:aspect-[3/3.15]">
+                <div className="relative w-full overflow-hidden max-sm:aspect-[3/3.5]">
                   <Image
                     src={imageUrl}
                     alt={imageAlt}
                     width={614}
                     height={1024}
-                    className="h-auto w-full object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] max-sm:absolute max-sm:inset-0 max-sm:h-[166.67%] max-sm:max-w-none max-sm:object-cover max-sm:object-top sm:relative sm:mx-auto sm:h-auto sm:max-w-xs lg:max-w-sm xl:max-w-md"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 40vw"
+                    className="h-auto w-full object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] max-sm:absolute max-sm:inset-0 max-sm:h-[142.86%] max-sm:max-w-none max-sm:object-cover max-sm:object-top sm:relative sm:mx-auto sm:h-auto sm:max-w-xs lg:max-w-sm xl:max-w-md"
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 90vw, 40vw"
                   />
                   <div
                     aria-hidden
