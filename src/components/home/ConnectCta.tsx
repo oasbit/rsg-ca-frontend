@@ -76,8 +76,9 @@ export function ConnectCta({
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent sm:h-32"
                   />
-                  <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 sm:px-5 sm:pb-5">
-                    <div className="border-l-2 border-accent px-4 py-1 sm:px-5">
+                  {/* Desktop nameplate — sits on the image */}
+                  <div className="absolute inset-x-0 bottom-0 z-10 hidden px-5 pb-5 sm:block">
+                    <div className="border-l-2 border-accent px-5 py-1">
                       <p className="text-[0.65rem] tracking-[0.32em] text-accent uppercase">
                         Managing Director
                       </p>
@@ -88,6 +89,18 @@ export function ConnectCta({
                   </div>
                 </div>
               </motion.div>
+            </div>
+
+            {/* Mobile nameplate — left-aligned with section content gutter (px-4) */}
+            <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 sm:hidden">
+              <div className="border-l-2 border-accent px-4 py-1">
+                <p className="text-[0.65rem] tracking-[0.32em] text-accent uppercase">
+                  Managing Director
+                </p>
+                <p className="mt-1 text-sm font-medium tracking-wide text-white">
+                  Dr. Andrew Peters
+                </p>
+              </div>
             </div>
           </Reveal>
 
