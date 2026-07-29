@@ -15,7 +15,7 @@ export async function generateMetadata() {
 
   return buildPageMetadata({
     title: "Contact",
-    description: `Contact RS Group Advance Consulting at ${content.email} or ${content.phone}.`,
+    description: `Contact RS Group Advanced Consulting at ${content.email} or ${content.phone}.`,
     path: "/contact",
   });
 }

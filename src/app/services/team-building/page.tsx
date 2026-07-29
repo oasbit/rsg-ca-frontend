@@ -71,7 +71,7 @@ export default function TeamBuildingPage() {
           "Team-oriented departments are the glue that holds organizations, operations, and communities together. Our interactive workshops strengthen collaboration, trust, and communication—while preparing participants to lead effectively at every organizational level.",
         ]}
         imageUrl={BRAND.teamBuilding.hero}
-        imageAlt="RS Group Advance Consulting team-building session"
+        imageAlt="RS Group Advanced Consulting team-building session"
         cta={{ href: "/contact", label: "Start a conversation" }}
       />
 

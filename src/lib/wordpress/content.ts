@@ -9,7 +9,7 @@ import {
   PRIVACY_POLICY_BODY,
   PRIVACY_POLICY_TITLE,
 } from "@/lib/privacy-policy";
-import { SERVICE_AREA } from "@/lib/site";
+import { COMPANY_NAME, SERVICE_AREA } from "@/lib/site";
 
 const SERVICE_DISPLAY_ORDER = [
   "Team Building",
@@ -202,29 +202,38 @@ export function resolveHomeContent(page: WPPage | null): Required<
   };
 }
 
+function normalizeCompanyName(text: string): string {
+  return text
+    .replace(/Rising Stars and RS Advanced Group Consulting/gi, COMPANY_NAME)
+    .replace(/Rising Stars and RS Advanced Consulting Group/gi, COMPANY_NAME)
+    .replace(/RS Advanced Consulting Group/gi, COMPANY_NAME)
+    .replace(/RS Advanced Group Consulting/gi, COMPANY_NAME)
+    .replace(/RS Group Advance Consulting/gi, COMPANY_NAME);
+}
+
 export function resolveAboutContent(page: WPPage | null) {
   const acf = page?.acf ?? {};
 
   const storyLeadDefault =
-    "RS Advanced Group Consulting was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations.";
+    `${COMPANY_NAME} was founded on a simple principle: the same strategies that build strong individuals and communities can transform organizations.`;
   const storyBodyDefault =
     "With over 25 years of proven impact through leadership development and community programming, we bring tested, real-world frameworks into the corporate environment—helping organizations strengthen culture, align teams, and drive sustainable performance.";
-  const storyParagraphsRaw = acf.story_paragraphs ?? [
+  const storyParagraphsRaw = (acf.story_paragraphs ?? [
     storyLeadDefault,
     storyBodyDefault,
-  ];
+  ]).map(normalizeCompanyName);
   /** First paragraph is the hero deck; remaining paragraphs are secondary body. */
   const [storyLeadFromAcf, ...storyBodyFromAcf] = storyParagraphsRaw;
   const storyLead = storyLeadFromAcf || storyLeadDefault;
   const storyParagraphs =
     storyBodyFromAcf.length > 0 ? storyBodyFromAcf : [storyBodyDefault];
 
-  const whoWeAreParagraphsRaw = acf.who_we_are_paragraphs ?? [
-    "RS Advanced Group Consulting partners with organizations, institutions, and leadership teams to unlock growth through people.",
+  const whoWeAreParagraphsRaw = (acf.who_we_are_paragraphs ?? [
+    `${COMPANY_NAME} partners with organizations, institutions, and leadership teams to unlock growth through people.`,
     "Our approach is rooted in decades of experience in community engagement, leadership development, and high-performance coaching. What sets us apart is our ability to translate these proven methods into practical, scalable strategies for businesses.",
     "Our foundation is built on delivering measurable impact, developing leaders, strengthening teams, and creating environments where individuals and organizations thrive.",
     "We don't just advise—we implement, guide, and elevate.",
-  ];
+  ]).map(normalizeCompanyName);
   /** Drop the Rising Stars origin clause from Who We Are (per client edit). */
   const whoWeAreParagraphs = whoWeAreParagraphsRaw
     .map((paragraph) =>
@@ -247,25 +256,15 @@ export function resolveAboutContent(page: WPPage | null) {
     )
     .filter(Boolean);
 
-  const founderBioParagraphsRaw = acf.founder_bio_paragraphs ?? [
+  const founderBioParagraphsRaw = (acf.founder_bio_paragraphs ?? [
     "Dr. Andrew Peters is an executive coach, advisor, educator and developer with over 25 years of experience in community building, consulting, leadership, performance, and team development.",
-    "As the driving force behind RS Advanced Group Consulting, Dr. Peters has built a reputation for transforming teams and organizations by strengthening culture, improving accountability, and elevating performance.",
+    `As the driving force behind ${COMPANY_NAME}, Dr. Peters has built a reputation for transforming teams and organizations by strengthening culture, improving accountability, and elevating performance.`,
     "Holding a Ph.D., specializing in Human, Economic & Business Development, Dr. Peters and his team bring a unique blend of academic insight and real-world execution. His methodology is rooted in high-performance principles, and focuses on leadership, team and organizational development and sustainable growth.",
     "Today, Dr. Peters works with organizations across industries, helping them implement proven systems that increase engagement, boost morale, and drive measurable results.",
-  ];
+  ]).map(normalizeCompanyName);
   /** Prefer brand naming; drop Rising Stars pairing from founder bio when present. */
   const founderBioParagraphs = founderBioParagraphsRaw.map((paragraph) =>
-    paragraph
-      .replace(
-        /Rising Stars and RS Advanced Group Consulting/gi,
-        "RS Advanced Group Consulting",
-      )
-      .replace(
-        /Rising Stars and RS Advanced Consulting Group/gi,
-        "RS Advanced Group Consulting",
-      )
-      .replace(/RS Advanced Consulting Group/gi, "RS Advanced Group Consulting")
-      .replace(/\bfocusses\b/gi, "focuses"),
+    normalizeCompanyName(paragraph).replace(/\bfocusses\b/gi, "focuses"),
   );
 
   const approachBullets = acf.approach_bullets ?? [
@@ -291,8 +290,9 @@ export function resolveAboutContent(page: WPPage | null) {
   return {
     story: {
       eyebrow: acf.story_eyebrow ?? "Our Story",
-      heroSubtitle:
-        acf.story_hero_subtitle ?? "About RS Group Advance Consulting",
+      heroSubtitle: acf.story_hero_subtitle
+        ? normalizeCompanyName(acf.story_hero_subtitle)
+        : `About ${COMPANY_NAME}`,
       headline: acf.story_headline ?? "Building Strong Organizations and Communities",
       lead: storyLead,
       paragraphs: storyParagraphs,

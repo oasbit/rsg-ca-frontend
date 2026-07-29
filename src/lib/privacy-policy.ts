@@ -9,7 +9,7 @@ export const PRIVACY_POLICY_BODY = `
 <p><strong>Last updated:</strong> ${PRIVACY_POLICY_LAST_UPDATED}</p>
 
 <p>
-  RS Group Advance Consulting (&ldquo;RS Group,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;)
+  RS Group Advanced Consulting (&ldquo;RS Group,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;)
   respects your privacy and is committed to protecting personal information in accordance with
   Canada&rsquo;s <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA)
   and applicable provincial privacy laws.
@@ -23,12 +23,12 @@ export const PRIVACY_POLICY_BODY = `
 
 <h2>1. Who we are</h2>
 <p>
-  RS Group Advance Consulting provides strategic planning, leadership development, team-building,
+  RS Group Advanced Consulting provides strategic planning, leadership development, team-building,
   and facilitation services to organizations and communities.
 </p>
 <p>
   <strong>Privacy contact</strong><br />
-  RS Group Advance Consulting<br />
+  RS Group Advanced Consulting<br />
   ${SERVICE_AREA}<br />
   Email: <a href="mailto:info@rsg-ac.ca">info@rsg-ac.ca</a><br />
   Phone: <a href="tel:+18662536650">1-866-253-6650</a>
@@ -199,7 +199,7 @@ export const PRIVACY_POLICY_BODY = `
   personal information, please contact:
 </p>
 <p>
-  RS Group Advance Consulting<br />
+  RS Group Advanced Consulting<br />
   Email: <a href="mailto:info@rsg-ac.ca">info@rsg-ac.ca</a><br />
   Phone: <a href="tel:+18662536650">1-866-253-6650</a><br />
   ${SERVICE_AREA}

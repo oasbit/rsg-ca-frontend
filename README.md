@@ -1,4 +1,4 @@
-# RS Group Advance Consulting — Frontend
+# RS Group Advanced Consulting — Frontend
 
 Dark luxury Next.js frontend for [rsg-ac.ca](https://rsg-ac.ca). WordPress provides content via the REST API; all layout, styling, and interactions are implemented in React.
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
-import { SERVICE_AREA } from "@/lib/site";
+import { SERVICE_AREA, COMPANY_NAME } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealStagger, RevealStaggerItem } from "@/components/motion/RevealStagger";
 import { SiteLogo } from "@/components/layout/SiteLogo";
@@ -93,7 +93,7 @@ export function Footer() {
               </Link>
 
               <p className="text-xs leading-6 text-muted">
-                © {year} RS Group Advance Consulting. Website Powered by{" "}
+                © {year} {COMPANY_NAME}. Website Powered by{" "}
                 <a
                   href="https://oasbit.com"
                   target="_blank"

@@ -114,22 +114,22 @@ function siteImage(src: string, alt: string): SiteImage {
 
 export function resolveHomeHeroImage(page: WPPage | null): SiteImage {
   void page;
-  return siteImage(BRAND.heroBackgrounds.home, "RS Group Advance Consulting");
+  return siteImage(BRAND.heroBackgrounds.home, "RS Group Advanced Consulting");
 }
 
 export function resolveContactHeroImage(): SiteImage {
-  return siteImage(BRAND.heroBackgrounds.contact, "RS Group Advance Consulting");
+  return siteImage(BRAND.heroBackgrounds.contact, "RS Group Advanced Consulting");
 }
 
 export function resolvePrivacyHeroImage(): SiteImage {
-  return siteImage(BRAND.heroBackgrounds.privacy, "RS Group Advance Consulting");
+  return siteImage(BRAND.heroBackgrounds.privacy, "RS Group Advanced Consulting");
 }
 
 export function resolveAboutHeroImage(page: WPPage | null): SiteImage {
   void page;
   return siteImage(
     BRAND.heroBackgrounds.about,
-    "RS Group Advance Consulting",
+    "RS Group Advanced Consulting",
   );
 }
 
@@ -180,6 +180,6 @@ export function resolveConnectCtaImage(): SiteImage {
 export function resolveEditorialBackgroundImage(): SiteImage {
   return siteImage(
     BRAND.heroBackgrounds.editorial,
-    "Collaborative workspace at RS Group Advance Consulting",
+    "Collaborative workspace at RS Group Advanced Consulting",
   );
 }

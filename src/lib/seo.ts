@@ -1,3 +1,5 @@
+import { COMPANY_NAME } from "@/lib/site";
+
 export function getSiteUrl(): string {
   return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }
@@ -6,7 +8,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "RS Group Advance Consulting",
+    name: COMPANY_NAME,
     url: getSiteUrl(),
     email: "info@rsg-ac.ca",
     telephone: "1-866-253-6650",

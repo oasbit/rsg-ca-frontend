@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BRAND } from "@/lib/wordpress/images";
+import { COMPANY_NAME } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface SiteLogoProps {
@@ -45,11 +46,11 @@ export function SiteLogo({
         dimensionClasses,
         className,
       )}
-      aria-label="RS Group Advance Consulting home"
+      aria-label={`${COMPANY_NAME} home`}
     >
       <Image
         src={src}
-        alt="RS Group Advance Consulting"
+        alt={COMPANY_NAME}
         fill
         priority={priority}
         className={cn(

@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   return buildPageMetadata({
     title: content.title,
-    description: "Privacy policy for RS Group Advance Consulting.",
+    description: "Privacy policy for RS Group Advanced Consulting.",
     path: "/privacy-policy",
   });
 }
@@ -27,7 +27,7 @@ export default async function PrivacyPolicyPage() {
     <>
       <PageHero
         eyebrow="Legal"
-        headline="RS Group Advance Consulting"
+        headline="RS Group Advanced Consulting"
         headlineEmphasis={content.title}
         imageUrl={heroImage.src}
         imageAlt={heroImage.alt}

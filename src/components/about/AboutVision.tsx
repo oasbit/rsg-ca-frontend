@@ -60,7 +60,7 @@ export function AboutVision({ title, body }: AboutVisionProps) {
           <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 lg:mt-20">
             <span className="h-px w-12 bg-accent/50" />
             <p className="text-xs tracking-[0.35em] text-white/55 uppercase">
-              RS Group Advance Consulting
+              RS Group Advanced Consulting
             </p>
           </div>
         </Reveal>

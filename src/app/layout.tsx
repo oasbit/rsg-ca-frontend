@@ -7,6 +7,7 @@ import { PageTransition } from "@/components/motion/PageTransition";
 import { AccessibilityWidget } from "@/components/accessibility/AccessibilityWidget";
 import { A11Y_BOOTSTRAP_SCRIPT } from "@/lib/accessibility/bootstrap-script";
 import { getSiteUrl, organizationJsonLd } from "@/lib/seo";
+import { COMPANY_NAME } from "@/lib/site";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -18,8 +19,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "RS Group Advance Consulting",
-    template: "%s | RS Group Advance Consulting",
+    default: COMPANY_NAME,
+    template: `%s | ${COMPANY_NAME}`,
   },
   description:
     "Strategic planning, leadership development, and team-building for organizations and communities.",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_CA",
-    siteName: "RS Group Advance Consulting",
+    siteName: COMPANY_NAME,
   },
 };
 
