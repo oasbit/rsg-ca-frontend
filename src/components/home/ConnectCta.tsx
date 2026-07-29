@@ -69,7 +69,7 @@ export function ConnectCta({
                     alt={imageAlt}
                     width={614}
                     height={1024}
-                    className="h-auto w-full max-w-[12rem] object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:max-w-xs lg:max-w-sm xl:max-w-md"
+                    className="h-auto w-full max-w-[16rem] object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:max-w-xs lg:max-w-sm xl:max-w-md"
                     sizes="(max-width: 1024px) 90vw, 40vw"
                   />
                   <div

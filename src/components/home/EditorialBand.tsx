@@ -69,7 +69,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
       <Reveal
         variant="fadeIn"
         delay={0.14}
-        className="relative z-0 h-[5rem] w-full overflow-hidden sm:h-[8rem] md:h-[12.5rem] lg:h-[25rem]"
+        className="relative z-0 h-[7rem] w-full overflow-hidden sm:h-[8rem] md:h-[12.5rem] lg:h-[25rem]"
       >
         <Image
           src={backgroundImage.src}

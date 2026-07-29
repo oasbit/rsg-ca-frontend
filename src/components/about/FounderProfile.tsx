@@ -120,7 +120,7 @@ export function FounderProfile({
         {/* Mobile portrait strip */}
         {imageUrl ? (
           <Reveal variant="fadeIn" delay={0.14} className="lg:hidden">
-            <div className="relative mt-5 h-[200px] overflow-hidden sm:mt-10 sm:h-[240px]">
+            <div className="relative mt-5 h-[280px] overflow-hidden sm:mt-10 sm:h-[320px]">
               <div
                 aria-hidden
                 className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"

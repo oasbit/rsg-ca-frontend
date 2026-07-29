@@ -50,7 +50,7 @@ export function AboutFocusAreas({
 
           {/* Right — 2-col cell grid (hairline gaps as dividers) */}
           <RevealStagger
-            className="grid grid-cols-1 gap-px self-start bg-white/10 sm:grid-cols-2"
+            className="grid grid-cols-2 gap-px self-start bg-white/10"
             stagger={0.07}
           >
             {bullets.map((area, index) => {
@@ -62,7 +62,7 @@ export function AboutFocusAreas({
                   key={area}
                   className={isLast && isOddTotal ? "col-span-2" : ""}
                 >
-                  <div className="group h-full bg-black p-4 transition-colors duration-300 hover:bg-white/[0.04] sm:p-5 lg:p-6">
+                  <div className="group h-full bg-black p-3 transition-colors duration-300 hover:bg-white/[0.04] sm:p-5 lg:p-6">
                     {/* Small discreet index */}
                     <p
                       aria-hidden="true"
@@ -72,12 +72,12 @@ export function AboutFocusAreas({
                     </p>
 
                     {/* Focus area title */}
-                    <h3 className="mt-3 font-display text-base leading-snug text-white/80 transition-colors duration-300 group-hover:text-white md:text-lg lg:text-xl">
+                    <h3 className="mt-2 font-display text-sm leading-snug text-white/80 transition-colors duration-300 group-hover:text-white sm:mt-3 sm:text-base md:text-lg lg:text-xl">
                       {area}
                     </h3>
 
                     {/* Accent underline — grows on hover */}
-                    <span className="mt-4 block h-px w-0 bg-accent/50 transition-all duration-500 group-hover:w-6" />
+                    <span className="mt-3 block h-px w-0 bg-accent/50 transition-all duration-500 group-hover:w-6 sm:mt-4" />
                   </div>
                 </RevealStaggerItem>
               );
