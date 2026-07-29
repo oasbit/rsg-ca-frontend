@@ -17,13 +17,13 @@ export function WhoWeAreSection({
   paragraphs,
 }: WhoWeAreSectionProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-10 pb-6 text-white sm:pt-14 lg:pt-28 lg:pb-10">
+    <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-4 text-white sm:pt-14 lg:pt-28 lg:pb-10">
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
 
         {/* Full-width 2-column editorial split */}
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-4 sm:gap-8 lg:grid-cols-12 lg:gap-16">
 
           {/* Left — eyebrow + oversized display headline */}
           <Reveal variant="fadeUp" className="lg:col-span-5 xl:col-span-5">
@@ -41,7 +41,7 @@ export function WhoWeAreSection({
           <Reveal
             variant="fadeUp"
             delay={0.12}
-            className="flex flex-col justify-center space-y-6 lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7"
+            className="flex flex-col justify-center space-y-4 lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7"
           >
             {paragraphs.map((paragraph, index) => (
               <p
@@ -60,7 +60,7 @@ export function WhoWeAreSection({
 
         {/* Full-width bottom rule — visual bridge to the next section */}
         <Reveal variant="fade" delay={0.2}>
-          <div className="mt-10 h-px w-full bg-white/10 sm:mt-14 lg:mt-28" />
+          <div className="mt-6 h-px w-full bg-white/10 sm:mt-14 lg:mt-28" />
         </Reveal>
       </div>
     </SectionTransition>

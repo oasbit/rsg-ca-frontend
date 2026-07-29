@@ -38,7 +38,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
 
   return (
     <SectionTransition className="relative bg-cream text-black">
-      <div className="mx-auto max-w-4xl px-6 pt-10 text-center sm:pt-14 lg:px-10 lg:pt-24">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 pt-6 text-center sm:pt-14 lg:px-10 lg:pt-24">
         <Reveal variant="fadeUp">
           <h2>
             {lead ? (
@@ -69,7 +69,7 @@ export function EditorialBand({ headline, body }: EditorialBandProps) {
       <Reveal
         variant="fadeIn"
         delay={0.14}
-        className="relative z-0 h-[6rem] w-full overflow-hidden sm:h-[8rem] md:h-[12.5rem] lg:h-[25rem]"
+        className="relative z-0 h-[5rem] w-full overflow-hidden sm:h-[8rem] md:h-[12.5rem] lg:h-[25rem]"
       >
         <Image
           src={backgroundImage.src}

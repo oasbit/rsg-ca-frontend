@@ -44,10 +44,10 @@ export function AboutTeaser({
   const { lead, emphasis } = splitAboutTitle(title);
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-14 lg:py-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-6 text-white sm:py-14 lg:py-32">
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <p
           aria-hidden="true"
           className="pointer-events-none absolute top-0 right-0 left-0 text-center font-display text-[clamp(3.5rem,14vw,11rem)] leading-none text-white/[0.03] select-none"
@@ -55,7 +55,7 @@ export function AboutTeaser({
           {emphasis || title}
         </p>
 
-        <div className="relative grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <div className="relative grid gap-4 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel light>About us</SectionLabel>
 
@@ -88,19 +88,19 @@ export function AboutTeaser({
         </div>
 
         <RevealStagger
-          className="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:mt-20 lg:grid-cols-4"
+          className="mt-6 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:mt-20 lg:grid-cols-4"
           stagger={0.08}
         >
           {highlights.map((item, index) => (
             <RevealStaggerItem key={item}>
-              <article className="group relative h-full border border-white/10 bg-white/[0.02] p-4 transition-all duration-500 ease-out hover:border-accent/30 hover:bg-white/[0.04] sm:p-6">
+              <article className="group relative h-full border border-white/10 bg-white/[0.02] p-3.5 transition-all duration-500 ease-out hover:border-accent/30 hover:bg-white/[0.04] sm:p-6">
                 <span className="text-[0.65rem] tracking-[0.32em] text-accent/70 uppercase">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-5 font-display text-2xl text-white transition-colors duration-300 group-hover:text-accent md:text-3xl">
+                <h3 className="mt-3 font-display text-xl text-white transition-colors duration-300 group-hover:text-accent sm:mt-5 sm:text-2xl md:text-3xl">
                   {item}
                 </h3>
-                <div className="mt-6 h-px w-10 bg-white/20 transition-all duration-500 group-hover:w-full group-hover:bg-accent/60" />
+                <div className="mt-4 h-px w-10 bg-white/20 transition-all duration-500 group-hover:w-full group-hover:bg-accent/60 sm:mt-6" />
               </article>
             </RevealStaggerItem>
           ))}

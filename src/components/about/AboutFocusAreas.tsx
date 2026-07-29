@@ -20,11 +20,11 @@ export function AboutFocusAreas({
   closing,
 }: AboutFocusAreasProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-12 lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-6 text-white sm:py-12 lg:py-24">
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="grid gap-5 sm:gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — editorial headline column (same structure as Approach) */}
           <Reveal variant="fadeUp">
@@ -34,7 +34,7 @@ export function AboutFocusAreas({
               <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
-              <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
+              <p className="mt-5 text-sm leading-8 text-white/80 md:text-base">
                 {intro}
               </p>
 

@@ -353,23 +353,28 @@ Preferences persist in `localStorage` (`rsg-a11y-preferences`) and are applied o
 
 ### Mobile layout
 
-All sections use a mobile-first spacing scale so pages stay compact on small screens without changing desktop layout:
+All sections use a mobile-first spacing scale so pages stay compact and easy to scan on phones without changing tablet or desktop layout:
 
 | Pattern | Mobile | Tablet (`sm`/`md`) | Desktop (`lg`+) |
 |---------|--------|---------------------|-----------------|
-| Section padding | `py-10`–`py-12` | `py-14`–`py-16` | `py-24`–`py-32` |
-| Grid gaps | `gap-6`–`gap-8` | `gap-8`–`gap-10` | `gap-16`–`gap-20` |
+| Section padding | `py-6`–`py-7` | `py-12`–`py-16` | `py-24`–`py-32` |
+| Page gutters | `px-4` | `sm:px-6` | `lg:px-10` |
+| Grid gaps | `gap-4`–`gap-5` | `gap-8`–`gap-10` | `gap-16`–`gap-20` |
 | Display headings | `text-2xl`–`text-3xl` | `text-3xl`–`text-4xl` | `text-5xl`–`text-7xl` |
-| Hero height | `min-h-[85svh]` | — | full viewport on `/` |
+| Hero height | `min-h-[78svh]` home / `min-h-[30vh]` inner | — | full viewport on `/` |
+| Media blocks | shorter image heights | restored | full editorial scale |
 
 Global tweaks in `src/styles/globals.css`:
 
+- CSS tokens `--page-gutter-mobile`, `--section-pad-y-mobile`, and `--section-gap-mobile` for future section work
+- Mobile-only tighter paragraph line-height inside `main section`
+- `scroll-margin-top` on sections so in-page anchors clear the sticky header
 - Responsive `--header-height` (96px → 120px → 140px) for the hero/at-top header; `--header-height-compact` (52px → 58px → 64px) when the sticky bar appears on scroll-up, with a matching smaller logo
 - Shared contrast tokens keep dividers and borders visible without dominating the layout, while improving numbering, captions, supporting copy, and small labels
 - `overflow-x: clip` on `body` to prevent horizontal scroll from full-bleed sections
 - Tighter `.prose-legal` typography on mobile for the privacy policy page
 
-Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Footer`, `ServiceBlock`, about sections, contact layout) all follow this scale. Test at 375px and 390px widths when changing section spacing.
+Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Footer`, `ServiceBlock`, about sections, contact layout, team-building sections) all follow this scale. Primary CTAs stack full-width on small screens. Test at 375px and 390px widths when changing section spacing.
 
 ### Homepage section order
 

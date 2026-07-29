@@ -19,9 +19,9 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionTransition className="relative z-10 bg-black py-10 text-white sm:py-12 lg:pt-32 lg:pb-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+    <SectionTransition className="relative z-10 bg-black py-6 text-white sm:py-12 lg:pt-32 lg:pb-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="grid gap-4 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <Reveal variant="fadeUp" className="lg:col-span-5">
             <SectionLabel light>How it works</SectionLabel>
             <h2 className="mt-3 font-display text-2xl leading-tight text-accent sm:mt-4 sm:text-3xl md:text-5xl">
@@ -38,7 +38,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
           </Reveal>
         </div>
 
-        <div className="relative mt-8 sm:mt-12 lg:mt-20">
+        <div className="relative mt-5 sm:mt-12 lg:mt-20">
           <div
             className="pointer-events-none absolute top-5 right-0 left-0 hidden h-px bg-white/10 lg:block"
             aria-hidden="true"
@@ -56,7 +56,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
           ) : null}
 
           <RevealStagger
-            className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6"
+            className="grid gap-4 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6"
             stagger={0.12}
           >
             {steps.map((step, index) => (
@@ -69,18 +69,18 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
                     />
                   ) : null}
 
-                  <div className="relative flex gap-5 sm:flex-col sm:gap-0">
+                  <div className="relative flex gap-4 sm:flex-col sm:gap-0">
                     <div className="relative z-10 shrink-0 sm:mb-8">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black text-[0.65rem] tracking-[0.28em] text-white/60 transition-all duration-500 ease-out group-hover:border-accent/60 group-hover:bg-accent/10 group-hover:text-accent">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black text-[0.65rem] tracking-[0.28em] text-white/60 transition-all duration-500 ease-out group-hover:border-accent/60 group-hover:bg-accent/10 group-hover:text-accent sm:h-10 sm:w-10">
                         {String(index + 1).padStart(2, "0")}
                       </div>
                     </div>
 
-                    <div className="min-w-0 flex-1 border-l border-white/10 pl-5 sm:border-0 sm:pl-0">
-                      <h3 className="font-display text-xl text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
+                    <div className="min-w-0 flex-1 border-l border-white/10 pl-4 sm:border-0 sm:pl-0">
+                      <h3 className="font-display text-lg text-white transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
                         {step.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-7 text-white/55">
+                      <p className="mt-2 text-sm leading-6 text-white/55 sm:mt-3 sm:leading-7">
                         {step.description}
                       </p>
                     </div>
@@ -92,7 +92,7 @@ export function HowItWorks({ steps, intro, services = [], serviceImages = [] }: 
         </div>
 
         {services.length > 0 ? (
-          <div className="mt-10 border-t border-white/10 pt-8 sm:mt-12 sm:pt-10 lg:mt-24 lg:pt-20">
+          <div className="mt-6 border-t border-white/10 pt-5 sm:mt-12 sm:pt-10 lg:mt-24 lg:pt-20">
             <ServicesTabs
               services={services}
               images={serviceImages}

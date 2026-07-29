@@ -19,7 +19,7 @@ export function ContactInfo({
     <Reveal variant="slideRight" className="relative z-10 text-white">
       <SectionLabel light>Get in touch</SectionLabel>
 
-      <ul className="mt-6 space-y-5 sm:mt-10 sm:space-y-8">
+      <ul className="mt-6 space-y-3.5 sm:mt-10 sm:space-y-8">
         <li>
           <p className="text-xs tracking-[0.28em] text-muted uppercase">Phone</p>
           <a
@@ -45,7 +45,7 @@ export function ContactInfo({
       </ul>
 
       {socialLinks.length > 0 && (
-        <div className="mt-8 flex flex-wrap gap-3 sm:mt-12 sm:gap-4">
+        <div className="mt-5 flex flex-wrap gap-3 sm:mt-12 sm:gap-4">
           {socialLinks.map((link) => (
             <a
               key={link.platform}

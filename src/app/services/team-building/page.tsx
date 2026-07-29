@@ -78,8 +78,8 @@ export default function TeamBuildingPage() {
       <ValuesBand />
 
       {/* What we do — split layout with workshop image */}
-      <SectionTransition className="bg-surface py-10 text-white sm:py-14 lg:py-32">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 sm:gap-10 lg:grid-cols-12 lg:gap-0 lg:px-10">
+      <SectionTransition className="bg-surface py-6 text-white sm:py-14 lg:py-32">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 sm:gap-10 lg:grid-cols-12 lg:gap-0 lg:px-10">
           {/* Left: headline + quote */}
           <div className="lg:col-span-5 lg:pr-12">
             <Reveal variant="fadeUp">
@@ -137,7 +137,7 @@ export default function TeamBuildingPage() {
 
             {/* Workshop image */}
             <Reveal variant="fadeIn" delay={0.16} className="mt-6 sm:mt-10">
-              <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-white/10 sm:h-64 md:h-72">
+              <div className="relative h-40 w-full overflow-hidden rounded-2xl border border-white/10 sm:h-64 md:h-72">
                 <Image
                   src={BRAND.teamBuilding.workshop}
                   alt="Corporate team workshop and collaboration session"
@@ -157,7 +157,7 @@ export default function TeamBuildingPage() {
 
       {/* Keynote / Action — full-bleed cinematic section */}
       <SectionTransition className="relative overflow-hidden bg-black py-0 text-white">
-        <div className="relative h-[42vh] min-h-[240px] w-full overflow-hidden sm:min-h-[300px] lg:h-[65vh] lg:min-h-[380px]">
+        <div className="relative h-[34vh] min-h-[200px] w-full overflow-hidden sm:min-h-[300px] sm:h-[42vh] lg:h-[65vh] lg:min-h-[380px]">
           <Image
             src={BRAND.teamBuilding.keynote}
             alt="Corporate team-building keynote presentation"
@@ -176,7 +176,7 @@ export default function TeamBuildingPage() {
           />
 
           <div className="absolute inset-0 flex items-end">
-            <div className="mx-auto w-full max-w-7xl px-6 pb-5 sm:pb-6 lg:px-10 lg:pb-8">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 pb-5 sm:pb-6 lg:px-10 lg:pb-8">
               <Reveal variant="fadeUp">
                 <SectionLabel light>Interactive &amp; Engaging Development</SectionLabel>
                 <h2 className="mt-2 font-display text-2xl text-accent sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl">
@@ -189,7 +189,7 @@ export default function TeamBuildingPage() {
 
         {/* Lead + matching tiles */}
         <GrainOverlay />
-        <div className="relative mx-auto max-w-7xl px-6 pt-4 pb-10 sm:pt-5 sm:pb-12 lg:px-10 lg:pt-6 lg:pb-20">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-4 pb-6 sm:pt-5 sm:pb-12 lg:px-10 lg:pt-6 lg:pb-20">
           <Reveal variant="fadeUp">
             <p className="max-w-3xl text-sm leading-7 text-white/90 sm:text-base sm:leading-8 md:text-lg">
               Our collection of interactive workshops is designed to build
@@ -198,14 +198,14 @@ export default function TeamBuildingPage() {
             </p>
           </Reveal>
 
-          <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:mt-12 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
+          <div className="mt-5 grid gap-4 sm:mt-10 sm:gap-8 lg:mt-12 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
             <Reveal variant="fadeUp" className="h-full">
-              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-5 sm:p-7 lg:p-8">
+              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-4 sm:p-7 lg:p-8">
                 <h3 className="text-sm font-medium tracking-[0.08em] text-white uppercase">
                   Leadership &amp; Team-Building — The Competitive Advantage
                 </h3>
 
-                <ul className="mt-6 space-y-5 sm:mt-7 sm:space-y-6">
+                <ul className="mt-5 space-y-4 sm:mt-7 sm:space-y-6">
                   <li className="flex gap-3 sm:gap-4">
                     <ListCheckMark className="mt-1.5" />
                     <p className="text-sm leading-7 text-white/85 md:text-base md:leading-8">
@@ -229,11 +229,11 @@ export default function TeamBuildingPage() {
             </Reveal>
 
             <Reveal variant="fadeUp" delay={0.1} className="h-full">
-              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-5 sm:p-7 lg:p-8">
+              <div className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.03] p-4 sm:p-7 lg:p-8">
                 <h3 className="text-sm font-medium tracking-[0.08em] text-white uppercase">
                   How does the program work?
                 </h3>
-                <p className="mt-6 text-sm leading-7 text-white/85 sm:mt-7 md:text-base md:leading-8">
+                <p className="mt-5 text-sm leading-7 text-white/85 sm:mt-7 md:text-base md:leading-8">
                   With the goal of supporting sustainable organizational change,
                   creating positive team environments, and strengthening leadership
                   skills, our team plans, organizes, and delivers a carefully
@@ -243,7 +243,7 @@ export default function TeamBuildingPage() {
                   to build cohesive teams—and develop the leadership capacity that
                   emerges from doing it well.
                 </p>
-                <p className="mt-auto pt-6 text-xs leading-6 text-muted">
+                <p className="mt-auto pt-4 text-xs leading-6 text-muted">
                   * We work with our community partners in devising unique programs
                   to meet expressed or assessed need.
                 </p>
@@ -254,8 +254,8 @@ export default function TeamBuildingPage() {
       </SectionTransition>
 
       {/* Why choose us — image cards */}
-      <SectionTransition className="bg-surface py-10 text-white sm:py-14 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <SectionTransition className="bg-surface py-6 text-white sm:py-14 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <Reveal variant="fadeUp" className="max-w-2xl">
             <SectionLabel light>Why Choose Us</SectionLabel>
             <h2 className="mt-3 font-display text-2xl text-accent sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl">
@@ -264,14 +264,14 @@ export default function TeamBuildingPage() {
           </Reveal>
 
           <RevealStagger
-            className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-14"
+            className="mt-5 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-14"
             stagger={0.08}
           >
             {WHY_US.map((item, index) => (
               <RevealStaggerItem key={item.title}>
                 <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10">
                   {/* Card image */}
-                  <div className="relative h-40 w-full overflow-hidden sm:h-48 md:h-56">
+                  <div className="relative h-32 w-full overflow-hidden sm:h-48 md:h-56">
                     <Image
                       src={item.image}
                       alt={item.imageAlt}
@@ -289,7 +289,7 @@ export default function TeamBuildingPage() {
                   </div>
 
                   {/* Card body */}
-                  <div className="flex flex-1 flex-col bg-black/40 p-5 sm:p-7">
+                  <div className="flex flex-1 flex-col bg-black/40 p-4 sm:p-7">
                     <h3 className="text-sm tracking-[0.14em] text-white uppercase">
                       {item.title}
                     </h3>
@@ -308,7 +308,7 @@ export default function TeamBuildingPage() {
       </SectionTransition>
 
       {/* CTA — outdoor team image */}
-      <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-14 lg:py-32">
+      <SectionTransition className="relative overflow-hidden bg-black py-6 text-white sm:py-14 lg:py-32">
         <Image
           src={BRAND.teamBuilding.outdoor}
           alt=""
@@ -323,7 +323,7 @@ export default function TeamBuildingPage() {
         />
         <GrainOverlay />
 
-        <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
+        <div className="relative mx-auto max-w-3xl px-4 sm:px-6 text-center lg:px-10">
           <Reveal variant="fadeUp">
             <SectionLabel light className="justify-center">
               Get Started
@@ -339,7 +339,7 @@ export default function TeamBuildingPage() {
             </p>
           </Reveal>
           <Reveal variant="fadeUp" delay={0.2}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4">
               <LineCta href="/contact" light>
                 Start a conversation
               </LineCta>

@@ -28,7 +28,7 @@ export function AboutDetailSection({
   backgroundPosition = "center center",
 }: AboutDetailSectionProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-14 lg:py-32">
+    <SectionTransition className="relative overflow-hidden bg-black py-6 text-white sm:py-14 lg:py-32">
       {backgroundImage ? (
         <>
           <Image
@@ -52,7 +52,7 @@ export function AboutDetailSection({
       ) : null}
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-3xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-10">
         <div className="max-w-xl">
           <Reveal variant="fadeUp">
             <h2 className="font-display text-2xl text-accent sm:text-3xl md:text-4xl lg:text-5xl">
@@ -64,7 +64,7 @@ export function AboutDetailSection({
             ) : null}
 
             {paragraphs.length > 0 ? (
-              <div className="mt-6 space-y-6">
+              <div className="mt-6 space-y-4">
                 {paragraphs.map((paragraph) => (
                   <p
                     key={paragraph.slice(0, 48)}
@@ -83,7 +83,7 @@ export function AboutDetailSection({
           ) : null}
 
           {bullets.length > 0 ? (
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-5 space-y-4">
               {bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-3 text-sm text-white/85 md:text-base">
                   <ListCheckMark />
@@ -94,7 +94,7 @@ export function AboutDetailSection({
           ) : null}
 
           {closing ? (
-            <p className="mt-8 text-sm leading-8 text-white/75 md:text-base">{closing}</p>
+            <p className="mt-5 text-sm leading-8 text-white/75 md:text-base">{closing}</p>
           ) : null}
           </Reveal>
         </div>

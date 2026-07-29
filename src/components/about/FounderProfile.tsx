@@ -40,10 +40,10 @@ export function FounderProfile({
   const { leadParagraph, bodyParagraphs, closing } = splitFounderCopy(paragraphs);
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-10 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-20">
+    <SectionTransition className="relative overflow-hidden bg-black pt-4 pb-6 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-20">
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
 
         {/* ── Nameplate header — full width ── */}
         <Reveal variant="fadeUp">
@@ -60,11 +60,11 @@ export function FounderProfile({
 
         {/* Full-width divider */}
         <Reveal variant="fade" delay={0.1}>
-          <div className="mt-10 h-px bg-white/10" />
+          <div className="mt-6 h-px bg-white/10" />
         </Reveal>
 
         {/* ── Content row — bio left, portrait right ── */}
-        <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:grid-cols-12 lg:gap-16 lg:items-stretch">
+        <div className="mt-5 grid gap-4 sm:mt-10 sm:gap-8 lg:grid-cols-12 lg:gap-16 lg:items-stretch">
 
           {/* Bio column */}
           <Reveal variant="fadeUp" delay={0.12} className="lg:col-span-7 xl:col-span-8">
@@ -74,7 +74,7 @@ export function FounderProfile({
               </p>
             ) : null}
             {bodyParagraphs.length > 0 ? (
-              <div className="mt-6 space-y-5">
+              <div className="mt-6 space-y-3.5">
                 {bodyParagraphs.map((paragraph) => (
                   <p
                     key={paragraph.slice(0, 48)}
@@ -120,7 +120,7 @@ export function FounderProfile({
         {/* Mobile portrait strip */}
         {imageUrl ? (
           <Reveal variant="fadeIn" delay={0.14} className="lg:hidden">
-            <div className="relative mt-8 h-[200px] overflow-hidden sm:mt-10 sm:h-[240px]">
+            <div className="relative mt-5 h-[200px] overflow-hidden sm:mt-10 sm:h-[240px]">
               <div
                 aria-hidden
                 className="absolute inset-0 bg-[radial-gradient(ellipse_70%_75%_at_50%_60%,rgba(241,236,220,0.06)_0%,transparent_70%)]"
@@ -143,7 +143,7 @@ export function FounderProfile({
         {/* Closing emphasis band — distinct from body bio copy */}
         {closing ? (
           <Reveal variant="fadeUp" delay={0.2}>
-            <div className="mt-10 border border-white/12 bg-white/[0.04] px-5 py-5 sm:mt-12 sm:px-8 sm:py-6 lg:mt-14 lg:px-10 lg:py-7">
+            <div className="mt-6 border border-white/12 bg-white/[0.04] px-5 py-3.5 sm:mt-12 sm:px-8 sm:py-6 lg:mt-14 lg:px-10 lg:py-7">
               <p className="max-w-5xl text-base leading-8 text-white/90 md:text-lg md:leading-9">
                 {closing}
               </p>

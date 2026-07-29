@@ -36,7 +36,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-black">
-      <RevealStagger className="mx-auto grid max-w-7xl gap-8 px-6 py-10 sm:gap-10 sm:py-12 lg:grid-cols-3 lg:items-center lg:px-10 lg:py-16">
+      <RevealStagger className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 py-6 sm:gap-10 sm:py-12 lg:grid-cols-3 lg:items-center lg:px-10 lg:py-16">
         <RevealStaggerItem className="flex items-center justify-center">
           <SiteLogo variant="inverse" size="footer" align="center" />
         </RevealStaggerItem>
@@ -83,7 +83,7 @@ export function Footer() {
 
       <Reveal variant="fade">
         <div className="border-t border-white/10">
-          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-10">
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3">
               <Link
                 href="/privacy-policy"

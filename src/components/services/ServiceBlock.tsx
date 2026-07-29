@@ -34,9 +34,9 @@ export function ServiceBlock({
   return (
     <SectionTransition
       id={service.title.toLowerCase().replace(/\s+/g, "-")}
-      className={cn("py-12 text-white sm:py-16 lg:py-28", solid)}
+      className={cn("py-7 text-white sm:py-16 lg:py-28", solid)}
     >
-      <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 sm:gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-10">
         {/* Text column — each element reveals independently for a cascade effect */}
         <div className={cn("lg:self-center", reversed ? "lg:order-2" : "")}>
           <Reveal variant={reversed ? "slideLeft" : "slideRight"} delay={0}>
@@ -65,12 +65,12 @@ export function ServiceBlock({
           {(service.bullets.length > 0) ? (
             <Reveal variant="fadeUp" delay={0.18}>
               {service.bulletsLead ? (
-                <p className="mt-8 text-sm font-medium text-white/90 md:text-base">
+                <p className="mt-5 text-sm font-medium text-white/90 md:text-base">
                   {service.bulletsLead}
                 </p>
               ) : null}
               <RevealStagger
-                className={cn("space-y-4", service.bulletsLead ? "mt-4" : "mt-8")}
+                className={cn("space-y-4", service.bulletsLead ? "mt-4" : "mt-5")}
                 stagger={0.05}
               >
                 {service.bullets.map((bullet) => (
@@ -93,7 +93,7 @@ export function ServiceBlock({
           ) : null}
 
           <Reveal variant="fadeUp" delay={0.26}>
-            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 sm:mt-10 sm:gap-y-4">
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3 sm:mt-10 sm:gap-y-4">
               {service.detailHref ? (
                 <LineCta href={service.detailHref} light>
                   Explore the program
@@ -114,7 +114,7 @@ export function ServiceBlock({
           >
             <div
               className={cn(
-                "relative h-[16rem] w-full overflow-hidden sm:h-[20rem] md:h-[24rem] lg:h-full lg:min-h-[28rem]",
+                "relative h-[12rem] w-full overflow-hidden sm:h-[20rem] md:h-[24rem] lg:h-full lg:min-h-[28rem]",
                 isTransparent
                   ? ""
                   : "rounded-2xl border border-white/10",

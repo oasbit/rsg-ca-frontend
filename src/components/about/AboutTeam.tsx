@@ -55,13 +55,13 @@ const TEAM_MEMBERS = [
 
 export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black pt-6 pb-10 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-24">
+    <SectionTransition className="relative overflow-hidden bg-black pt-4 pb-6 text-white sm:pt-8 sm:pb-12 lg:pt-10 lg:pb-24">
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
 
         {/* Section header */}
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div className="grid gap-4 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal variant="fadeUp" className="lg:col-span-7">
             <SectionLabel light>Our Team</SectionLabel>
             <div className="mt-5 h-px w-10 bg-accent/50" />
@@ -71,7 +71,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
           </Reveal>
 
           <Reveal variant="fadeUp" delay={0.1} className="lg:col-span-5">
-            <div className="space-y-5 lg:pl-4">
+            <div className="space-y-3.5 lg:pl-4">
               {paragraphs.map((paragraph, i) => (
                 <p
                   key={paragraph.slice(0, 48)}
@@ -89,7 +89,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
         </div>
 
         {/* Roster */}
-        <RevealStagger className="mt-10 sm:mt-12 lg:mt-20" stagger={0.1}>
+        <RevealStagger className="mt-6 sm:mt-12 lg:mt-20" stagger={0.1}>
           {/* Top divider */}
           <div className="h-px bg-white/10" />
 
@@ -123,7 +123,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
 
                   {/* Content */}
                   <div
-                    className={`flex flex-1 flex-col justify-center py-5 sm:py-6 lg:py-10 ${
+                    className={`flex flex-1 flex-col justify-center py-3.5 sm:py-6 lg:py-10 ${
                       reversed ? "pr-4 sm:pr-6 lg:pr-10 items-end text-right" : "pl-4 sm:pl-6 lg:pl-10 items-start text-left"
                     }`}
                   >
@@ -149,8 +149,8 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
         </RevealStagger>
 
         {/* CTA panel */}
-        <Reveal variant="fadeUp" delay={0.1} className="mt-10 sm:mt-12 lg:mt-20">
-          <div className="pt-8 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
+        <Reveal variant="fadeUp" delay={0.1} className="mt-6 sm:mt-12 lg:mt-20">
+          <div className="pt-5 sm:pt-10 lg:flex lg:items-end lg:justify-between lg:gap-12">
             <div className="max-w-lg">
               <p className="text-xs tracking-[0.3em] text-accent/70 uppercase">Partner with us</p>
               <h3 className="mt-4 font-display text-3xl leading-tight text-white md:text-4xl">
@@ -162,7 +162,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
                 ready to partner with you.
               </p>
             </div>
-            <div className="mt-8 lg:mt-0 lg:shrink-0">
+            <div className="mt-5 lg:mt-0 lg:shrink-0">
               <LineCta href="/contact" light>
                 Start a conversation
               </LineCta>

@@ -327,3 +327,33 @@ html[data-a11y-reduce-motion="true"] *::after {
 html[data-a11y-reduce-motion="true"] {
   scroll-behavior: auto;
 }
+
+/*
+ * Mobile section density — below the `sm` breakpoint only.
+ * Keeps page sections compact and easier to scan on phones without
+ * changing tablet/desktop rhythm. Tokens are available for new sections.
+ */
+:root {
+  --page-gutter-mobile: 1rem;
+  --section-pad-y-mobile: 1.5rem;
+  --section-gap-mobile: 1rem;
+}
+
+@media (max-width: 639px) {
+  main section {
+    scroll-margin-top: calc(var(--header-height-compact) + 0.75rem);
+  }
+
+  /* Slightly tighter body copy leading inside sections on small screens */
+  main section p {
+    line-height: 1.6;
+  }
+
+  main section .leading-8 {
+    line-height: 1.65;
+  }
+
+  main section .leading-7 {
+    line-height: 1.55;
+  }
+}

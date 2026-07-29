@@ -14,7 +14,7 @@ export function SectionTransition({
   return (
     <div
       className={cn(
-        "h-20 bg-gradient-to-b md:h-28 lg:h-32",
+        "h-12 bg-gradient-to-b sm:h-20 md:h-28 lg:h-32",
         gradient,
         className,
       )}

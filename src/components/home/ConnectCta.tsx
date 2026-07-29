@@ -38,7 +38,7 @@ export function ConnectCta({
   const { lead, name } = splitConnectTitle(title);
 
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-12 text-white sm:py-16 lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-7 text-white sm:py-16 lg:py-24">
       <GrainOverlay />
 
       <div
@@ -49,8 +49,8 @@ export function ConnectCta({
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid items-center gap-8 sm:gap-10 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-10 xl:min-h-[32rem]">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="grid items-center gap-5 sm:gap-10 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-10 xl:min-h-[32rem]">
           <Reveal
             variant="slideRight"
             className="relative flex items-center justify-center lg:col-span-5 xl:col-span-5"
@@ -69,7 +69,7 @@ export function ConnectCta({
                     alt={imageAlt}
                     width={614}
                     height={1024}
-                    className="h-auto w-full max-w-[16rem] object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:max-w-xs lg:max-w-sm xl:max-w-md"
+                    className="h-auto w-full max-w-[12rem] object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:max-w-xs lg:max-w-sm xl:max-w-md"
                     sizes="(max-width: 1024px) 90vw, 40vw"
                   />
                   <div
@@ -119,17 +119,17 @@ export function ConnectCta({
               {body}
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <OutlineButton href="/contact" icon="arrow-right">
+            <div className="mt-6 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <OutlineButton href="/contact" icon="arrow-right" className="w-full justify-center sm:w-auto">
                 Get started
               </OutlineButton>
 
-              <OutlineButton href="tel:+18662536650" icon="phone">
+              <OutlineButton href="tel:+18662536650" icon="phone" className="w-full justify-center sm:w-auto">
                 1-866-253-6650
               </OutlineButton>
             </div>
 
-            <div className="mt-8 grid gap-5 border-t border-white/10 pt-6 sm:mt-10 sm:grid-cols-2 sm:gap-6 sm:pt-8">
+            <div className="mt-5 grid gap-5 border-t border-white/10 pt-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 sm:pt-8">
               <div>
                 <p className="text-[0.65rem] tracking-[0.32em] text-muted uppercase">
                   Email

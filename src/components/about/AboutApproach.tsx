@@ -24,7 +24,7 @@ export function AboutApproach({
   closing,
 }: AboutApproachProps) {
   return (
-    <SectionTransition className="relative overflow-hidden bg-black py-10 text-white sm:py-12 lg:py-24">
+    <SectionTransition className="relative overflow-hidden bg-black py-6 text-white sm:py-12 lg:py-24">
       <Image
         src={BRAND.about.approachBg}
         alt=""
@@ -44,9 +44,9 @@ export function AboutApproach({
       />
       <GrainOverlay />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         {/* Two-column grid */}
-        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-5 sm:gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — editorial headline column */}
           <Reveal variant="fadeUp" className="flex flex-col justify-between">
@@ -56,11 +56,11 @@ export function AboutApproach({
               <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>
-              <p className="mt-8 text-sm leading-8 text-white/80 md:text-base">
+              <p className="mt-5 text-sm leading-8 text-white/80 md:text-base">
                 {intro}
               </p>
               {executionLead ? (
-                <div className="mt-8 flex items-center gap-4">
+                <div className="mt-5 flex items-center gap-4">
                   <span className="h-px w-6 bg-accent/40" />
                   <p className="text-xs tracking-[0.22em] text-white/50 uppercase">
                     {executionLead}
@@ -70,7 +70,7 @@ export function AboutApproach({
             </div>
 
             {closing ? (
-              <blockquote className="mt-8 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
+              <blockquote className="mt-5 border-l-2 border-accent/50 pl-4 sm:mt-10 sm:pl-6 lg:mt-0">
                 <p className="font-display text-base leading-8 text-white/75 md:text-lg">
                   {closing}
                 </p>
@@ -83,7 +83,7 @@ export function AboutApproach({
             <ul className="divide-y divide-white/10">
               {bullets.map((bullet, index) => (
                 <RevealStaggerItem key={bullet}>
-                  <li className="group -mx-3 flex gap-5 rounded-lg px-3 py-5 transition-all duration-300 hover:bg-white/[0.06] sm:gap-7 sm:py-6">
+                  <li className="group -mx-3 flex gap-5 rounded-lg px-3 py-3.5 transition-all duration-300 hover:bg-white/[0.06] sm:gap-7 sm:py-6">
                     <span className="shrink-0 font-display text-4xl leading-none text-accent/35 transition-colors duration-300 select-none group-hover:text-accent lg:text-5xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>

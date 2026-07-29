@@ -72,7 +72,7 @@ export function ServicesTabs({
       className={cn(
         "relative",
         !embedded && "overflow-hidden",
-        !embedded && (isLight ? "bg-cream" : "bg-black pb-10 text-white sm:pb-14 lg:pb-32"),
+        !embedded && (isLight ? "bg-cream" : "bg-black pb-6 text-white sm:pb-14 lg:pb-32"),
       )}
     >
       {!isLight && !embedded ? <GrainOverlay /> : null}
@@ -80,7 +80,7 @@ export function ServicesTabs({
       <div
         className={cn(
           "relative",
-          !embedded && !isLight && "mx-auto max-w-7xl px-6 lg:px-10",
+          !embedded && !isLight && "mx-auto max-w-7xl px-4 sm:px-6 lg:px-10",
         )}
       >
         <Reveal variant="fadeUp">
@@ -106,7 +106,7 @@ export function ServicesTabs({
                   onFocus={() => selectTab(index)}
                   onKeyDown={(event) => onKeyDown(event, index)}
                   className={cn(
-                    "cursor-pointer border-b-2 px-3 py-4 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
+                    "cursor-pointer border-b-2 px-3 py-3.5 text-center transition-all duration-400 ease-out sm:px-5 sm:py-5 lg:py-6",
                     isLight
                       ? isActive
                         ? "border-body bg-cream text-black"
@@ -154,7 +154,7 @@ export function ServicesTabs({
               animate={{ opacity: 1, y: 0 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-6 py-5 sm:gap-8 sm:py-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:py-12 xl:py-14"
+              className="grid gap-4 py-4 sm:gap-8 sm:py-6 lg:grid-cols-12 lg:items-stretch lg:gap-12 lg:py-12 xl:py-14"
             >
               <div
                 className={cn(
@@ -197,7 +197,7 @@ export function ServicesTabs({
                 {activeService.bulletsLead ? (
                   <p
                     className={cn(
-                      "mt-8 text-sm font-medium md:text-base",
+                      "mt-5 text-sm font-medium md:text-base",
                       isLight ? "text-black/90" : "text-white/90",
                     )}
                   >
@@ -205,7 +205,7 @@ export function ServicesTabs({
                   </p>
                 ) : null}
 
-                <ul className={cn("space-y-3", activeService.bulletsLead ? "mt-4" : "mt-8")}>
+                <ul className={cn("space-y-3", activeService.bulletsLead ? "mt-4" : "mt-5")}>
                   {activeService.bullets.map((bullet) => (
                     <li
                       key={bullet}
@@ -232,7 +232,7 @@ export function ServicesTabs({
                   ))}
                 </ul>
 
-                <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
+                <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
                   <LineCta
                     href={
                       activeService.detailHref ??
@@ -256,7 +256,7 @@ export function ServicesTabs({
                 <div className="lg:col-span-5">
                   <div
                     className={cn(
-                      "relative h-[14rem] w-full overflow-hidden sm:h-[18rem] md:h-[22rem] lg:h-full lg:min-h-[26rem]",
+                      "relative h-[11rem] w-full overflow-hidden sm:h-[18rem] md:h-[22rem] lg:h-full lg:min-h-[26rem]",
                       isTransparent
                         ? ""
                         : cn("border", isLight ? "border-black/10" : "border-white/10"),

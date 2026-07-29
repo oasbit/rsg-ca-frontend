@@ -66,7 +66,7 @@ export function PageHero({
     <section
       className={
         fullHeight
-          ? "relative flex min-h-[85svh] flex-col overflow-hidden bg-black text-white md:min-h-screen"
+          ? "relative flex min-h-[78svh] flex-col overflow-hidden bg-black text-white md:min-h-screen"
           : "relative overflow-hidden bg-black text-white"
       }
     >
@@ -103,8 +103,8 @@ export function PageHero({
       <motion.div
         className={
           fullHeight
-            ? "relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-6 pb-8 pt-[calc(var(--header-height)+1.5rem)] sm:pb-10 sm:pt-[calc(var(--header-height)+2.5rem)] lg:px-10 lg:pb-14"
-            : "relative mx-auto flex min-h-[36vh] max-w-7xl flex-col justify-end px-6 pb-10 pt-[calc(var(--header-height)+1.5rem)] sm:min-h-[40vh] md:min-h-[50vh] lg:px-10 lg:pb-16"
+            ? "relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-4 sm:px-6 pb-5 pt-[calc(var(--header-height)+1rem)] sm:pb-10 sm:pt-[calc(var(--header-height)+2.5rem)] lg:px-10 lg:pb-14"
+            : "relative mx-auto flex min-h-[30vh] max-w-7xl flex-col justify-end px-4 sm:px-6 pb-6 pt-[calc(var(--header-height)+1rem)] sm:min-h-[40vh] md:min-h-[50vh] lg:px-10 lg:pb-16"
         }
         variants={prefersReducedMotion ? undefined : containerVariants}
         initial={prefersReducedMotion ? false : "hidden"}
