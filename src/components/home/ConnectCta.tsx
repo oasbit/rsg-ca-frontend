@@ -63,18 +63,18 @@ export function ConnectCta({
                 }
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative w-full overflow-hidden">
+                <div className="relative w-full overflow-hidden max-sm:aspect-[3/3.15]">
                   <Image
                     src={imageUrl}
                     alt={imageAlt}
                     width={614}
                     height={1024}
-                    className="h-auto w-full object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] sm:mx-auto sm:max-w-xs lg:max-w-sm xl:max-w-md"
+                    className="h-auto w-full object-contain object-top drop-shadow-[0_28px_56px_rgba(0,0,0,0.45)] max-sm:absolute max-sm:inset-0 max-sm:h-[166.67%] max-sm:max-w-none max-sm:object-cover max-sm:object-top sm:relative sm:mx-auto sm:h-auto sm:max-w-xs lg:max-w-sm xl:max-w-md"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 40vw"
                   />
                   <div
                     aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent"
+                    className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent sm:h-32"
                   />
                   <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 sm:px-5 sm:pb-5">
                     <div className="border-l-2 border-accent px-4 py-1 sm:px-5">

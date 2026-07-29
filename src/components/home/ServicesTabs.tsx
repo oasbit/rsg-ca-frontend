@@ -83,11 +83,11 @@ export function ServicesTabs({
           !embedded && !isLight && "mx-auto max-w-7xl px-4 sm:px-6 lg:px-10",
         )}
       >
-        <Reveal variant="fadeUp">
+        <Reveal variant="fadeUp" className="relative">
           <div
             role="tablist"
             aria-label="Services"
-            className="relative z-10 -mx-4 flex snap-x snap-mandatory gap-0 overflow-x-auto overscroll-x-contain px-4 [scrollbar-width:none] sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden"
+            className="relative z-10 -mx-4 flex snap-x snap-mandatory gap-0 overflow-x-auto overscroll-x-contain px-4 pr-12 [scrollbar-width:none] max-sm:[mask-image:linear-gradient(to_right,black_0%,black_70%,transparent_100%)] max-sm:[-webkit-mask-image:linear-gradient(to_right,black_0%,black_70%,transparent_100%)] sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pr-0 sm:[mask-image:none] sm:[-webkit-mask-image:none] lg:grid-cols-4 [&::-webkit-scrollbar]:hidden"
           >
             {services.map((service, index) => {
               const isActive = index === activeIndex;
