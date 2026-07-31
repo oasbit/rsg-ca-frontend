@@ -44,12 +44,12 @@ const TEAM_MEMBERS = [
     imageAlt: "Priya Sharma, Facilitation Specialist",
   },
   {
-    firstName: "James",
-    lastName: "Okafor",
+    firstName: "Peter",
+    lastName: "Kislinsky",
     role: "Community Engagement Director",
     specialty: "Community programs, stakeholder relations & impact strategy",
-    image: BRAND.teamMembers.jamesOkafor,
-    imageAlt: "James Okafor, Community Engagement Director",
+    image: BRAND.teamMembers.peterKislinsky,
+    imageAlt: "Peter Kislinsky, Community Engagement Director",
   },
 ] as const;
 

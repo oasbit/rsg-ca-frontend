@@ -60,7 +60,7 @@ export const BRAND = {
     sarahMitchell: "/images/team/team-sarah-mitchell.jpg",
     deanBarnes: "/images/team/dean-barnes.png",
     priyaSharma: "/images/team/team-priya-sharma.jpg",
-    jamesOkafor: "/images/team/team-james-okafor.jpg",
+    peterKislinsky: "/images/team/team-peter-kislinsky.png",
   },
   about: {
     communityPanel: `${WP_UPLOADS}/2026/03/286dc_Brew-Bloom-Gallery-Image-2.webp`,
