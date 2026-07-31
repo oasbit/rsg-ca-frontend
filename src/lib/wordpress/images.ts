@@ -58,7 +58,7 @@ export const BRAND = {
   /** Placeholder team member headshots — replace with real portraits when available. */
   teamMembers: {
     sarahMitchell: "/images/team/team-sarah-mitchell.jpg",
-    marcusThompson: "/images/team/team-marcus-thompson.jpg",
+    deanBarnes: "/images/team/dean-barnes.png",
     priyaSharma: "/images/team/team-priya-sharma.jpg",
     jamesOkafor: "/images/team/team-james-okafor.jpg",
   },

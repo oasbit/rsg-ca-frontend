@@ -28,12 +28,12 @@ const TEAM_MEMBERS = [
     imageAlt: "Sarah Mitchell, Strategic Development Lead",
   },
   {
-    firstName: "Marcus",
-    lastName: "Thompson",
+    firstName: "Dean",
+    lastName: "Barnes",
     role: "Leadership Coach",
     specialty: "Executive coaching, leadership assessment & team empowerment",
-    image: BRAND.teamMembers.marcusThompson,
-    imageAlt: "Marcus Thompson, Leadership Coach",
+    image: BRAND.teamMembers.deanBarnes,
+    imageAlt: "Dean Barnes, Leadership Coach",
   },
   {
     firstName: "Priya",
@@ -103,6 +103,7 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
                   {/* Portrait */}
                   <div className="relative w-[88px] flex-shrink-0 overflow-hidden sm:w-[120px] lg:w-[180px]">
                     <Image
+                      key={member.image}
                       src={member.image}
                       alt={member.imageAlt}
                       fill
