@@ -30,7 +30,6 @@ export function AboutFocusAreas({
           <Reveal variant="fadeUp">
             <div>
               <SectionLabel light>Our Focus Areas</SectionLabel>
-              <div className="mt-5 h-px w-10 bg-accent/50" />
               <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-6 sm:text-4xl md:text-6xl lg:text-7xl">
                 {title}
               </h2>

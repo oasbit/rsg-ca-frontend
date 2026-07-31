@@ -54,6 +54,8 @@ export interface HomeACF {
   hero_headline?: string;
   hero_headline_emphasis?: string;
   hero_body?: string;
+  editorial_eyebrow?: string;
+  editorial_title?: string;
   editorial_headline?: string;
   editorial_body?: string;
   about_teaser_title?: string;

@@ -2,20 +2,31 @@
 
 import Image from "next/image";
 import { LineCta } from "@/components/ui/LineCta";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionTransition } from "@/components/motion/SectionTransition";
 import { resolveEditorialBackgroundImage } from "@/lib/wordpress/images";
 
 interface EditorialBandProps {
+  eyebrow: string;
+  title: string;
   headline: string;
   body: string;
 }
 
 function splitEditorialHeadline(headline: string): { lead: string; emphasis: string } {
-  const marker = "Organizations and Communities";
+  const marker = "Companies, Corporations Organizations and Communities";
   if (headline.includes(marker)) {
     return {
       lead: headline.replace(marker, "").trim(),
+      emphasis: marker,
+    };
+  }
+
+  const legacyMarker = "Organizations and Communities";
+  if (headline.includes(legacyMarker)) {
+    return {
+      lead: headline.replace(legacyMarker, "").trim(),
       emphasis: marker,
     };
   }
@@ -32,38 +43,46 @@ function splitEditorialHeadline(headline: string): { lead: string; emphasis: str
   return { lead: headline, emphasis: "" };
 }
 
-export function EditorialBand({ headline, body }: EditorialBandProps) {
+export function EditorialBand({ eyebrow, title, headline, body }: EditorialBandProps) {
   const { lead, emphasis } = splitEditorialHeadline(headline);
   const backgroundImage = resolveEditorialBackgroundImage();
 
   return (
     <SectionTransition className="relative bg-cream text-black">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 pt-6 text-center sm:pt-14 lg:px-10 lg:pt-24">
-        <Reveal variant="fadeUp">
-          <h2>
-            {lead ? (
-              <span className="block text-sm font-light tracking-[0.24em] text-black/80 uppercase md:text-base">
-                {lead}
-              </span>
-            ) : null}
-            {emphasis ? (
-              <span className="mt-2 block font-display text-2xl leading-tight text-body sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
-                {emphasis}
-              </span>
-            ) : (
-              <span className="mt-2 block font-display text-2xl leading-tight text-body sm:mt-3 sm:text-3xl md:text-5xl lg:text-6xl">
-                {headline}
-              </span>
-            )}
-          </h2>
-        </Reveal>
+      <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 sm:pt-14 lg:px-10 lg:pt-24">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-start lg:gap-12 xl:gap-16">
+          <Reveal variant="fadeUp" className="text-left">
+            <SectionLabel>{eyebrow}</SectionLabel>
+            <h2 className="mt-4 font-display text-3xl leading-[0.95] text-body sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
+              {title}
+            </h2>
+          </Reveal>
 
-        <Reveal variant="fadeUp" delay={0.08} className="mt-6 pb-3 lg:pb-4">
-          <p className="mx-auto max-w-md text-sm leading-8 text-body md:text-base">{body}</p>
-          <div className="mt-5 flex justify-center">
-            <LineCta href="/services">Explore services</LineCta>
-          </div>
-        </Reveal>
+          <Reveal variant="fadeUp" delay={0.08} className="text-left">
+            <h3>
+              {lead ? (
+                <span className="block text-xs font-light tracking-[0.24em] text-black/75 uppercase md:text-sm">
+                  {lead}
+                </span>
+              ) : null}
+              {emphasis ? (
+                <span className="mt-2 block text-lg leading-8 text-body sm:mt-3 sm:text-xl md:text-2xl lg:text-3xl">
+                  {emphasis}
+                </span>
+              ) : (
+                <span className="mt-2 block text-lg leading-8 text-body sm:mt-3 sm:text-xl md:text-2xl lg:text-3xl">
+                  {headline}
+                </span>
+              )}
+            </h3>
+            <p className="mt-6 max-w-xl text-sm leading-8 text-body md:mt-8 md:text-base">
+              {body}
+            </p>
+            <div className="mt-5 flex md:mt-6">
+              <LineCta href="/services">Explore services</LineCta>
+            </div>
+          </Reveal>
+        </div>
       </div>
 
       <Reveal

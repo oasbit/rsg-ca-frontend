@@ -44,6 +44,8 @@ export default async function HomePage() {
         footer={<PillarsGrid pillars={content.pillars} embedded />}
       />
       <EditorialBand
+        eyebrow={content.editorial_eyebrow}
+        title={content.editorial_title}
         headline={content.editorial_headline}
         body={content.editorial_body}
       />

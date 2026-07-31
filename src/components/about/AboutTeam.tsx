@@ -64,7 +64,6 @@ export function AboutTeam({ title, paragraphs }: AboutTeamProps) {
         <div className="grid gap-4 sm:gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
           <Reveal variant="fadeUp" className="lg:col-span-7">
             <SectionLabel light>Our Team</SectionLabel>
-            <div className="mt-5 h-px w-10 bg-accent/50" />
             <h2 className="mt-4 font-display text-3xl leading-[0.95] text-accent sm:mt-5 sm:text-4xl md:text-6xl lg:text-7xl">
               {title}
             </h2>

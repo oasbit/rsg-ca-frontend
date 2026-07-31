@@ -46,6 +46,8 @@ export function resolveHomeContent(page: WPPage | null): Required<
     | "hero_headline"
     | "hero_headline_emphasis"
     | "hero_body"
+    | "editorial_eyebrow"
+    | "editorial_title"
     | "editorial_headline"
     | "editorial_body"
     | "about_teaser_title"
@@ -71,9 +73,11 @@ export function resolveHomeContent(page: WPPage | null): Required<
     hero_body:
       acf.hero_body ??
       "We support individuals, organizations, corporations, educational institutions and Indigenous communities in the areas of: Education, Leadership, Strategic Planning, Advancement, and Development.",
+    editorial_eyebrow: acf.editorial_eyebrow ?? "Who We Support",
+    editorial_title: acf.editorial_title ?? "Who We Support",
     editorial_headline:
       acf.editorial_headline ??
-      "Connected and Collaborative Organizations and Communities",
+      "Connected and Collaborative Companies, Corporations Organizations and Communities",
     editorial_body:
       acf.editorial_body ??
       "We support offices, departments, special corporate teams, not-for-profit boards and teams, organizations, institutions and communities through strategic planning, leadership development, and team-building programs designed for sustainable growth.",

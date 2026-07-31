@@ -47,13 +47,6 @@ export default async function AboutPage() {
         headline={content.whoWeAre.headline}
         paragraphs={content.whoWeAre.paragraphs}
       />
-      <FounderProfile
-        name={content.founder.name}
-        title={content.founder.title}
-        paragraphs={content.founder.paragraphs}
-        imageUrl={founderImage.src}
-        imageAlt={founderImage.alt}
-      />
       <AboutApproach
         title={content.approach.title}
         intro={content.approach.intro}
@@ -70,6 +63,13 @@ export default async function AboutPage() {
       <AboutVision
         title={content.vision.title}
         body={content.vision.body}
+      />
+      <FounderProfile
+        name={content.founder.name}
+        title={content.founder.title}
+        paragraphs={content.founder.paragraphs}
+        imageUrl={founderImage.src}
+        imageAlt={founderImage.alt}
       />
       <AboutTeam
         title={content.team.title}
