@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ConnectCtaSection } from "@/components/layout/ConnectCtaSection";
@@ -57,6 +58,13 @@ export default function RootLayout({
         </main>
         <Footer />
         <AccessibilityWidget />
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          strategy="afterInteractive"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6aa2fb0b19574704fd268f6d"
+          data-source="WEB_USER"
+        />
       </body>
     </html>
   );

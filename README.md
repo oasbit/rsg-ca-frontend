@@ -351,6 +351,10 @@ A fixed **Accessibility** button appears at the bottom-left of every page (`Acce
 
 Preferences persist in `localStorage` (`rsg-a11y-preferences`) and are applied on load via a bootstrap script to avoid a flash of the default theme. Global styles live in `src/styles/globals.css` under `[data-a11y-*]` selectors; logic is in `src/lib/accessibility/`.
 
+### LeadConnector chat widget
+
+A site-wide HighLevel / LeadConnector chat widget loads from the root layout (`src/app/layout.tsx`) via `next/script` (`afterInteractive`). Widget id: `6aa2fb0b19574704fd268f6d`.
+
 ### Mobile layout
 
 All sections use a mobile-first spacing scale so pages stay compact and easy to scan on phones without changing tablet or desktop layout:
