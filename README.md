@@ -57,11 +57,9 @@ Pages are statically regenerated every hour (`revalidate: 3600`) and can be refr
 | `/services` | `services` |
 | `/contact` | `contact` |
 | `/privacy-policy` | `privacy-policy-2` |
-| `/terms-and-conditions` | `terms-and-conditions` |
 
 Redirects:
 - `/privacy-policy-2` → `/privacy-policy`
-- `/terms` → `/terms-and-conditions`
 - `/our-story` → `/about-us`
 - `/coworking-space` → `/`
 
@@ -154,14 +152,6 @@ Services page order: **PageHero** → **ServicesOverview** (four linked cards) �
 | `body` | WYSIWYG |
 
 The frontend ships a complete PIPEDA-aligned privacy policy in `src/lib/privacy-policy.ts`. It is shown when the WordPress ACF `body` field and page content are empty. To override from WordPress, populate the ACF body with your custom policy text.
-
-### Terms (`terms-and-conditions`)
-
-| Field | Type |
-|-------|------|
-| `body` | WYSIWYG |
-
-The frontend ships terms for website use and consulting engagements in `src/lib/terms.ts`. They are shown when the WordPress ACF `body` field and page content are empty. To override from WordPress, create a page with slug `terms-and-conditions` and populate the ACF body. `/terms` redirects to `/terms-and-conditions`.
 
 ## CORS and on-demand revalidation (WordPress)
 
@@ -306,7 +296,7 @@ Without `RESEND_API_KEY`, submissions are accepted but only logged server-side.
 ### Step 5 — Go live checklist
 
 - [ ] `npm run build` passes locally
-- [ ] Vercel preview URL loads: `/`, `/about-us`, `/services`, `/services/team-building`, `/contact`, `/privacy-policy`, `/terms-and-conditions`
+- [ ] Vercel preview URL loads: `/`, `/about-us`, `/services`, `/services/team-building`, `/contact`, `/privacy-policy`
 - [ ] Images load (WordPress media + `public/images/`)
 - [ ] `WORDPRESS_API_URL` points at the live CMS host
 - [ ] `NEXT_PUBLIC_SITE_URL` is `https://rsg-ac.ca`
@@ -386,7 +376,7 @@ Global tweaks in `src/styles/globals.css`:
 - Responsive `--header-height` (96px → 120px → 140px) for the hero/at-top header; `--header-height-compact` (52px → 58px → 64px) when the sticky bar appears on scroll-up, with a matching smaller logo
 - Shared contrast tokens keep dividers and borders visible without dominating the layout, while improving numbering, captions, supporting copy, and small labels
 - `overflow-x: clip` on `body` to prevent horizontal scroll from full-bleed sections
-- Tighter `.prose-legal` typography on mobile for the privacy policy and terms pages
+- Tighter `.prose-legal` typography on mobile for the privacy policy page
 
 Shared components (`PageHero`, `ConnectCta`, `QuoteBanner`, `ValuesBand`, `Footer`, `ServiceBlock`, about sections, contact layout, team-building sections) all follow this scale. Primary CTAs stack full-width on small screens. Test at 375px and 390px widths when changing section spacing.
 

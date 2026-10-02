@@ -125,10 +125,6 @@ export function resolvePrivacyHeroImage(): SiteImage {
   return siteImage(BRAND.heroBackgrounds.privacy, "RS Group Advanced Consulting");
 }
 
-export function resolveTermsHeroImage(): SiteImage {
-  return siteImage(BRAND.heroBackgrounds.privacy, "RS Group Advanced Consulting");
-}
-
 export function resolveAboutHeroImage(page: WPPage | null): SiteImage {
   void page;
   return siteImage(

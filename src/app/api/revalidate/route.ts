@@ -17,7 +17,6 @@ export async function POST(request: NextRequest) {
     services: ["/services", "/services/team-building"],
     contact: ["/contact"],
     "privacy-policy-2": ["/privacy-policy"],
-    "terms-and-conditions": ["/terms-and-conditions"],
   };
 
   const paths = pathMap[slug] ?? ["/"];

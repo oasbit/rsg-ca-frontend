@@ -125,7 +125,6 @@ function rsg_revalidate_paths_for_slug(string $slug): array {
     'services'        => ['/services', '/services/team-building'],
     'contact'         => ['/contact'],
     'privacy-policy-2'=> ['/privacy-policy'],
-    'terms-and-conditions' => ['/terms-and-conditions'],
   ];
 
   return $map[$slug] ?? ['/'];

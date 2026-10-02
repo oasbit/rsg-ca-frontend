@@ -91,12 +91,6 @@ export function Footer() {
               >
                 Privacy Policy
               </Link>
-              <Link
-                href="/terms-and-conditions"
-                className="text-xs tracking-[0.22em] text-white/85 uppercase transition-colors duration-300 ease-out hover:text-accent"
-              >
-                Terms and Conditions
-              </Link>
 
               <p className="text-xs leading-6 text-muted">
                 © {year} {COMPANY_NAME}. Website Powered by{" "}
