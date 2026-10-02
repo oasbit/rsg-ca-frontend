@@ -9,6 +9,7 @@ import {
   PRIVACY_POLICY_BODY,
   PRIVACY_POLICY_TITLE,
 } from "@/lib/privacy-policy";
+import { TERMS_BODY, TERMS_TITLE } from "@/lib/terms";
 import { COMPANY_NAME, SERVICE_AREA } from "@/lib/site";
 
 const SERVICE_DISPLAY_ORDER = [
@@ -474,12 +475,27 @@ export function resolvePrivacyContent(page: WPPage | null): {
   title: string;
   body: string;
 } {
+  return resolveLegalContent(page, PRIVACY_POLICY_TITLE, PRIVACY_POLICY_BODY);
+}
+
+export function resolveTermsContent(page: WPPage | null): {
+  title: string;
+  body: string;
+} {
+  return resolveLegalContent(page, TERMS_TITLE, TERMS_BODY);
+}
+
+function resolveLegalContent(
+  page: WPPage | null,
+  fallbackTitle: string,
+  fallbackBody: string,
+): { title: string; body: string } {
   const acf = page?.acf ?? {};
   const wpBody = typeof acf.body === "string" ? acf.body.trim() : "";
   const pageBody = page?.content?.rendered?.trim() ?? "";
 
   return {
-    title: page?.title?.rendered?.replace(/<[^>]*>/g, "") ?? PRIVACY_POLICY_TITLE,
-    body: wpBody || pageBody || PRIVACY_POLICY_BODY,
+    title: page?.title?.rendered?.replace(/<[^>]*>/g, "") ?? fallbackTitle,
+    body: wpBody || pageBody || fallbackBody,
   };
 }
